@@ -1,0 +1,748 @@
+{
+  "version": 1,
+  "sourceContentVersion": "2026-10-31.1",
+  "defaults": {
+    "provider": "gemini",
+    "gemini": {
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Kore"
+    }
+  },
+  "jobs": [
+    {
+      "id": "bl-short-001",
+      "sourceAsset": "audio/bl-short-001.mp3",
+      "masterFile": "bl-short-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a project manager leaving a message for a colleague.",
+              "style": "Neutral British woman; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Manager",
+              "voice": "Iapetus",
+              "text": "Hi, Elena. The client no longer needs the draft on Thursday, which gives us a little breathing room. They would still like the figures by Friday morning, though, so please send your spreadsheet before you leave on Thursday. I can then add the commentary and submit the complete report on Monday.",
+              "style": "British man, 30s; calm and matter-of-fact. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-short-002",
+      "sourceAsset": "audio/bl-short-002.mp3",
+      "masterFile": "bl-short-002.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear two colleagues discussing a meeting room.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "part-2",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Man",
+              "voice": "Algenib",
+              "text": "The projector in Room Four is working again, but the air conditioning is still being repaired.",
+              "style": "British man, 40s; mildly concerned. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Woman",
+              "voice": "Erinome",
+              "text": "Then let's move the supplier presentation to Room Seven. It's smaller, but the video screen is large enough, and I can bring in two extra chairs.",
+              "style": "British woman, 30s; practical. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-short-003",
+      "sourceAsset": "audio/bl-short-003.mp3",
+      "masterFile": "bl-short-003.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a customer speaking to an account manager.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Customer",
+              "voice": "Kore",
+              "text": "I understand the storm delayed the shipment, and fortunately we still have enough stock for this week. What worries me is that nobody contacted us until I called this morning. A brief update yesterday would have allowed us to warn our own customers.",
+              "style": "Irish woman, 40s; controlled frustration. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-short-004",
+      "sourceAsset": "audio/bl-short-004.mp3",
+      "masterFile": "bl-short-004.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "You hear part of an internal announcement.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Trainer",
+              "voice": "Puck",
+              "text": "Tomorrow's negotiation workshop starts at nine, not nine thirty as shown in the first email. You don't need to print the case study; copies will be on your tables. Please do bring the pricing exercise you completed last week, because we will discuss it in the opening session.",
+              "style": "Australian man, 30s; friendly and clear. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-two-001",
+      "sourceAsset": "audio/bl-two-001.mp3",
+      "masterFile": "bl-two-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "Two managers are reviewing a recruitment day.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "part-2",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Lena",
+              "voice": "Kore",
+              "text": "The candidates' presentations were stronger than I expected. The problem was our schedule. Asking people to complete the written task immediately after lunch meant the final interviews started nearly forty minutes late.",
+              "style": "British woman, 40s; reflective. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Marcus",
+              "voice": "Algenib",
+              "text": "True. We could shorten the written task next time.",
+              "style": "British man, 40s; thoughtful. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Lena",
+              "voice": "Kore",
+              "text": "I'd rather keep it as it is. It showed us how clearly they could organise complex information. We should run it while each person is waiting for their first interview instead.",
+              "style": "British woman, 40s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Marcus",
+              "voice": "Algenib",
+              "text": "Good point. What about the group exercise? It was useful, but six candidates made the discussion hard to follow.",
+              "style": "British man, 40s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Lena",
+              "voice": "Kore",
+              "text": "Let's use groups of four. We'll need an extra assessor, but the evidence will be much better.",
+              "style": "British woman, 40s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-two-002",
+      "sourceAsset": "audio/bl-two-002.mp3",
+      "masterFile": "bl-two-002.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "A marketing director and a product designer are discussing a launch.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "part-2",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Director",
+              "voice": "Erinome",
+              "text": "The campaign makes the device look impressively advanced, but our customer interviews suggest people are less interested in the technology itself than in avoiding complicated setup.",
+              "style": "British woman, 40s; analytical. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Designer",
+              "voice": "Puck",
+              "text": "So rather than listing every feature, we show someone using it successfully within minutes?",
+              "style": "South African man, 30s; measured. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Director",
+              "voice": "Erinome",
+              "text": "Exactly. The engineering team may feel we're underplaying their work, but ease of use is the clearest commercial advantage. Also, I'd postpone the influencer event. The latest software is stable, yet the packaging samples still look temporary.",
+              "style": "British woman, 40s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Designer",
+              "voice": "Puck",
+              "text": "The event venue charges a cancellation fee.",
+              "style": "South African man, 30s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Director",
+              "voice": "Erinome",
+              "text": "A modest one. An event that makes the product feel unfinished would cost us far more.",
+              "style": "British woman, 40s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-five-001",
+      "sourceAsset": "audio/bl-five-001.mp3",
+      "masterFile": "bl-five-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "A department manager is explaining a new remote-work pilot.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Manager",
+              "voice": "Leda",
+              "text": "Thanks for joining. From next month, our department will test a revised hybrid-working arrangement for twelve weeks. This isn't a response to poor productivity; output has remained high. The issue is that different teams currently choose office days independently, so people often travel in for meetings that still happen entirely online. Under the pilot, Tuesdays will be our shared office day. Teams may select one additional day if their work benefits from face-to-face contact, but nobody is expected to attend simply to answer emails at a different desk. We considered Thursday as the common day because the building is quieter then. However, customer-support data showed that Tuesday has the fewest urgent calls, making it easier for that team to participate. To judge the pilot, we will compare project turnaround times and ask staff about the quality of collaboration. We will not treat desk occupancy as a measure of success. Some colleagues have asked whether travel costs will be reimbursed. Our existing policy remains unchanged: normal commuting is not covered, but journeys to another branch for a scheduled meeting are. Finally, please record practical difficulties in the short weekly form. Don't wait until the final survey; small issues are easier to fix while the pilot is running.",
+              "style": "British woman, 40s; confident, conversational. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-note-001",
+      "sourceAsset": "audio/bl-note-001.mp3",
+      "masterFile": "bl-note-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "A coordinator is briefing staff before a trade exhibition.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Coordinator",
+              "voice": "Gacrux",
+              "text": "Here are the final arrangements for Thursday's exhibition. Please meet beside the west entrance at seven forty-five. The main doors won't open until eight, but our exhibitor passes let us enter early. The courier will deliver the display panels directly to Stand Twenty-six. Our brochures are coming separately, so Priya, please collect those from the loading desk. The demonstration tablets should remain in their padded cases until the security cables have been attached. We only have four cables, which means one tablet must stay in the locked cupboard as a spare. During the morning, record visitors' email addresses on the digital form, not on paper cards. At lunchtime, Daniel will take over the stand while the rest of us meet the regional sales director in the café upstairs. Before leaving at six, remove the name badges from the display; the venue staff will dispose of all other printed material.",
+              "style": "British man, 30s; organised and upbeat. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-match-one-001",
+      "sourceAsset": "audio/bl-match-one-001.mp3",
+      "masterFile": "bl-match-one-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You will hear five employees discussing one improvement they would make at work.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-1",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 1",
+              "voice": "Leda",
+              "text": "The online courses are useful, but people complete them alone and rarely discuss what they've learned. A monthly session where colleagues demonstrate one practical technique would turn that information into something we actually use.",
+              "style": "British woman, 20s; energetic. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-2",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 2",
+              "voice": "Algenib",
+              "text": "Our desks and equipment are fine. What wastes time is discovering that two teams have arranged client calls in neighbouring rooms. A central booking calendar showing which rooms are suitable for quiet calls would solve most of it.",
+              "style": "Scottish man, 40s; thoughtful. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-3",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 3",
+              "voice": "Kore",
+              "text": "Managers often thank us at the end of a large project, which is appreciated. I'd rather hear brief comments while the work is still in progress, though. Then we could adjust before the final deadline instead of learning afterwards what should have changed.",
+              "style": "Australian woman, 30s; warm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-4",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 4",
+              "voice": "Iapetus",
+              "text": "We have plenty of social events, so that isn't the issue. New starters need one clearly identified person outside their line manager whom they can ask about basic systems and unwritten routines during their first month.",
+              "style": "British man, 30s; direct. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-5",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 5",
+              "voice": "Achernar",
+              "text": "The company encourages cycling, but the secure storage area only holds eight bicycles and fills before nine. Expanding it would make the policy realistic for people who don't want to leave an expensive bike on the street.",
+              "style": "Irish woman, 50s; calm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-match-two-001",
+      "sourceAsset": "audio/bl-match-two-001.mp3",
+      "masterFile": "bl-match-two-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "Three managers describe a difficult decision.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-1",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 1",
+              "voice": "Puck",
+              "text": "A major customer asked us to deliver three weeks early. I agreed before checking with production because I was afraid of appearing unhelpful. We met the date, but only by delaying two smaller orders. I learned that protecting one relationship at the expense of several others is not good customer service.",
+              "style": "British man, 50s; reflective. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-2",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 2",
+              "voice": "Aoede",
+              "text": "When our analyst left unexpectedly, I divided her reports among the rest of the team. Everyone was already busy, but hiring a contractor seemed expensive. Two months later, overtime and errors had cost more than temporary help would have done. Short-term savings need to be compared with hidden operational costs.",
+              "style": "British woman, 30s; candid. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-3",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 3",
+              "voice": "Orus",
+              "text": "We had to choose between improving an existing service and launching a new one. I relied heavily on a survey whose respondents were mostly current customers, so naturally they favoured improvements. Later research showed a new market we had missed. Evidence is valuable only if you understand whose views are absent.",
+              "style": "New Zealand man, 40s; measured. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-short-001",
+      "sourceAsset": "audio/gl-short-001.mp3",
+      "masterFile": "gl-short-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear an announcement on a coach.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Driver",
+              "voice": "Iapetus",
+              "text": "Because of flooding near the museum, we won't be able to use our usual city-centre stop. I'll drop passengers beside Central Library instead. Anyone continuing to the airport should remain on the coach; our arrival there is still expected at ten twenty.",
+              "style": "British man, 50s; clear public announcement. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-short-002",
+      "sourceAsset": "audio/gl-short-002.mp3",
+      "masterFile": "gl-short-002.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "You hear a student talking about an evening course.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Student",
+              "voice": "Erinome",
+              "text": "I almost enrolled in photography because the tutor's work looked amazing. Then I realised what I actually wanted was a reason to spend more time outdoors, not another evening editing pictures at a computer. The local ecology course includes weekend field trips, so that was the deciding factor.",
+              "style": "British woman, 20s; reflective. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-two-001",
+      "sourceAsset": "audio/gl-two-001.mp3",
+      "masterFile": "gl-two-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "Two volunteers are planning a neighbourhood festival.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "part-2",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Nora",
+              "voice": "Aoede",
+              "text": "The school has agreed to lend us tables, but their caretaker can't deliver them until Saturday morning.",
+              "style": "British woman, 30s; practical. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Jamie",
+              "voice": "Algenib",
+              "text": "That's fine. The food stalls won't set up until ten. I'm more concerned about the weather forecast. The main hall is available, but we'd lose the music area if everything moved indoors.",
+              "style": "British man, 20s; upbeat. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Nora",
+              "voice": "Aoede",
+              "text": "The forecast only shows light rain before nine. Let's keep the outdoor plan and ask stallholders to bring covers. We should move the children's art activity into the library, though; wet paper would be a disaster.",
+              "style": "British woman, 30s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Jamie",
+              "voice": "Algenib",
+              "text": "Agreed. I'll email the stallholders, and you can confirm the library with Sam.",
+              "style": "British man, 20s. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-five-001",
+      "sourceAsset": "audio/gl-five-001.mp3",
+      "masterFile": "gl-five-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "A radio presenter is interviewing a librarian about a new service.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "part-2",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Presenter",
+              "voice": "Algenib",
+              "text": "Maya, why has the library started lending tools?",
+              "style": "British man, 30s; warm radio style. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Maya",
+              "voice": "Callirrhoe",
+              "text": "Residents told us they wanted to repair household items but didn't own equipment they might use only once. We first imagined a simple shelf of donated tools. Safety advice changed our thinking: every item needed inspection, clear instructions and a reliable record of previous use. So we began with forty new or professionally checked items rather than accepting everything people offered. The most popular objects aren't the electric drills, as we predicted, but basic carpet cleaners and long ladders. That tells us the service is helping with occasional practical jobs, not replacing equipment used by professionals. Anyone with a library card can borrow most tools after watching a ten-minute safety video. Cutting equipment requires an additional in-person demonstration. Items are normally lent for four days. We considered a deposit, but that could exclude people the project is intended to help, so late returns are handled by temporarily suspending further borrowing. Next spring we hope to run repair workshops. These won't be classes where an expert fixes things for you; participants will bring an object and learn alongside volunteers how to diagnose the problem. Our biggest challenge now is storage. Demand justifies expanding the collection, but there is little unused space in the present building.",
+              "style": "British woman, 40s; enthusiastic but measured. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-note-001",
+      "sourceAsset": "audio/gl-note-001.mp3",
+      "masterFile": "gl-note-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "A guide gives information before a group visits a museum.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Guide",
+              "voice": "Aoede",
+              "text": "Before tomorrow's visit, here are a few practical details. The coach leaves the college at eight fifteen from the east car park, beside the sports centre, not from the main gate. Large bags must be left in the museum's free lockers, so bring a one-pound coin to operate one; you get the coin back afterwards. Our guided tour begins in the glass gallery on the second floor. It lasts about fifty minutes, after which you can explore independently. Photography is allowed in most areas, but please turn off the flash. The special fashion exhibition does not permit photography at all. We will meet for lunch at twelve thirty in the garden café. If the weather is poor, use the café inside the library instead. Finally, the coach home leaves at four forty-five. Anyone staying in the city must tell me before we arrive at the museum.",
+              "style": "British woman, 30s; friendly tour-guide delivery. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-match-one-001",
+      "sourceAsset": "audio/gl-match-one-001.mp3",
+      "masterFile": "gl-match-one-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "Five students describe a change that improved their studying.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-1",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 1",
+              "voice": "Algenib",
+              "text": "I used to highlight almost every sentence, which made revision slow and confusing. Now, after each section, I close the book and write three questions that the section should help me answer. Testing myself later shows immediately what I haven't understood.",
+              "style": "British man, 20s; relaxed. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-2",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 2",
+              "voice": "Leda",
+              "text": "Long weekend sessions looked impressive on my calendar but rarely happened. Twenty-five minutes before breakfast is much easier to protect. The amount is small, yet doing it every day has made a bigger difference.",
+              "style": "Indian woman, 20s; clear international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-3",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 3",
+              "voice": "Aoede",
+              "text": "I was reluctant to show anyone unfinished work. Joining a group where we exchange rough drafts taught me that early comments can prevent hours spent developing the wrong argument.",
+              "style": "British woman, 20s; thoughtful. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-4",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 4",
+              "voice": "Gacrux",
+              "text": "I kept revising topics I already enjoyed. I now use my quiz results to choose the next subject, starting with the lowest score even when it isn't appealing. My improvement has become much more balanced.",
+              "style": "Australian man, 20s; animated. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-5",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 5",
+              "voice": "Erinome",
+              "text": "Online lectures tempted me to answer messages at the same time. Downloading the audio and walking in a quiet park means I actually listen. I make brief voice notes afterwards rather than trying to type while moving.",
+              "style": "British woman, 30s; calm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-match-two-001",
+      "sourceAsset": "audio/gl-match-two-001.mp3",
+      "masterFile": "gl-match-two-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "intro",
+          "pauseAfterMs": 900,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "Three people discuss volunteering.",
+              "style": "Neutral British woman. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-1",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 1",
+              "voice": "Erinome",
+              "text": "I joined a team recording spoken versions of local news for people with limited sight. I expected the main challenge to be reading clearly. In fact, choosing what to include taught me to recognise biased language and separate fact from opinion much more carefully.",
+              "style": "British woman, 60s; warm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-2",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 2",
+              "voice": "Orus",
+              "text": "I help maintain paths in a nature reserve. I signed up for outdoor exercise, not conversation. Yet working beside people of very different ages has made me much more comfortable speaking to strangers, which has even helped at university.",
+              "style": "British man, 20s; lively. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        },
+        {
+          "id": "speaker-3",
+          "pauseAfterMs": 1300,
+          "turns": [
+            {
+              "speaker": "Speaker 3",
+              "voice": "Aoede",
+              "text": "At the community kitchen I organise donated ingredients before the cooks arrive. The quantities change every week, so fixed recipes rarely work. Finding sensible substitutions has made me far more inventive with meals at home, where I now waste much less food.",
+              "style": "Canadian woman, 30s; calm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

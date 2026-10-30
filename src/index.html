@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173f4f">
+  <meta name="description" content="Jasmine 的原創 Linguaskill 聽力與閱讀練習">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>Jasmine's Linguaskill Practice</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">跳到主要內容</a>
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="回首頁">
+      <span class="brand-mark" aria-hidden="true">J</span>
+      <span><strong>Jasmine Practice</strong><small>Listening · Reading · 160+</small></span>
+    </a>
+    <button id="menuButton" class="icon-button" type="button" aria-expanded="false" aria-controls="topnav" aria-label="開啟選單">☰</button>
+    <nav id="topnav" class="topnav" aria-label="主要選單">
+      <a href="#/review">錯題複習</a>
+      <a href="#/settings">設定</a>
+      <a href="#/about">關於</a>
+    </nav>
+  </header>
+  <div id="offlineBanner" class="offline-banner" hidden>目前離線；已下載的題目仍可使用。</div>
+  <main id="app" tabindex="-1"><p class="loading">載入練習內容中…</p></main>
+  <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+  <noscript>此練習網站需要 JavaScript 才能運作。</noscript>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

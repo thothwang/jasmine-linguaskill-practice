@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "defaults": {
+    "provider": "gemini",
+    "gemini": {
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Kore"
+    },
+    "openai": {
+      "model": "gpt-4o-mini-tts",
+      "voice": "marin"
+    }
+  },
+  "jobs": [
+    {
+      "id": "business-schedule-demo",
+      "style": "natural professional conversation, clear British English, normal pace",
+      "turns": [
+        {
+          "speaker": "Priya",
+          "voice": "Kore",
+          "text": "The supplier review is still on Thursday, but it has moved from half past nine to eleven fifteen."
+        },
+        {
+          "speaker": "Daniel",
+          "voice": "Puck",
+          "text": "Thanks. I'll move the team briefing to Friday morning, then, so we have time to discuss the figures."
+        }
+      ]
+    },
+    {
+      "id": "general-announcement-demo",
+      "voice": "Iapetus",
+      "style": "clear public announcement, neutral British English, calm pace",
+      "turns": [
+        {
+          "text": "Passengers for the coastal service should use platform six today. The train will leave at twelve twenty, ten minutes later than advertised."
+        }
+      ]
+    }
+  ]
+}
+

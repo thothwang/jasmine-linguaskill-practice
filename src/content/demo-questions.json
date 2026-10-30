@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "demo-1",
+  "sets": [
+    {
+      "id": "demo-br-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_one_question_mc",
+      "level": "B2",
+      "topic": "scheduling",
+      "title": "Demo: A changed appointment",
+      "directions": "Read the message and choose the best answer.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "stimulus": { "format": "message", "text": "The supplier can still meet us on Tuesday, but only after 3 p.m. If that is too late, she has offered Thursday morning instead. Please let me know which option causes less disruption to the production team." },
+      "items": [{
+        "id": "q1",
+        "question": "What does the writer want the reader to do?",
+        "responseType": "single_choice",
+        "options": [{"id":"A","text":"Cancel the supplier meeting"},{"id":"B","text":"Choose between two meeting times"},{"id":"C","text":"Ask production to finish early"}],
+        "answer": "B",
+        "explanationZh": "訊息提供星期二下午與星期四上午兩個時間，並請收件者選擇較不影響生產團隊的選項。",
+        "distractorRationales": {"A":"沒有要求取消。","C":"沒有要求生產團隊提早完成。"},
+        "evidence": "which option causes less disruption"
+      }]
+    },
+    {
+      "id": "demo-gr-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_one_question_gap_mc",
+      "level": "B2",
+      "topic": "community services",
+      "title": "Demo: Library notice",
+      "directions": "Choose the word that best completes the sentence.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "stimulus": { "format": "notice", "text": "The library will remain open during renovation, although visitors are advised to use the side entrance." },
+      "items": [{
+        "id": "q1",
+        "question": "Visitors are advised ___ the side entrance.",
+        "responseType": "single_choice",
+        "options": [{"id":"A","text":"use"},{"id":"B","text":"using"},{"id":"C","text":"to use"}],
+        "answer": "C",
+        "explanationZh": "advise someone to do something 是固定結構。",
+        "distractorRationales": {"A":"缺少不定詞 to。","B":"此處不是 advise + 動名詞。"},
+        "evidence": "are advised to use"
+      }]
+    }
+  ]
+}

@@ -1,0 +1,3549 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "2026-10-31.1",
+  "disclaimer": "Original, unofficial practice material. Not affiliated with or endorsed by Cambridge University Press & Assessment. Editorial levels are practice labels, not official score predictions.",
+  "sets": [
+    {
+      "id": "bl-short-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2",
+      "topic": "project scheduling",
+      "title": "A revised deadline",
+      "directions": "Listen to the message and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-short-001.mp3",
+        "durationEstimateSeconds": 27,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman; clear exam pace",
+            "text": "You hear a project manager leaving a message for a colleague."
+          },
+          {
+            "speaker": "Manager",
+            "voiceCue": "British man, 30s; calm and matter-of-fact",
+            "text": "Hi, Elena. The client no longer needs the draft on Thursday, which gives us a little breathing room. They would still like the figures by Friday morning, though, so please send your spreadsheet before you leave on Thursday. I can then add the commentary and submit the complete report on Monday."
+          }
+        ],
+        "src": "audio/bl-short-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What does the manager ask Elena to do?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Send the complete report on Thursday"
+            },
+            {
+              "id": "B",
+              "text": "Provide the figures by Thursday evening"
+            },
+            {
+              "id": "C",
+              "text": "Write the report commentary on Friday"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "經理要 Elena 在星期四下班前寄出試算表中的數字；完整報告則由經理加上評論後於星期一提交。",
+          "distractorRationales": {
+            "A": "星期四只交數字，不是完整報告。",
+            "C": "評論由經理撰寫，不是 Elena。"
+          },
+          "evidence": "send your spreadsheet before you leave on Thursday"
+        }
+      ],
+      "strategyTags": [
+        "deadline changes",
+        "speaker request",
+        "distractor elimination"
+      ],
+      "vocabularyTags": [
+        "draft",
+        "figures",
+        "spreadsheet",
+        "submit"
+      ]
+    },
+    {
+      "id": "bl-short-002",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2",
+      "topic": "office facilities",
+      "title": "Meeting-room problem",
+      "directions": "Listen to the conversation and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-short-002.mp3",
+        "durationEstimateSeconds": 24,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You hear two colleagues discussing a meeting room."
+          },
+          {
+            "speaker": "Man",
+            "voiceCue": "British man, 40s; mildly concerned",
+            "text": "The projector in Room Four is working again, but the air conditioning is still being repaired."
+          },
+          {
+            "speaker": "Woman",
+            "voiceCue": "British woman, 30s; practical",
+            "text": "Then let's move the supplier presentation to Room Seven. It's smaller, but the video screen is large enough, and I can bring in two extra chairs."
+          }
+        ],
+        "src": "audio/bl-short-002.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "Why do the colleagues decide to use Room Seven?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Room Four will be uncomfortable."
+            },
+            {
+              "id": "B",
+              "text": "Room Four has no presentation equipment."
+            },
+            {
+              "id": "C",
+              "text": "Room Seven provides more seating."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "Room Four 的投影機已修好，但空調仍在維修，因此可能不舒適。Room Seven 其實較小，還需要加椅子。",
+          "distractorRationales": {
+            "B": "投影機已恢復運作。",
+            "C": "Room Seven 較小，座位不是優勢。"
+          },
+          "evidence": "the air conditioning is still being repaired"
+        }
+      ],
+      "strategyTags": [
+        "reason",
+        "contrast",
+        "paraphrase"
+      ],
+      "vocabularyTags": [
+        "facilities",
+        "supplier",
+        "presentation",
+        "repair"
+      ]
+    },
+    {
+      "id": "bl-short-003",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2+",
+      "topic": "customer service",
+      "title": "A delayed delivery",
+      "directions": "Listen to the call and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-short-003.mp3",
+        "durationEstimateSeconds": 29,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You hear a customer speaking to an account manager."
+          },
+          {
+            "speaker": "Customer",
+            "voiceCue": "Irish woman, 40s; controlled frustration",
+            "text": "I understand the storm delayed the shipment, and fortunately we still have enough stock for this week. What worries me is that nobody contacted us until I called this morning. A brief update yesterday would have allowed us to warn our own customers."
+          }
+        ],
+        "src": "audio/bl-short-003.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What is the customer's main complaint?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The reason given for the delay is unacceptable."
+            },
+            {
+              "id": "B",
+              "text": "The company failed to communicate promptly."
+            },
+            {
+              "id": "C",
+              "text": "The delay has left her company without stock."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "客戶接受暴風雨造成延誤，也說本週庫存足夠；真正不滿的是供應商沒有主動及時通知。",
+          "distractorRationales": {
+            "A": "她表示理解暴風雨造成的延誤。",
+            "C": "她明確說本週庫存仍足夠。"
+          },
+          "evidence": "nobody contacted us until I called this morning"
+        }
+      ],
+      "strategyTags": [
+        "speaker attitude",
+        "main complaint",
+        "contrast"
+      ],
+      "vocabularyTags": [
+        "shipment",
+        "stock",
+        "update",
+        "warn"
+      ]
+    },
+    {
+      "id": "bl-short-004",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2",
+      "topic": "training",
+      "title": "Workshop preparation",
+      "directions": "Listen to the announcement and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-short-004.mp3",
+        "durationEstimateSeconds": 24,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You hear part of an internal announcement."
+          },
+          {
+            "speaker": "Trainer",
+            "voiceCue": "Australian man, 30s; friendly and clear",
+            "text": "Tomorrow's negotiation workshop starts at nine, not nine thirty as shown in the first email. You don't need to print the case study; copies will be on your tables. Please do bring the pricing exercise you completed last week, because we will discuss it in the opening session."
+          }
+        ],
+        "src": "audio/bl-short-004.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What should participants take to the workshop?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "A completed exercise"
+            },
+            {
+              "id": "B",
+              "text": "A printed case study"
+            },
+            {
+              "id": "C",
+              "text": "The original invitation email"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "講師要求帶上週完成的 pricing exercise；案例資料會在桌上提供，不必列印。",
+          "distractorRationales": {
+            "B": "現場會提供影本。",
+            "C": "郵件只用來說明時間曾被更正，沒有要求攜帶。"
+          },
+          "evidence": "do bring the pricing exercise you completed last week"
+        }
+      ],
+      "strategyTags": [
+        "specific detail",
+        "negative instruction",
+        "corrected information"
+      ],
+      "vocabularyTags": [
+        "negotiation",
+        "workshop",
+        "case study",
+        "pricing"
+      ]
+    },
+    {
+      "id": "bl-two-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_two_question_mc",
+      "level": "B2+",
+      "topic": "recruitment",
+      "title": "Reviewing an interview day",
+      "directions": "Listen to the conversation and answer both questions.",
+      "prepSeconds": 15,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-two-001.mp3",
+        "durationEstimateSeconds": 69,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "Two managers are reviewing a recruitment day."
+          },
+          {
+            "speaker": "Lena",
+            "voiceCue": "British woman, 40s; reflective",
+            "text": "The candidates' presentations were stronger than I expected. The problem was our schedule. Asking people to complete the written task immediately after lunch meant the final interviews started nearly forty minutes late."
+          },
+          {
+            "speaker": "Marcus",
+            "voiceCue": "British man, 40s; thoughtful",
+            "text": "True. We could shorten the written task next time."
+          },
+          {
+            "speaker": "Lena",
+            "voiceCue": "British woman, 40s",
+            "text": "I'd rather keep it as it is. It showed us how clearly they could organise complex information. We should run it while each person is waiting for their first interview instead."
+          },
+          {
+            "speaker": "Marcus",
+            "voiceCue": "British man, 40s",
+            "text": "Good point. What about the group exercise? It was useful, but six candidates made the discussion hard to follow."
+          },
+          {
+            "speaker": "Lena",
+            "voiceCue": "British woman, 40s",
+            "text": "Let's use groups of four. We'll need an extra assessor, but the evidence will be much better."
+          }
+        ],
+        "src": "audio/bl-two-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What caused the interviews to run late?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The presentations lasted longer than planned."
+            },
+            {
+              "id": "B",
+              "text": "The written activity was scheduled poorly."
+            },
+            {
+              "id": "C",
+              "text": "The lunch break began later than expected."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "問題不是作業本身太長，而是所有人都在午餐後做，導致最後面試延誤。",
+          "distractorRationales": {
+            "A": "只說簡報品質比預期好，未說超時。",
+            "C": "沒有提到午休延誤。"
+          },
+          "evidence": "completing the written task immediately after lunch meant the final interviews started ... late"
+        },
+        {
+          "id": "q2",
+          "question": "What change do the managers agree to make?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Reduce the length of the written task"
+            },
+            {
+              "id": "B",
+              "text": "Remove the group exercise"
+            },
+            {
+              "id": "C",
+              "text": "Use smaller discussion groups"
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "兩人同意把小組人數從六人減為四人；Lena 明確反對縮短書面作業，也沒有要取消團體活動。",
+          "distractorRationales": {
+            "A": "Marcus 提議，但 Lena 不同意。",
+            "B": "他們認為團體活動有用，只調整人數。"
+          },
+          "evidence": "Let's use groups of four."
+        }
+      ],
+      "strategyTags": [
+        "proposal versus decision",
+        "cause",
+        "agreement"
+      ],
+      "vocabularyTags": [
+        "recruitment",
+        "assessor",
+        "candidate",
+        "written task"
+      ]
+    },
+    {
+      "id": "bl-two-002",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_two_question_mc",
+      "level": "C1",
+      "topic": "product launch",
+      "title": "Changing the launch message",
+      "directions": "Listen to the conversation and answer both questions.",
+      "prepSeconds": 15,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-two-002.mp3",
+        "durationEstimateSeconds": 72,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "A marketing director and a product designer are discussing a launch."
+          },
+          {
+            "speaker": "Director",
+            "voiceCue": "British woman, 40s; analytical",
+            "text": "The campaign makes the device look impressively advanced, but our customer interviews suggest people are less interested in the technology itself than in avoiding complicated setup."
+          },
+          {
+            "speaker": "Designer",
+            "voiceCue": "South African man, 30s; measured",
+            "text": "So rather than listing every feature, we show someone using it successfully within minutes?"
+          },
+          {
+            "speaker": "Director",
+            "voiceCue": "British woman, 40s",
+            "text": "Exactly. The engineering team may feel we're underplaying their work, but ease of use is the clearest commercial advantage. Also, I'd postpone the influencer event. The latest software is stable, yet the packaging samples still look temporary."
+          },
+          {
+            "speaker": "Designer",
+            "voiceCue": "South African man, 30s",
+            "text": "The event venue charges a cancellation fee."
+          },
+          {
+            "speaker": "Director",
+            "voiceCue": "British woman, 40s",
+            "text": "A modest one. An event that makes the product feel unfinished would cost us far more."
+          }
+        ],
+        "src": "audio/bl-two-002.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "How should the campaign change?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Emphasise simple operation rather than technical detail"
+            },
+            {
+              "id": "B",
+              "text": "Explain how the engineering team developed the product"
+            },
+            {
+              "id": "C",
+              "text": "Compare the number of features with competing devices"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "訪談顯示顧客在乎避免複雜設定，因此宣傳重點要從技術功能轉為快速、容易上手。",
+          "distractorRationales": {
+            "B": "工程團隊可能希望技術被看見，但不是商業訊息重點。",
+            "C": "對話沒有建議與競品比較功能數量。"
+          },
+          "evidence": "ease of use is the clearest commercial advantage"
+        },
+        {
+          "id": "q2",
+          "question": "Why does the director want to postpone the event?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The software still contains serious faults."
+            },
+            {
+              "id": "B",
+              "text": "The presentation of the product is not ready."
+            },
+            {
+              "id": "C",
+              "text": "The cancellation fee has become more affordable."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "軟體已穩定，但包裝樣品仍像臨時版本，可能讓產品看起來未完成，因此延期。",
+          "distractorRationales": {
+            "A": "對話明說軟體已穩定。",
+            "C": "費用只是可接受的代價，不是延期原因。"
+          },
+          "evidence": "the packaging samples still look temporary"
+        }
+      ],
+      "strategyTags": [
+        "inference",
+        "commercial rationale",
+        "contrast"
+      ],
+      "vocabularyTags": [
+        "campaign",
+        "setup",
+        "commercial advantage",
+        "postpone"
+      ]
+    },
+    {
+      "id": "bl-five-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_five_question_mc",
+      "level": "B2+",
+      "topic": "remote-work policy",
+      "title": "A manager explains a pilot policy",
+      "directions": "Listen to the talk and answer the five questions in order.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-five-001.mp3",
+        "durationEstimateSeconds": 151,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "A department manager is explaining a new remote-work pilot."
+          },
+          {
+            "speaker": "Manager",
+            "voiceCue": "British woman, 40s; confident, conversational",
+            "text": "Thanks for joining. From next month, our department will test a revised hybrid-working arrangement for twelve weeks. This isn't a response to poor productivity; output has remained high. The issue is that different teams currently choose office days independently, so people often travel in for meetings that still happen entirely online. Under the pilot, Tuesdays will be our shared office day. Teams may select one additional day if their work benefits from face-to-face contact, but nobody is expected to attend simply to answer emails at a different desk. We considered Thursday as the common day because the building is quieter then. However, customer-support data showed that Tuesday has the fewest urgent calls, making it easier for that team to participate. To judge the pilot, we will compare project turnaround times and ask staff about the quality of collaboration. We will not treat desk occupancy as a measure of success. Some colleagues have asked whether travel costs will be reimbursed. Our existing policy remains unchanged: normal commuting is not covered, but journeys to another branch for a scheduled meeting are. Finally, please record practical difficulties in the short weekly form. Don't wait until the final survey; small issues are easier to fix while the pilot is running."
+          }
+        ],
+        "src": "audio/bl-five-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "Why is the pilot being introduced?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Staff productivity has fallen."
+            },
+            {
+              "id": "B",
+              "text": "Office attendance is poorly coordinated."
+            },
+            {
+              "id": "C",
+              "text": "Online meetings are being discontinued."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "目前各團隊自行決定到辦日，造成有人進辦公室卻仍全程線上開會；核心問題是協調不足。",
+          "distractorRationales": {
+            "A": "經理明說產出仍高。",
+            "C": "並非停止線上會議。"
+          },
+          "evidence": "different teams currently choose office days independently"
+        },
+        {
+          "id": "q2",
+          "question": "Why was Tuesday chosen as the shared office day?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "More desks are available."
+            },
+            {
+              "id": "B",
+              "text": "Most project meetings already occur then."
+            },
+            {
+              "id": "C",
+              "text": "Customer-support demand is usually lower."
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "星期二緊急客服來電最少，因此客服團隊較能參加共同到辦日。",
+          "distractorRationales": {
+            "A": "較安靜、空間較多的是星期四的考量，但未被採用。",
+            "B": "未提到既有專案會議時間。"
+          },
+          "evidence": "Tuesday has the fewest urgent calls"
+        },
+        {
+          "id": "q3",
+          "question": "What may teams do in addition to attending on Tuesday?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Choose another useful office day"
+            },
+            {
+              "id": "B",
+              "text": "Replace Tuesday with a different day"
+            },
+            {
+              "id": "C",
+              "text": "Work from another branch every week"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "團隊若面對面工作有助益，可以再選一天；不能取代共同的星期二。",
+          "distractorRationales": {
+            "B": "Tuesday 是共同到辦日。",
+            "C": "另一分公司只在差旅規定中出現。"
+          },
+          "evidence": "select one additional day if their work benefits"
+        },
+        {
+          "id": "q4",
+          "question": "Which measure will NOT be used to evaluate the pilot?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Project completion speed"
+            },
+            {
+              "id": "B",
+              "text": "Staff views on collaboration"
+            },
+            {
+              "id": "C",
+              "text": "The number of occupied desks"
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "經理明確說不會把座位使用率當成功指標。",
+          "distractorRationales": {
+            "A": "會比較專案 turnaround times。",
+            "B": "會詢問員工對合作品質的看法。"
+          },
+          "evidence": "We will not treat desk occupancy as a measure of success."
+        },
+        {
+          "id": "q5",
+          "question": "What does the manager ask staff to do during the pilot?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Submit problems each week"
+            },
+            {
+              "id": "B",
+              "text": "Claim ordinary commuting expenses"
+            },
+            {
+              "id": "C",
+              "text": "Save all feedback for the final survey"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "員工應每週用短表記錄實務問題，讓團隊能及早修正。",
+          "distractorRationales": {
+            "B": "一般通勤不補助。",
+            "C": "經理要求不要等到最後調查。"
+          },
+          "evidence": "record practical difficulties in the short weekly form"
+        }
+      ],
+      "strategyTags": [
+        "extended listening",
+        "signposting",
+        "negative question",
+        "policy detail"
+      ],
+      "vocabularyTags": [
+        "hybrid working",
+        "pilot",
+        "reimburse",
+        "turnaround time"
+      ]
+    },
+    {
+      "id": "bl-note-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_note_completion",
+      "level": "B2",
+      "topic": "conference arrangements",
+      "title": "Instructions for an exhibition team",
+      "directions": "Listen and complete each note with no more than three words from the recording.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-note-001.mp3",
+        "durationEstimateSeconds": 104,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "A coordinator is briefing staff before a trade exhibition."
+          },
+          {
+            "speaker": "Coordinator",
+            "voiceCue": "British man, 30s; organised and upbeat",
+            "text": "Here are the final arrangements for Thursday's exhibition. Please meet beside the west entrance at seven forty-five. The main doors won't open until eight, but our exhibitor passes let us enter early. The courier will deliver the display panels directly to Stand Twenty-six. Our brochures are coming separately, so Priya, please collect those from the loading desk. The demonstration tablets should remain in their padded cases until the security cables have been attached. We only have four cables, which means one tablet must stay in the locked cupboard as a spare. During the morning, record visitors' email addresses on the digital form, not on paper cards. At lunchtime, Daniel will take over the stand while the rest of us meet the regional sales director in the café upstairs. Before leaving at six, remove the name badges from the display; the venue staff will dispose of all other printed material."
+          }
+        ],
+        "src": "audio/bl-note-001.mp3"
+      },
+      "stimulus": {
+        "format": "notes",
+        "text": "EXHIBITION NOTES\nMeet at: {{1}}\nPriya collects: {{2}}\nKeep one tablet in: {{3}}\nRecord visitors' details using: {{4}}\nLunchtime meeting place: {{5}}"
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Meet at: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the west entrance",
+            "west entrance"
+          ],
+          "maxWords": 3,
+          "explanationZh": "集合地點是 west entrance；冠詞 the 可接受。",
+          "evidence": "meet beside the west entrance"
+        },
+        {
+          "id": "q2",
+          "question": "Priya collects: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the brochures",
+            "brochures"
+          ],
+          "maxWords": 3,
+          "explanationZh": "展示板由快遞直送攤位；Priya 要到 loading desk 領 brochures。",
+          "evidence": "Our brochures ... Priya, please collect those"
+        },
+        {
+          "id": "q3",
+          "question": "Keep one tablet in: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the locked cupboard",
+            "locked cupboard"
+          ],
+          "maxWords": 3,
+          "explanationZh": "因只有四條安全纜線，一台備用平板要放在上鎖櫃子。",
+          "evidence": "stay in the locked cupboard"
+        },
+        {
+          "id": "q4",
+          "question": "Record visitors' details using: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the digital form",
+            "digital form"
+          ],
+          "maxWords": 3,
+          "explanationZh": "訪客電子郵件需輸入 digital form，而非紙卡。",
+          "evidence": "on the digital form, not on paper cards"
+        },
+        {
+          "id": "q5",
+          "question": "Lunchtime meeting place: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the café upstairs",
+            "café upstairs",
+            "the cafe upstairs",
+            "cafe upstairs"
+          ],
+          "maxWords": 3,
+          "explanationZh": "午餐時間與區域業務主管在樓上咖啡館會面；cafe/café 皆可接受。",
+          "evidence": "in the café upstairs"
+        }
+      ],
+      "strategyTags": [
+        "note completion",
+        "exact wording",
+        "spelling",
+        "detail tracking"
+      ],
+      "vocabularyTags": [
+        "exhibition",
+        "courier",
+        "loading desk",
+        "security cable"
+      ]
+    },
+    {
+      "id": "bl-match-one-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_one_task_matching",
+      "level": "B2+",
+      "topic": "workplace improvements",
+      "title": "Five employees suggest improvements",
+      "directions": "Listen to five employees. Match each speaker with the main improvement they want.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-match-one-001.mp3",
+        "durationEstimateSeconds": 132,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You will hear five employees discussing one improvement they would make at work."
+          },
+          {
+            "speaker": "Speaker 1",
+            "voiceCue": "British woman, 20s; energetic",
+            "text": "The online courses are useful, but people complete them alone and rarely discuss what they've learned. A monthly session where colleagues demonstrate one practical technique would turn that information into something we actually use."
+          },
+          {
+            "speaker": "Speaker 2",
+            "voiceCue": "Scottish man, 40s; thoughtful",
+            "text": "Our desks and equipment are fine. What wastes time is discovering that two teams have arranged client calls in neighbouring rooms. A central booking calendar showing which rooms are suitable for quiet calls would solve most of it."
+          },
+          {
+            "speaker": "Speaker 3",
+            "voiceCue": "Australian woman, 30s; warm",
+            "text": "Managers often thank us at the end of a large project, which is appreciated. I'd rather hear brief comments while the work is still in progress, though. Then we could adjust before the final deadline instead of learning afterwards what should have changed."
+          },
+          {
+            "speaker": "Speaker 4",
+            "voiceCue": "British man, 30s; direct",
+            "text": "We have plenty of social events, so that isn't the issue. New starters need one clearly identified person outside their line manager whom they can ask about basic systems and unwritten routines during their first month."
+          },
+          {
+            "speaker": "Speaker 5",
+            "voiceCue": "Irish woman, 50s; calm",
+            "text": "The company encourages cycling, but the secure storage area only holds eight bicycles and fills before nine. Expanding it would make the policy realistic for people who don't want to leave an expensive bike on the street."
+          }
+        ],
+        "src": "audio/bl-match-one-001.mp3"
+      },
+      "stimulus": null,
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "More regular performance feedback"
+        },
+        {
+          "id": "B",
+          "text": "Better meeting-room coordination"
+        },
+        {
+          "id": "C",
+          "text": "A larger bicycle-storage facility"
+        },
+        {
+          "id": "D",
+          "text": "More informal social activities"
+        },
+        {
+          "id": "E",
+          "text": "A peer support contact for new staff"
+        },
+        {
+          "id": "F",
+          "text": "Opportunities to share training knowledge"
+        },
+        {
+          "id": "G",
+          "text": "New computers and office furniture"
+        },
+        {
+          "id": "H",
+          "text": "Fewer online training courses"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Speaker 1",
+          "responseType": "matching",
+          "answer": "F",
+          "explanationZh": "Speaker 1 並非反對線上課程，而是希望同事展示如何實際運用所學。",
+          "evidence": "colleagues demonstrate one practical technique"
+        },
+        {
+          "id": "q2",
+          "question": "Speaker 2",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "他希望以中央預約日曆避免相鄰房間同時安排客戶通話。",
+          "evidence": "A central booking calendar"
+        },
+        {
+          "id": "q3",
+          "question": "Speaker 3",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "她希望工作進行中就收到短回饋，而非結案後才知道要改什麼。",
+          "evidence": "brief comments while the work is still in progress"
+        },
+        {
+          "id": "q4",
+          "question": "Speaker 4",
+          "responseType": "matching",
+          "answer": "E",
+          "explanationZh": "新進人員需要一位主管以外的明確聯絡人，協助基本系統與非正式規則。",
+          "evidence": "one clearly identified person outside their line manager"
+        },
+        {
+          "id": "q5",
+          "question": "Speaker 5",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "她希望擴大安全自行車停放區，讓鼓勵騎車的政策真正可行。",
+          "evidence": "Expanding it would make the policy realistic"
+        }
+      ],
+      "strategyTags": [
+        "gist matching",
+        "paraphrase",
+        "speaker focus"
+      ],
+      "vocabularyTags": [
+        "feedback",
+        "booking",
+        "new starter",
+        "bike storage"
+      ]
+    },
+    {
+      "id": "bl-match-two-001",
+      "domain": "business",
+      "skill": "listening",
+      "taskType": "listening_two_task_matching",
+      "level": "C1",
+      "topic": "leadership decisions",
+      "title": "Three managers describe difficult decisions",
+      "directions": "Listen to three managers. For each speaker, identify the situation and the lesson learned.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/bl-match-two-001.mp3",
+        "durationEstimateSeconds": 142,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "Three managers describe a difficult decision."
+          },
+          {
+            "speaker": "Speaker 1",
+            "voiceCue": "British man, 50s; reflective",
+            "text": "A major customer asked us to deliver three weeks early. I agreed before checking with production because I was afraid of appearing unhelpful. We met the date, but only by delaying two smaller orders. I learned that protecting one relationship at the expense of several others is not good customer service."
+          },
+          {
+            "speaker": "Speaker 2",
+            "voiceCue": "British woman, 30s; candid",
+            "text": "When our analyst left unexpectedly, I divided her reports among the rest of the team. Everyone was already busy, but hiring a contractor seemed expensive. Two months later, overtime and errors had cost more than temporary help would have done. Short-term savings need to be compared with hidden operational costs."
+          },
+          {
+            "speaker": "Speaker 3",
+            "voiceCue": "New Zealand man, 40s; measured",
+            "text": "We had to choose between improving an existing service and launching a new one. I relied heavily on a survey whose respondents were mostly current customers, so naturally they favoured improvements. Later research showed a new market we had missed. Evidence is valuable only if you understand whose views are absent."
+          }
+        ],
+        "src": "audio/bl-match-two-001.mp3"
+      },
+      "stimulus": null,
+      "sharedOptions": [
+        {
+          "id": "S1",
+          "text": "A staffing shortage"
+        },
+        {
+          "id": "S2",
+          "text": "A request for faster delivery"
+        },
+        {
+          "id": "S3",
+          "text": "A choice about product development"
+        },
+        {
+          "id": "S4",
+          "text": "A disagreement over office location"
+        },
+        {
+          "id": "S5",
+          "text": "A supplier quality failure"
+        },
+        {
+          "id": "L1",
+          "text": "Consider who is missing from the evidence"
+        },
+        {
+          "id": "L2",
+          "text": "Avoid commitments before checking wider effects"
+        },
+        {
+          "id": "L3",
+          "text": "Include indirect costs in financial decisions"
+        },
+        {
+          "id": "L4",
+          "text": "Delegate decisions to technical specialists"
+        },
+        {
+          "id": "L5",
+          "text": "Keep customers informed more frequently"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1a",
+          "question": "Speaker 1 — situation",
+          "responseType": "matching",
+          "answer": "S2",
+          "explanationZh": "客戶要求提前三週交貨。",
+          "evidence": "deliver three weeks early"
+        },
+        {
+          "id": "q1b",
+          "question": "Speaker 1 — lesson",
+          "responseType": "matching",
+          "answer": "L2",
+          "explanationZh": "他未先確認產能就承諾，結果影響其他客戶，因此要先評估更廣泛後果。",
+          "evidence": "agreed before checking with production"
+        },
+        {
+          "id": "q2a",
+          "question": "Speaker 2 — situation",
+          "responseType": "matching",
+          "answer": "S1",
+          "explanationZh": "分析師突然離職造成缺人。",
+          "evidence": "our analyst left unexpectedly"
+        },
+        {
+          "id": "q2b",
+          "question": "Speaker 2 — lesson",
+          "responseType": "matching",
+          "answer": "L3",
+          "explanationZh": "省下承包商費用，卻增加加班與錯誤成本；財務決策要納入間接成本。",
+          "evidence": "overtime and errors had cost more"
+        },
+        {
+          "id": "q3a",
+          "question": "Speaker 3 — situation",
+          "responseType": "matching",
+          "answer": "S3",
+          "explanationZh": "他們在改善既有服務和推出新服務之間選擇。",
+          "evidence": "improving an existing service and launching a new one"
+        },
+        {
+          "id": "q3b",
+          "question": "Speaker 3 — lesson",
+          "responseType": "matching",
+          "answer": "L1",
+          "explanationZh": "調查只偏向現有顧客，忽略潛在新市場；需注意資料中缺少誰的觀點。",
+          "evidence": "understand whose views are absent"
+        }
+      ],
+      "strategyTags": [
+        "dual matching",
+        "lesson inference",
+        "speaker summary"
+      ],
+      "vocabularyTags": [
+        "operational cost",
+        "respondent",
+        "commitment",
+        "contractor"
+      ]
+    },
+    {
+      "id": "br-short-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_one_question_mc",
+      "level": "B2",
+      "topic": "internal communication",
+      "title": "Expense-system notice",
+      "directions": "Read the notice and choose the sentence that best matches its meaning.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "notice",
+        "text": "The expense portal will be unavailable from 18:00 Friday until midday Saturday while security updates are installed. Claims already submitted will continue to be processed. If you need reimbursement before next Thursday's payroll, submit any new claim by 16:00 Friday."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Which statement is correct?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "All existing expense claims will be delayed by the update."
+            },
+            {
+              "id": "B",
+              "text": "New claims can be entered on Saturday morning."
+            },
+            {
+              "id": "C",
+              "text": "A Friday-afternoon deadline applies to urgent new claims."
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "若要在下週四薪資日前收到款項，新申請必須星期五 16:00 前送出。既有申請仍會處理，星期六上午系統則無法使用。",
+          "distractorRationales": {
+            "A": "公告明說已提交的申請會繼續處理。",
+            "B": "系統到星期六中午前不可用。"
+          },
+          "evidence": "submit any new claim by 16:00 Friday"
+        }
+      ],
+      "strategyTags": [
+        "notice purpose",
+        "deadline",
+        "paraphrase"
+      ],
+      "vocabularyTags": [
+        "expense portal",
+        "reimbursement",
+        "payroll",
+        "claim"
+      ]
+    },
+    {
+      "id": "br-gap-one-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_one_question_gap_mc",
+      "level": "B2",
+      "topic": "contracts",
+      "title": "Choosing the precise verb",
+      "directions": "Choose the word that best completes the sentence.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "passage",
+        "text": "Before the agreement can take effect, both companies must ____ it in writing."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Complete the sentence.",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "confirm"
+            },
+            {
+              "id": "B",
+              "text": "convince"
+            },
+            {
+              "id": "C",
+              "text": "contribute"
+            },
+            {
+              "id": "D",
+              "text": "consult"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "confirm an agreement in writing 表示以書面確認協議。convince 需要受詞為人；contribute 是貢獻；consult 是諮詢。",
+          "distractorRationales": {
+            "B": "不能 convince 一份 agreement；通常是 convince someone。",
+            "C": "語意為貢獻，不符合。",
+            "D": "consult 通常接人或資料，語意不合。"
+          },
+          "evidence": "confirm it in writing"
+        }
+      ],
+      "strategyTags": [
+        "collocation",
+        "verb meaning",
+        "grammar"
+      ],
+      "vocabularyTags": [
+        "agreement",
+        "take effect",
+        "in writing"
+      ]
+    },
+    {
+      "id": "br-gap-five-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_five_question_gap_mc",
+      "level": "B2+",
+      "topic": "supplier review",
+      "title": "Annual supplier review",
+      "directions": "Choose the correct word or phrase for each gap.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "passage",
+        "text": "We review all major suppliers annually to ensure that they continue to {{1}} our standards. Price is important, but it is considered {{2}} reliability, product quality and environmental performance. This year, suppliers will also be asked to {{3}} evidence of staff training. Where weaknesses are identified, we normally agree an improvement plan rather than ending the relationship {{4}}. However, a contract may be terminated if a supplier repeatedly fails to take the action it has {{5}} to complete."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "meet"
+            },
+            {
+              "id": "B",
+              "text": "arrive"
+            },
+            {
+              "id": "C",
+              "text": "reach out"
+            },
+            {
+              "id": "D",
+              "text": "attend"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "固定搭配 meet standards，表示符合標準。",
+          "distractorRationales": {
+            "B": "arrive 不與 standards 搭配。",
+            "C": "reach out 是主動聯絡。",
+            "D": "attend 是出席。"
+          },
+          "evidence": "meet our standards"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "apart from"
+            },
+            {
+              "id": "B",
+              "text": "alongside"
+            },
+            {
+              "id": "C",
+              "text": "instead"
+            },
+            {
+              "id": "D",
+              "text": "opposite"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "價格會與可靠度、品質及環境表現一起考量，因此用 alongside。",
+          "distractorRationales": {
+            "A": "表示排除，但此處並未排除其他因素。",
+            "C": "instead 需不同句型。",
+            "D": "語法及語意皆不合。"
+          },
+          "evidence": "considered alongside reliability"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "provide"
+            },
+            {
+              "id": "B",
+              "text": "prevent"
+            },
+            {
+              "id": "C",
+              "text": "predict"
+            },
+            {
+              "id": "D",
+              "text": "promote"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "provide evidence 是提供證據的固定搭配。",
+          "distractorRationales": {
+            "B": "prevent evidence 語意不通。",
+            "C": "predict 是預測。",
+            "D": "promote 是推廣。"
+          },
+          "evidence": "provide evidence"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "currently"
+            },
+            {
+              "id": "B",
+              "text": "immediately"
+            },
+            {
+              "id": "C",
+              "text": "steadily"
+            },
+            {
+              "id": "D",
+              "text": "previously"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "通常先訂改善計畫，而不是立即終止關係，因此 immediately 最合理。",
+          "distractorRationales": {
+            "A": "現在地，不符合 rather than 的對比。",
+            "C": "穩定地，語意不合。",
+            "D": "先前地，時間邏輯不合。"
+          },
+          "evidence": "rather than ending the relationship immediately"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "threatened"
+            },
+            {
+              "id": "B",
+              "text": "promised"
+            },
+            {
+              "id": "C",
+              "text": "doubted"
+            },
+            {
+              "id": "D",
+              "text": "imagined"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "supplier promised to complete action，表示已承諾完成改善措施。",
+          "distractorRationales": {
+            "A": "threaten to complete 語意不自然。",
+            "C": "doubt 後不接這種承諾結構。",
+            "D": "想像完成不構成合約責任。"
+          },
+          "evidence": "promised to complete"
+        }
+      ],
+      "strategyTags": [
+        "collocation",
+        "cohesion",
+        "word choice"
+      ],
+      "vocabularyTags": [
+        "supplier",
+        "annual review",
+        "terminate",
+        "environmental performance"
+      ]
+    },
+    {
+      "id": "br-open-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_open_gap",
+      "level": "B2+",
+      "topic": "meeting follow-up",
+      "title": "Follow-up email",
+      "directions": "Complete each gap with one word.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "email",
+        "text": "Thank you {{1}} attending yesterday's planning meeting. As agreed, I have attached the revised schedule, {{2}} includes the additional testing period requested by the engineering team. Please let me know {{3}} any of the dates create a difficulty for your department. Unless I hear {{4}} you by Friday, I will assume that the schedule is acceptable and send it {{5}} the client."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "short_text",
+          "answer": [
+            "for"
+          ],
+          "maxWords": 1,
+          "explanationZh": "固定用法為 thank someone for + V-ing，表示「感謝某人做了某事」。",
+          "evidence": "Thank you for attending"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "short_text",
+          "answer": [
+            "which"
+          ],
+          "maxWords": 1,
+          "explanationZh": "逗號後為非限定關係子句，修飾 schedule，用 which。",
+          "evidence": "schedule, which includes"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "short_text",
+          "answer": [
+            "if",
+            "whether"
+          ],
+          "maxWords": 1,
+          "explanationZh": "詢問日期是否造成困難，if 或 whether 均可。",
+          "evidence": "let me know if/whether"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "short_text",
+          "answer": [
+            "from"
+          ],
+          "maxWords": 1,
+          "explanationZh": "hear from someone 表示收到某人的消息。",
+          "evidence": "hear from you"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "short_text",
+          "answer": [
+            "to"
+          ],
+          "maxWords": 1,
+          "explanationZh": "固定用法為 send something to someone，表示「把某物寄給某人」。",
+          "evidence": "send it to the client"
+        }
+      ],
+      "strategyTags": [
+        "open cloze",
+        "function words",
+        "relative clause"
+      ],
+      "vocabularyTags": [
+        "revised schedule",
+        "testing period",
+        "acceptable"
+      ]
+    },
+    {
+      "id": "br-five-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_five_question_mc",
+      "level": "C1",
+      "topic": "organisational change",
+      "title": "Why a process redesign succeeded",
+      "directions": "Read the article and answer the five questions.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "When Northbridge Insurance redesigned its claims process, senior managers initially assumed that new software would deliver most of the improvement. A six-week observation study suggested otherwise. Claims handlers were spending almost a quarter of their time requesting information that customers believed they had already supplied. The problem was not missing technology but inconsistent wording: different teams used different names for the same documents.\n\nInstead of purchasing the proposed system immediately, Northbridge created a cross-functional group of claims staff, customer-service advisers and legal specialists. The group produced a shared vocabulary and rewrote customer instructions. Managers expected resistance because standardisation can be interpreted as limiting professional judgement. Yet staff welcomed the change once they saw that the new wording removed repetitive enquiries without determining how complex cases should be assessed.\n\nThe company then ran a controlled trial in two branches. Processing time fell by 18 per cent, but the more revealing result was a reduction in cases returned to customers for additional information. This mattered because returned cases had been a major source of customer frustration, even when total processing time was reasonable.\n\nNorthbridge eventually introduced a smaller software upgrade to support the revised process. According to the operations director, technology was valuable because it reinforced decisions already tested by staff, not because it replaced the need to understand the work. She argues that organisations often reverse this order: they buy a system and only afterwards ask employees to reshape their work around it."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "What did the observation study reveal?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Customers regularly refused to provide documents."
+            },
+            {
+              "id": "B",
+              "text": "Terminology differences were creating repeated work."
+            },
+            {
+              "id": "C",
+              "text": "Claims staff needed more legal training."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "不同團隊對同一文件使用不同名稱，造成客戶以為已提供、員工卻再次索取的重工。",
+          "distractorRationales": {
+            "A": "問題是理解不一致，不是拒絕。",
+            "C": "法律專家參與小組，但研究未說員工缺乏法律訓練。"
+          },
+          "evidence": "different teams used different names for the same documents"
+        },
+        {
+          "id": "q2",
+          "question": "Why did managers anticipate resistance?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Staff might see standardisation as restricting their expertise."
+            },
+            {
+              "id": "B",
+              "text": "The proposed language was legally difficult to understand."
+            },
+            {
+              "id": "C",
+              "text": "Employees had already chosen a different software system."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "管理者擔心標準化會被理解成限制專業判斷。",
+          "distractorRationales": {
+            "B": "法務人員協助，但沒有說文字難懂。",
+            "C": "員工未選擇另一系統。"
+          },
+          "evidence": "interpreted as limiting professional judgement"
+        },
+        {
+          "id": "q3",
+          "question": "Why did staff accept the new wording?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "It reduced routine repetition while preserving judgement."
+            },
+            {
+              "id": "B",
+              "text": "It allowed them to process every case in the same way."
+            },
+            {
+              "id": "C",
+              "text": "It transferred customer contact to another department."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "新措辭消除重複詢問，卻沒有規定複雜案件如何判斷，因此兼顧效率與專業自主。",
+          "distractorRationales": {
+            "B": "文中明說不會決定複雜案件的評估方式。",
+            "C": "沒有移轉聯絡工作。"
+          },
+          "evidence": "removed repetitive enquiries without determining how complex cases should be assessed"
+        },
+        {
+          "id": "q4",
+          "question": "Which trial result was considered especially significant?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Fewer cases required customers to provide more information."
+            },
+            {
+              "id": "B",
+              "text": "Every claim was completed 18 per cent faster."
+            },
+            {
+              "id": "C",
+              "text": "Customers preferred the two trial branches."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "更具啟示性的結果是退回補件案件減少，因其正是客戶挫折的主要來源。",
+          "distractorRationales": {
+            "B": "18% 是整體平均處理時間下降，非每案。",
+            "C": "沒有比較分行偏好。"
+          },
+          "evidence": "reduction in cases returned to customers for additional information"
+        },
+        {
+          "id": "q5",
+          "question": "What principle does the operations director support?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Replace existing systems before reviewing working practices."
+            },
+            {
+              "id": "B",
+              "text": "Use technology to support a process that has already been understood."
+            },
+            {
+              "id": "C",
+              "text": "Allow software suppliers to define the most efficient process."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "她主張先理解並驗證工作流程，再用科技支持，而不是買系統後要求員工配合。",
+          "distractorRationales": {
+            "A": "正好與她批評的順序相反。",
+            "C": "文中強調由員工測試決策。"
+          },
+          "evidence": "technology ... reinforced decisions already tested by staff"
+        }
+      ],
+      "strategyTags": [
+        "extended reading",
+        "author viewpoint",
+        "evidence",
+        "inference"
+      ],
+      "vocabularyTags": [
+        "claims process",
+        "cross-functional",
+        "standardisation",
+        "controlled trial"
+      ]
+    },
+    {
+      "id": "br-two-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_two_question_mc",
+      "level": "B2",
+      "topic": "business travel",
+      "title": "Hotel booking update",
+      "directions": "Read the email and answer both questions.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "email",
+        "text": "Subject: Valencia conference accommodation\n\nThe Riverside Hotel cannot hold our provisional rooms beyond Tuesday. It is closest to the conference centre, but breakfast is not included and its meeting room is unavailable on Friday. The Plaza is a twelve-minute tram ride away and costs €18 more per night; however, breakfast and a small meeting room are included. Please tell me by noon tomorrow if you object to booking the Plaza. Otherwise, I will confirm ten rooms there and release our Riverside reservation."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "What advantage does the Plaza offer?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "It is nearer the conference centre."
+            },
+            {
+              "id": "B",
+              "text": "Its price per night is lower."
+            },
+            {
+              "id": "C",
+              "text": "It includes facilities the group needs."
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "Plaza 雖較遠且每晚多 €18，但包含早餐與小會議室，正是團隊需要的設施。",
+          "distractorRationales": {
+            "A": "較近的是 Riverside。",
+            "B": "Plaza 每晚較貴。"
+          },
+          "evidence": "breakfast and a small meeting room are included"
+        },
+        {
+          "id": "q2",
+          "question": "What should recipients do if they accept the proposed change?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Reply before noon tomorrow"
+            },
+            {
+              "id": "B",
+              "text": "Take no action"
+            },
+            {
+              "id": "C",
+              "text": "Release the Riverside rooms themselves"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "寄件者只要求反對者在期限前告知；若接受，無須回覆，寄件者會完成預訂與取消。",
+          "distractorRationales": {
+            "A": "只有反對時才須回覆。",
+            "C": "取消由寄件者處理。"
+          },
+          "evidence": "if you object ... Otherwise, I will confirm"
+        }
+      ],
+      "strategyTags": [
+        "email action",
+        "conditional instruction",
+        "comparison"
+      ],
+      "vocabularyTags": [
+        "provisional",
+        "hold rooms",
+        "release a reservation",
+        "tram"
+      ]
+    },
+    {
+      "id": "br-sentence-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_missing_sentence",
+      "level": "B2+",
+      "topic": "employee mentoring",
+      "title": "Making mentoring useful",
+      "directions": "Choose the sentence that best fits each gap. There are extra sentences.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "A mentoring programme can connect less-experienced employees with colleagues who understand the organisation. {{1}} Without that clarity, meetings can become pleasant conversations that produce little change.\n\nGood matching also matters. Similar job titles may seem an obvious basis for pairing people. {{2}} Someone hoping to become a team leader may gain more from a mentor in another department who has recently made that transition.\n\nProgrammes should provide structure without scripting every conversation. {{3}} A short guide with suggested topics can help, while leaving each pair free to focus on current needs.\n\nConfidentiality must be discussed at the beginning. Mentees are unlikely to describe genuine difficulties if they suspect every comment will reach their manager. {{4}} Clear exceptions are still needed for serious concerns involving safety or misconduct.\n\nFinally, organisations need to evaluate more than participation numbers. {{5}} Evidence of changed behaviour, increased confidence or successful career steps gives a more meaningful picture.",
+        "removed": [
+          {
+            "id": "A",
+            "text": "However, shared development goals are often more important than organisational location."
+          },
+          {
+            "id": "B",
+            "text": "Both participants should first agree what the mentee wants to achieve."
+          },
+          {
+            "id": "C",
+            "text": "Mandatory weekly forms can make the relationship feel like another reporting task."
+          },
+          {
+            "id": "D",
+            "text": "For this reason, the normal expectation should be that discussions remain private."
+          },
+          {
+            "id": "E",
+            "text": "A high number of meetings does not by itself show that mentoring is effective."
+          },
+          {
+            "id": "F",
+            "text": "Senior managers should therefore approve every discussion topic."
+          },
+          {
+            "id": "G",
+            "text": "Most mentors prefer to work with several mentees at once."
+          },
+          {
+            "id": "H",
+            "text": "The programme can then replace formal professional training."
+          }
+        ]
+      },
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "However, shared development goals are often more important than organisational location."
+        },
+        {
+          "id": "B",
+          "text": "Both participants should first agree what the mentee wants to achieve."
+        },
+        {
+          "id": "C",
+          "text": "Mandatory weekly forms can make the relationship feel like another reporting task."
+        },
+        {
+          "id": "D",
+          "text": "For this reason, the normal expectation should be that discussions remain private."
+        },
+        {
+          "id": "E",
+          "text": "A high number of meetings does not by itself show that mentoring is effective."
+        },
+        {
+          "id": "F",
+          "text": "Senior managers should therefore approve every discussion topic."
+        },
+        {
+          "id": "G",
+          "text": "Most mentors prefer to work with several mentees at once."
+        },
+        {
+          "id": "H",
+          "text": "The programme can then replace formal professional training."
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "後句的 that clarity 指前句雙方先確認 mentee 想達成的目標。",
+          "evidence": "Without that clarity"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "前句說相似職稱看似合理，However 轉折到共同發展目標更重要，並以跨部門導師舉例。",
+          "evidence": "Similar job titles ... However"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "段落主旨是結構要適量；強制週報過度制式，後句則提出較輕量的主題指南。",
+          "evidence": "provide structure without scripting every conversation"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "若擔心內容回報主管，mentee 不會坦白；因此一般原則應是保密，後句再補充例外。",
+          "evidence": "Clear exceptions are still needed"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "matching",
+          "answer": "E",
+          "explanationZh": "不能只看參與或會議次數，應看行為、信心與職涯結果。",
+          "evidence": "evaluate more than participation numbers"
+        }
+      ],
+      "strategyTags": [
+        "cohesion",
+        "reference words",
+        "contrast",
+        "paragraph logic"
+      ],
+      "vocabularyTags": [
+        "mentoring",
+        "mentee",
+        "confidentiality",
+        "misconduct"
+      ]
+    },
+    {
+      "id": "br-paragraph-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_missing_paragraph",
+      "level": "C1",
+      "topic": "business innovation",
+      "title": "Learning from small experiments",
+      "directions": "Choose the paragraph that best fits each gap. There is one extra paragraph.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "Companies often say they want employees to experiment, yet their approval systems are designed for large projects whose outcomes can be predicted in advance. A useful experiment is different: it is deliberately small, answers a specific uncertainty and may produce a result that challenges the original idea. {{1}}\n\nOne retail company wanted to know whether customers would pay for same-day delivery. Instead of building a nationwide service, it offered the option in two districts for three weeks, using an existing courier. {{2}}\n\nThe test showed strong initial interest but very few completed purchases once the fee appeared. The team resisted the temptation to call the experiment a failure. {{3}}\n\nSmall experiments still require discipline. Teams should state what they expect, decide in advance which evidence matters and set a stopping point. {{4}}\n\nLeaders also influence whether uncomfortable results are reported honestly. If praise is reserved for experiments that confirm an idea, employees quickly learn to hide negative evidence. {{5}}",
+        "removed": [
+          {
+            "id": "A",
+            "text": "The objective was not to create a perfect customer experience. It was to discover whether demand justified further investment."
+          },
+          {
+            "id": "B",
+            "text": "Instead, they concluded that speed alone was not valuable enough at the proposed price and tested a lower-cost next-day option."
+          },
+          {
+            "id": "C",
+            "text": "Without these boundaries, a supposedly small test can continue indefinitely or be judged according to whichever result looks most favourable."
+          },
+          {
+            "id": "D",
+            "text": "That is precisely why it should require less funding and lighter approval than a full implementation."
+          },
+          {
+            "id": "E",
+            "text": "Managers should reward the quality of the learning and the decision that follows, not whether the first assumption survives."
+          },
+          {
+            "id": "F",
+            "text": "Several competitors had already invested heavily in automated warehouses and electric delivery vehicles."
+          }
+        ]
+      },
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "The objective was not to create a perfect customer experience. It was to discover whether demand justified further investment."
+        },
+        {
+          "id": "B",
+          "text": "Instead, they concluded that speed alone was not valuable enough at the proposed price and tested a lower-cost next-day option."
+        },
+        {
+          "id": "C",
+          "text": "Without these boundaries, a supposedly small test can continue indefinitely or be judged according to whichever result looks most favourable."
+        },
+        {
+          "id": "D",
+          "text": "That is precisely why it should require less funding and lighter approval than a full implementation."
+        },
+        {
+          "id": "E",
+          "text": "Managers should reward the quality of the learning and the decision that follows, not whether the first assumption survives."
+        },
+        {
+          "id": "F",
+          "text": "Several competitors had already invested heavily in automated warehouses and electric delivery vehicles."
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "That 指前文小型、聚焦不確定性的實驗；因此應比全面導入需要更少資金與更輕量審批。",
+          "evidence": "deliberately small"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "案例只用兩區、三週、既有快遞，目的在驗證需求，而非建立完美服務。",
+          "evidence": "discover whether demand justified further investment"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "沒有購買不代表沒有學習；團隊得出價格與速度價值的結論並設計下一個測試。",
+          "evidence": "resisted ... call the experiment a failure"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "these boundaries 回指預期、證據與停止點；沒有邊界會使測試無限延長或挑選有利結果。",
+          "evidence": "state ... decide ... set a stopping point"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "matching",
+          "answer": "E",
+          "explanationZh": "若只獎勵證實原想法的結果，員工會隱藏負面證據；領導者應獎勵學習品質與後續決策。",
+          "evidence": "whether uncomfortable results are reported honestly"
+        }
+      ],
+      "strategyTags": [
+        "paragraph insertion",
+        "reference chains",
+        "argument development"
+      ],
+      "vocabularyTags": [
+        "experiment",
+        "uncertainty",
+        "implementation",
+        "assumption"
+      ]
+    },
+    {
+      "id": "br-multi-001",
+      "domain": "business",
+      "skill": "reading",
+      "taskType": "reading_multiple_text_matching",
+      "level": "B2+",
+      "topic": "professional development",
+      "title": "Four professional workshops",
+      "directions": "Read the four workshop descriptions. Match each person with the most suitable workshop.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "multiple_texts",
+        "texts": [
+          {
+            "id": "A",
+            "heading": "Presenting Data Clearly",
+            "text": "Turn complex findings into concise visual stories for non-specialist decision-makers. Participants bring one existing chart to redesign. No design experience is required."
+          },
+          {
+            "id": "B",
+            "heading": "Managing Difficult Conversations",
+            "text": "Practise giving corrective feedback, responding to defensiveness and agreeing next steps. Includes recorded role-play and individual coaching."
+          },
+          {
+            "id": "C",
+            "heading": "Finance for Project Leads",
+            "text": "Understand budgets, cash flow and business cases. Designed for managers who approve spending but have no formal accounting background."
+          },
+          {
+            "id": "D",
+            "heading": "Influencing Without Authority",
+            "text": "Build support across departments when you cannot give direct instructions. Explore stakeholder interests, informal networks and persuasive proposals."
+          }
+        ]
+      },
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "Presenting Data Clearly"
+        },
+        {
+          "id": "B",
+          "text": "Managing Difficult Conversations"
+        },
+        {
+          "id": "C",
+          "text": "Finance for Project Leads"
+        },
+        {
+          "id": "D",
+          "text": "Influencing Without Authority"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Mei must persuade another department to prioritise her project, although its staff do not report to her.",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "她沒有正式指揮權，卻需跨部門取得支持，正符合 influencing without authority。",
+          "evidence": "when you cannot give direct instructions"
+        },
+        {
+          "id": "q2",
+          "question": "Owen needs to explain technical survey results to senior managers who are unfamiliar with the subject.",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "課程 A 教如何把複雜結果轉成非專業決策者能理解的簡潔視覺故事。",
+          "evidence": "non-specialist decision-makers"
+        },
+        {
+          "id": "q3",
+          "question": "Sara has recently become responsible for assessing whether proposed expenditure is justified.",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "她要審核支出合理性且缺乏會計背景，課程 C 涵蓋預算、現金流與 business case。",
+          "evidence": "managers who approve spending"
+        },
+        {
+          "id": "q4",
+          "question": "Tariq wants supervised practice addressing repeated underperformance in his team.",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "課程 B 包含糾正性回饋、應對防衛反應、角色扮演與個別教練。",
+          "evidence": "corrective feedback ... recorded role-play and individual coaching"
+        },
+        {
+          "id": "q5",
+          "question": "Lina has inherited a confusing dashboard and wants to improve one of its graphs during the course.",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "課程 A 要求帶一張既有圖表並重新設計，直接符合需求。",
+          "evidence": "bring one existing chart to redesign"
+        }
+      ],
+      "strategyTags": [
+        "multiple-text matching",
+        "requirements",
+        "synonym matching"
+      ],
+      "vocabularyTags": [
+        "stakeholder",
+        "cash flow",
+        "corrective feedback",
+        "dashboard"
+      ]
+    },
+    {
+      "id": "gl-short-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2",
+      "topic": "travel",
+      "title": "A change of route",
+      "directions": "Listen to the announcement and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-short-001.mp3",
+        "durationEstimateSeconds": 26,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You hear an announcement on a coach."
+          },
+          {
+            "speaker": "Driver",
+            "voiceCue": "British man, 50s; clear public announcement",
+            "text": "Because of flooding near the museum, we won't be able to use our usual city-centre stop. I'll drop passengers beside Central Library instead. Anyone continuing to the airport should remain on the coach; our arrival there is still expected at ten twenty."
+          }
+        ],
+        "src": "audio/gl-short-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What has changed?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The airport arrival time"
+            },
+            {
+              "id": "B",
+              "text": "The city-centre drop-off point"
+            },
+            {
+              "id": "C",
+              "text": "The final destination of the coach"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "因淹水，市中心下車點由博物館附近改到中央圖書館旁；機場時間與最終目的地未變。",
+          "distractorRationales": {
+            "A": "仍預計 10:20 到機場。",
+            "C": "仍會繼續前往機場。"
+          },
+          "evidence": "drop passengers beside Central Library instead"
+        }
+      ],
+      "strategyTags": [
+        "announcement",
+        "changed detail",
+        "transport"
+      ],
+      "vocabularyTags": [
+        "flooding",
+        "drop-off point",
+        "remain on the coach"
+      ]
+    },
+    {
+      "id": "gl-short-002",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_one_question_mc",
+      "level": "B2+",
+      "topic": "education",
+      "title": "Choosing a course",
+      "directions": "Listen to the speaker and choose the correct answer.",
+      "prepSeconds": 10,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-short-002.mp3",
+        "durationEstimateSeconds": 31,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "You hear a student talking about an evening course."
+          },
+          {
+            "speaker": "Student",
+            "voiceCue": "British woman, 20s; reflective",
+            "text": "I almost enrolled in photography because the tutor's work looked amazing. Then I realised what I actually wanted was a reason to spend more time outdoors, not another evening editing pictures at a computer. The local ecology course includes weekend field trips, so that was the deciding factor."
+          }
+        ],
+        "src": "audio/gl-short-002.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "Why did the student choose the ecology course?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "She admired the course tutor."
+            },
+            {
+              "id": "B",
+              "text": "It offered practical outdoor activities."
+            },
+            {
+              "id": "C",
+              "text": "It required less computer work overall."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "決定性因素是週末 field trips，符合她想多到戶外的目的。沒有比較整體電腦作業量。",
+          "distractorRationales": {
+            "A": "她欣賞的是攝影老師，卻未選攝影。",
+            "C": "只說不想再花一晚修圖，未比較課程總作業量。"
+          },
+          "evidence": "includes weekend field trips ... deciding factor"
+        }
+      ],
+      "strategyTags": [
+        "decision reason",
+        "self-correction",
+        "inference"
+      ],
+      "vocabularyTags": [
+        "enrol",
+        "field trip",
+        "ecology",
+        "deciding factor"
+      ]
+    },
+    {
+      "id": "gl-two-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_two_question_mc",
+      "level": "B2",
+      "topic": "community event",
+      "title": "Planning a neighbourhood festival",
+      "directions": "Listen to the conversation and answer both questions.",
+      "prepSeconds": 15,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-two-001.mp3",
+        "durationEstimateSeconds": 68,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "Two volunteers are planning a neighbourhood festival."
+          },
+          {
+            "speaker": "Nora",
+            "voiceCue": "British woman, 30s; practical",
+            "text": "The school has agreed to lend us tables, but their caretaker can't deliver them until Saturday morning."
+          },
+          {
+            "speaker": "Jamie",
+            "voiceCue": "British man, 20s; upbeat",
+            "text": "That's fine. The food stalls won't set up until ten. I'm more concerned about the weather forecast. The main hall is available, but we'd lose the music area if everything moved indoors."
+          },
+          {
+            "speaker": "Nora",
+            "voiceCue": "British woman, 30s",
+            "text": "The forecast only shows light rain before nine. Let's keep the outdoor plan and ask stallholders to bring covers. We should move the children's art activity into the library, though; wet paper would be a disaster."
+          },
+          {
+            "speaker": "Jamie",
+            "voiceCue": "British man, 20s",
+            "text": "Agreed. I'll email the stallholders, and you can confirm the library with Sam."
+          }
+        ],
+        "src": "audio/gl-two-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What does Jamie initially worry about?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The late arrival of the tables"
+            },
+            {
+              "id": "B",
+              "text": "The possible effect of rain on the event"
+            },
+            {
+              "id": "C",
+              "text": "The number of food stalls"
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "Jamie 說桌子星期六早上送到沒問題，他更擔心天氣預報及搬入室內會犧牲音樂區。",
+          "distractorRationales": {
+            "A": "他明說 That's fine。",
+            "C": "未擔心攤位數。"
+          },
+          "evidence": "I'm more concerned about the weather forecast."
+        },
+        {
+          "id": "q2",
+          "question": "What do they decide to move indoors?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The music performance"
+            },
+            {
+              "id": "B",
+              "text": "The food stalls"
+            },
+            {
+              "id": "C",
+              "text": "The children's art activity"
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "整體仍採戶外計畫，只有怕紙張受潮的兒童美術活動移到圖書館。",
+          "distractorRationales": {
+            "A": "保留戶外音樂區。",
+            "B": "只請攤商帶遮雨設備。"
+          },
+          "evidence": "move the children's art activity into the library"
+        }
+      ],
+      "strategyTags": [
+        "initial concern",
+        "final decision",
+        "future arrangements"
+      ],
+      "vocabularyTags": [
+        "caretaker",
+        "stallholder",
+        "forecast",
+        "indoors"
+      ]
+    },
+    {
+      "id": "gl-five-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_five_question_mc",
+      "level": "B2+",
+      "topic": "public library services",
+      "title": "A library's tool-lending project",
+      "directions": "Listen to the interview and answer the five questions in order.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-five-001.mp3",
+        "durationEstimateSeconds": 155,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "A radio presenter is interviewing a librarian about a new service."
+          },
+          {
+            "speaker": "Presenter",
+            "voiceCue": "British man, 30s; warm radio style",
+            "text": "Maya, why has the library started lending tools?"
+          },
+          {
+            "speaker": "Maya",
+            "voiceCue": "British woman, 40s; enthusiastic but measured",
+            "text": "Residents told us they wanted to repair household items but didn't own equipment they might use only once. We first imagined a simple shelf of donated tools. Safety advice changed our thinking: every item needed inspection, clear instructions and a reliable record of previous use. So we began with forty new or professionally checked items rather than accepting everything people offered. The most popular objects aren't the electric drills, as we predicted, but basic carpet cleaners and long ladders. That tells us the service is helping with occasional practical jobs, not replacing equipment used by professionals. Anyone with a library card can borrow most tools after watching a ten-minute safety video. Cutting equipment requires an additional in-person demonstration. Items are normally lent for four days. We considered a deposit, but that could exclude people the project is intended to help, so late returns are handled by temporarily suspending further borrowing. Next spring we hope to run repair workshops. These won't be classes where an expert fixes things for you; participants will bring an object and learn alongside volunteers how to diagnose the problem. Our biggest challenge now is storage. Demand justifies expanding the collection, but there is little unused space in the present building."
+          }
+        ],
+        "src": "audio/gl-five-001.mp3"
+      },
+      "stimulus": null,
+      "items": [
+        {
+          "id": "q1",
+          "question": "What need originally inspired the service?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Professional workers needed cheaper equipment."
+            },
+            {
+              "id": "B",
+              "text": "Residents lacked tools for occasional repairs."
+            },
+            {
+              "id": "C",
+              "text": "The library had too many donated tools."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "居民想修理家中物品，但不想購買只用一次的工具。",
+          "distractorRationales": {
+            "A": "服務不是取代專業設備。",
+            "C": "一開始只是構想接受捐贈，並非已有過多工具。"
+          },
+          "evidence": "equipment they might use only once"
+        },
+        {
+          "id": "q2",
+          "question": "Why did the library not simply accept all donated tools?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Safe lending required controlled inspection and records."
+            },
+            {
+              "id": "B",
+              "text": "Residents preferred brand-new equipment."
+            },
+            {
+              "id": "C",
+              "text": "The tools were mostly too specialised."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "安全建議指出每件工具都要檢查、附說明並記錄使用，因此不能無條件接受所有捐贈。",
+          "distractorRationales": {
+            "B": "未說居民要求全新。",
+            "C": "重點是安全與管理，不是專業化程度。"
+          },
+          "evidence": "needed inspection, clear instructions and a reliable record"
+        },
+        {
+          "id": "q3",
+          "question": "What surprised the organisers?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Which tools were borrowed most often"
+            },
+            {
+              "id": "B",
+              "text": "How quickly tools were returned"
+            },
+            {
+              "id": "C",
+              "text": "How many professionals used the service"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "他們原本預測電鑽最熱門，實際卻是地毯清潔機和長梯。",
+          "distractorRationales": {
+            "B": "未提回收速度讓人驚訝。",
+            "C": "服務不是專業人士主要設備來源。"
+          },
+          "evidence": "aren't the electric drills, as we predicted"
+        },
+        {
+          "id": "q4",
+          "question": "What happens when an item is returned late?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The borrower loses a cash deposit."
+            },
+            {
+              "id": "B",
+              "text": "The loan automatically extends."
+            },
+            {
+              "id": "C",
+              "text": "The borrower temporarily cannot take another tool."
+            }
+          ],
+          "answer": "C",
+          "explanationZh": "為避免押金排除經濟弱勢者，逾期者會暫停後續借用資格。",
+          "distractorRationales": {
+            "A": "圖書館決定不收押金。",
+            "B": "沒有自動延長。"
+          },
+          "evidence": "temporarily suspending further borrowing"
+        },
+        {
+          "id": "q5",
+          "question": "What will distinguish the planned repair workshops?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Volunteers will repair everything before the session."
+            },
+            {
+              "id": "B",
+              "text": "Participants will learn by investigating their own objects."
+            },
+            {
+              "id": "C",
+              "text": "The workshops will focus on professional qualifications."
+            }
+          ],
+          "answer": "B",
+          "explanationZh": "參與者帶自己的物品，和志工一起判斷問題；不是由專家代修。",
+          "distractorRationales": {
+            "A": "明確說不是專家替你修。",
+            "C": "著重生活修繕，不是專業證照。"
+          },
+          "evidence": "bring an object and learn alongside volunteers how to diagnose the problem"
+        }
+      ],
+      "strategyTags": [
+        "interview",
+        "extended listening",
+        "reason",
+        "contrast"
+      ],
+      "vocabularyTags": [
+        "tool lending",
+        "inspection",
+        "deposit",
+        "diagnose"
+      ]
+    },
+    {
+      "id": "gl-note-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_note_completion",
+      "level": "B2",
+      "topic": "museum visit",
+      "title": "Information for a museum visit",
+      "directions": "Listen and complete each note with no more than three words from the recording.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-note-001.mp3",
+        "durationEstimateSeconds": 100,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "A guide gives information before a group visits a museum."
+          },
+          {
+            "speaker": "Guide",
+            "voiceCue": "British woman, 30s; friendly tour-guide delivery",
+            "text": "Before tomorrow's visit, here are a few practical details. The coach leaves the college at eight fifteen from the east car park, beside the sports centre, not from the main gate. Large bags must be left in the museum's free lockers, so bring a one-pound coin to operate one; you get the coin back afterwards. Our guided tour begins in the glass gallery on the second floor. It lasts about fifty minutes, after which you can explore independently. Photography is allowed in most areas, but please turn off the flash. The special fashion exhibition does not permit photography at all. We will meet for lunch at twelve thirty in the garden café. If the weather is poor, use the café inside the library instead. Finally, the coach home leaves at four forty-five. Anyone staying in the city must tell me before we arrive at the museum."
+          }
+        ],
+        "src": "audio/gl-note-001.mp3"
+      },
+      "stimulus": {
+        "format": "notes",
+        "text": "MUSEUM VISIT\nCoach departure point: {{1}}\nCoin needed for: {{2}}\nTour starts in: {{3}}\nDo not use: {{4}}\nWet-weather lunch venue: {{5}}"
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Coach departure point: ____",
+          "responseType": "short_text",
+          "answer": [
+            "east car park"
+          ],
+          "maxWords": 3,
+          "explanationZh": "巴士從 sports centre 旁的 east car park 出發，而非 main gate；題目已提供欄位標籤，因此答案不需冠詞。",
+          "evidence": "from the east car park"
+        },
+        {
+          "id": "q2",
+          "question": "Coin needed for: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the lockers",
+            "lockers",
+            "free lockers"
+          ],
+          "maxWords": 3,
+          "explanationZh": "一英鎊硬幣用來操作置物櫃，之後會退回。",
+          "evidence": "bring a one-pound coin to operate one"
+        },
+        {
+          "id": "q3",
+          "question": "Tour starts in: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the glass gallery",
+            "glass gallery"
+          ],
+          "maxWords": 3,
+          "explanationZh": "導覽從二樓 glass gallery 開始。",
+          "evidence": "begins in the glass gallery"
+        },
+        {
+          "id": "q4",
+          "question": "Do not use: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the flash",
+            "flash"
+          ],
+          "maxWords": 3,
+          "explanationZh": "大多數區域可拍照，但要關掉閃光燈。",
+          "evidence": "turn off the flash"
+        },
+        {
+          "id": "q5",
+          "question": "Wet-weather lunch venue: ____",
+          "responseType": "short_text",
+          "answer": [
+            "the library café",
+            "library café",
+            "the library cafe",
+            "library cafe"
+          ],
+          "maxWords": 3,
+          "explanationZh": "天氣不好時改到 library 裡的 café。",
+          "evidence": "use the café inside the library"
+        }
+      ],
+      "strategyTags": [
+        "note completion",
+        "corrected location",
+        "exact wording"
+      ],
+      "vocabularyTags": [
+        "locker",
+        "gallery",
+        "flash photography",
+        "venue"
+      ]
+    },
+    {
+      "id": "gl-match-one-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_one_task_matching",
+      "level": "B2+",
+      "topic": "learning habits",
+      "title": "Five students describe a useful study change",
+      "directions": "Listen to five students. Match each speaker with the study change that helped them most.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-match-one-001.mp3",
+        "durationEstimateSeconds": 132,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "Five students describe a change that improved their studying."
+          },
+          {
+            "speaker": "Speaker 1",
+            "voiceCue": "British man, 20s; relaxed",
+            "text": "I used to highlight almost every sentence, which made revision slow and confusing. Now, after each section, I close the book and write three questions that the section should help me answer. Testing myself later shows immediately what I haven't understood."
+          },
+          {
+            "speaker": "Speaker 2",
+            "voiceCue": "Indian woman, 20s; clear international English",
+            "text": "Long weekend sessions looked impressive on my calendar but rarely happened. Twenty-five minutes before breakfast is much easier to protect. The amount is small, yet doing it every day has made a bigger difference."
+          },
+          {
+            "speaker": "Speaker 3",
+            "voiceCue": "British woman, 20s; thoughtful",
+            "text": "I was reluctant to show anyone unfinished work. Joining a group where we exchange rough drafts taught me that early comments can prevent hours spent developing the wrong argument."
+          },
+          {
+            "speaker": "Speaker 4",
+            "voiceCue": "Australian man, 20s; animated",
+            "text": "I kept revising topics I already enjoyed. I now use my quiz results to choose the next subject, starting with the lowest score even when it isn't appealing. My improvement has become much more balanced."
+          },
+          {
+            "speaker": "Speaker 5",
+            "voiceCue": "British woman, 30s; calm",
+            "text": "Online lectures tempted me to answer messages at the same time. Downloading the audio and walking in a quiet park means I actually listen. I make brief voice notes afterwards rather than trying to type while moving."
+          }
+        ],
+        "src": "audio/gl-match-one-001.mp3"
+      },
+      "stimulus": null,
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "Studying for a short period every day"
+        },
+        {
+          "id": "B",
+          "text": "Selecting topics according to test performance"
+        },
+        {
+          "id": "C",
+          "text": "Turning reading into self-test questions"
+        },
+        {
+          "id": "D",
+          "text": "Getting feedback before work is complete"
+        },
+        {
+          "id": "E",
+          "text": "Listening while away from digital distractions"
+        },
+        {
+          "id": "F",
+          "text": "Making more detailed written notes"
+        },
+        {
+          "id": "G",
+          "text": "Scheduling longer weekend sessions"
+        },
+        {
+          "id": "H",
+          "text": "Revising favourite subjects first"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Speaker 1",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "他把每節內容轉成三個問題，之後自我測驗。",
+          "evidence": "write three questions"
+        },
+        {
+          "id": "q2",
+          "question": "Speaker 2",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "每天早餐前 25 分鐘的穩定習慣，比週末長時間更有效。",
+          "evidence": "Twenty-five minutes before breakfast"
+        },
+        {
+          "id": "q3",
+          "question": "Speaker 3",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "她開始分享未完成草稿，以早期回饋避免走錯方向。",
+          "evidence": "exchange rough drafts"
+        },
+        {
+          "id": "q4",
+          "question": "Speaker 4",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "他依測驗最低分選下一個主題，而非只讀喜歡的。",
+          "evidence": "use my quiz results to choose the next subject"
+        },
+        {
+          "id": "q5",
+          "question": "Speaker 5",
+          "responseType": "matching",
+          "answer": "E",
+          "explanationZh": "她下載音訊到安靜公園聽，遠離訊息干擾。",
+          "evidence": "walking in a quiet park means I actually listen"
+        }
+      ],
+      "strategyTags": [
+        "gist matching",
+        "paraphrase",
+        "habit identification"
+      ],
+      "vocabularyTags": [
+        "rough draft",
+        "revision",
+        "balanced improvement",
+        "distraction"
+      ]
+    },
+    {
+      "id": "gl-match-two-001",
+      "domain": "general",
+      "skill": "listening",
+      "taskType": "listening_two_task_matching",
+      "level": "C1",
+      "topic": "volunteering",
+      "title": "Three people reflect on volunteering",
+      "directions": "Listen to three people. For each speaker, identify the activity and the unexpected benefit.",
+      "prepSeconds": 45,
+      "maxPlays": 2,
+      "audio": {
+        "asset": "audio/gl-match-two-001.mp3",
+        "durationEstimateSeconds": 139,
+        "segments": [
+          {
+            "speaker": "Narrator",
+            "voiceCue": "Neutral British woman",
+            "text": "Three people discuss volunteering."
+          },
+          {
+            "speaker": "Speaker 1",
+            "voiceCue": "British woman, 60s; warm",
+            "text": "I joined a team recording spoken versions of local news for people with limited sight. I expected the main challenge to be reading clearly. In fact, choosing what to include taught me to recognise biased language and separate fact from opinion much more carefully."
+          },
+          {
+            "speaker": "Speaker 2",
+            "voiceCue": "British man, 20s; lively",
+            "text": "I help maintain paths in a nature reserve. I signed up for outdoor exercise, not conversation. Yet working beside people of very different ages has made me much more comfortable speaking to strangers, which has even helped at university."
+          },
+          {
+            "speaker": "Speaker 3",
+            "voiceCue": "Canadian woman, 30s; calm",
+            "text": "At the community kitchen I organise donated ingredients before the cooks arrive. The quantities change every week, so fixed recipes rarely work. Finding sensible substitutions has made me far more inventive with meals at home, where I now waste much less food."
+          }
+        ],
+        "src": "audio/gl-match-two-001.mp3"
+      },
+      "stimulus": null,
+      "sharedOptions": [
+        {
+          "id": "A1",
+          "text": "Preparing accessible news recordings"
+        },
+        {
+          "id": "A2",
+          "text": "Maintaining outdoor walking routes"
+        },
+        {
+          "id": "A3",
+          "text": "Sorting food for community meals"
+        },
+        {
+          "id": "A4",
+          "text": "Teaching digital skills"
+        },
+        {
+          "id": "A5",
+          "text": "Visiting isolated residents"
+        },
+        {
+          "id": "B1",
+          "text": "Greater awareness of how information is presented"
+        },
+        {
+          "id": "B2",
+          "text": "More confidence communicating with unfamiliar people"
+        },
+        {
+          "id": "B3",
+          "text": "More creative use of available resources"
+        },
+        {
+          "id": "B4",
+          "text": "Improved physical strength"
+        },
+        {
+          "id": "B5",
+          "text": "A clearer choice of career"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1a",
+          "question": "Speaker 1 — activity",
+          "responseType": "matching",
+          "answer": "A1",
+          "explanationZh": "她為視力受限者錄製地方新聞。",
+          "evidence": "recording spoken versions of local news"
+        },
+        {
+          "id": "q1b",
+          "question": "Speaker 1 — unexpected benefit",
+          "responseType": "matching",
+          "answer": "B1",
+          "explanationZh": "選材讓她更會辨認偏見語言並區分事實與意見。",
+          "evidence": "recognise biased language and separate fact from opinion"
+        },
+        {
+          "id": "q2a",
+          "question": "Speaker 2 — activity",
+          "responseType": "matching",
+          "answer": "A2",
+          "explanationZh": "他在自然保護區維護步道。",
+          "evidence": "maintain paths in a nature reserve"
+        },
+        {
+          "id": "q2b",
+          "question": "Speaker 2 — unexpected benefit",
+          "responseType": "matching",
+          "answer": "B2",
+          "explanationZh": "跨年齡合作讓他更自在地與陌生人交談。",
+          "evidence": "comfortable speaking to strangers"
+        },
+        {
+          "id": "q3a",
+          "question": "Speaker 3 — activity",
+          "responseType": "matching",
+          "answer": "A3",
+          "explanationZh": "她在社區廚房整理捐贈食材。",
+          "evidence": "organise donated ingredients"
+        },
+        {
+          "id": "q3b",
+          "question": "Speaker 3 — unexpected benefit",
+          "responseType": "matching",
+          "answer": "B3",
+          "explanationZh": "每週食材不同迫使她找替代方案，也使她在家更有創意並減少浪費。",
+          "evidence": "Finding sensible substitutions has made me far more inventive"
+        }
+      ],
+      "strategyTags": [
+        "dual matching",
+        "unexpected benefit",
+        "speaker summary"
+      ],
+      "vocabularyTags": [
+        "limited sight",
+        "biased language",
+        "nature reserve",
+        "substitution"
+      ]
+    },
+    {
+      "id": "gr-short-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_one_question_mc",
+      "level": "B2",
+      "topic": "public services",
+      "title": "Swimming-pool notice",
+      "directions": "Read the notice and choose the sentence that best matches its meaning.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "notice",
+        "text": "The training pool will close at 17:00 today for maintenance. Adult lane swimming will take place in the main pool from 17:30, but only four lanes will be available. The beginners' class has been moved to Sunday; existing bookings remain valid."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Which statement is correct?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Adult swimmers can use the main pool this evening, with reduced space."
+            },
+            {
+              "id": "B",
+              "text": "People booked for the beginners' class must register again."
+            },
+            {
+              "id": "C",
+              "text": "All swimming activities finish at 17:00 today."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "成人分道游泳 17:30 改到主池，但只有四道，表示仍可使用但空間較少。初學班預約仍有效。",
+          "distractorRationales": {
+            "B": "公告明說 existing bookings remain valid。",
+            "C": "主池 17:30 還有成人游泳。"
+          },
+          "evidence": "main pool ... only four lanes"
+        }
+      ],
+      "strategyTags": [
+        "notice",
+        "schedule change",
+        "paraphrase"
+      ],
+      "vocabularyTags": [
+        "maintenance",
+        "lane swimming",
+        "booking"
+      ]
+    },
+    {
+      "id": "gr-gap-five-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_five_question_gap_mc",
+      "level": "B2",
+      "topic": "healthy routines",
+      "title": "Building a walking habit",
+      "directions": "Choose the correct word or phrase for each gap.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "People often abandon a new walking routine because their first target is too {{1}}. Beginning with ten minutes makes it easier to be {{2}}, and the distance can be increased gradually. It also helps to connect the walk {{3}} an existing habit, such as lunch or the journey home. Bad weather need not {{4}} the plan completely: a covered market or public building can provide an alternative route. Most importantly, notice how you feel afterwards rather than judging success {{5}} by the number of steps."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "ambitious"
+            },
+            {
+              "id": "B",
+              "text": "ordinary"
+            },
+            {
+              "id": "C",
+              "text": "patient"
+            },
+            {
+              "id": "D",
+              "text": "narrow"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "一開始目標過於 ambitious（企圖太大）容易放棄，後句建議先從十分鐘開始。",
+          "distractorRationales": {
+            "B": "普通不構成放棄原因。",
+            "C": "patient 形容人較自然。",
+            "D": "narrow 不適合形容步行目標。"
+          },
+          "evidence": "first target is too ambitious"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "consistent"
+            },
+            {
+              "id": "B",
+              "text": "curious"
+            },
+            {
+              "id": "C",
+              "text": "formal"
+            },
+            {
+              "id": "D",
+              "text": "generous"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "短時間較容易持續規律進行，consistent 符合語意。",
+          "distractorRationales": {
+            "B": "curious 與建立習慣無關。",
+            "C": "formal 語意不合。",
+            "D": "generous 語意不合。"
+          },
+          "evidence": "easier to be consistent"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "with"
+            },
+            {
+              "id": "B",
+              "text": "against"
+            },
+            {
+              "id": "C",
+              "text": "beyond"
+            },
+            {
+              "id": "D",
+              "text": "among"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "connect A with B 是把兩件事連結起來。",
+          "distractorRationales": {
+            "B": "表示對抗。",
+            "C": "表示超越。",
+            "D": "表示在多者之中。"
+          },
+          "evidence": "connect the walk with an existing habit"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "cancel"
+            },
+            {
+              "id": "B",
+              "text": "deliver"
+            },
+            {
+              "id": "C",
+              "text": "recognise"
+            },
+            {
+              "id": "D",
+              "text": "measure"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "天氣不好不必完全取消計畫，後句提供室內替代路線。",
+          "distractorRationales": {
+            "B": "deliver a plan 是執行，與 need not 和替代方案不合。",
+            "C": "辨認計畫語意不通。",
+            "D": "衡量計畫語意不合。"
+          },
+          "evidence": "need not cancel the plan"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "solely"
+            },
+            {
+              "id": "B",
+              "text": "rarely"
+            },
+            {
+              "id": "C",
+              "text": "hardly"
+            },
+            {
+              "id": "D",
+              "text": "fairly"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "不要只 solely 以步數判斷成功，也要注意走後感受。",
+          "distractorRationales": {
+            "B": "rarely by 不符合句意。",
+            "C": "hardly by 語法語意不自然。",
+            "D": "fairly 表公平或相當，不能表唯一依據。"
+          },
+          "evidence": "rather than judging success solely"
+        }
+      ],
+      "strategyTags": [
+        "word choice",
+        "collocation",
+        "cohesion"
+      ],
+      "vocabularyTags": [
+        "routine",
+        "consistent",
+        "gradually",
+        "alternative"
+      ]
+    },
+    {
+      "id": "gr-open-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_open_gap",
+      "level": "B2+",
+      "topic": "travel experience",
+      "title": "A night-train journey",
+      "directions": "Complete each gap with one word.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "I had never travelled {{1}} an overnight train before, so I was unsure what to expect. The compartment was smaller {{2}} it had appeared in the photographs, but it contained everything I needed. I slept surprisingly well, despite waking briefly whenever the train stopped. By the time we arrived, the mountains {{3}} covered in morning light. The journey took longer {{4}} flying, of course, yet it allowed me to avoid a hotel and arrive directly in the city centre. It was an experience I would happily repeat, provided {{5}} I could book a lower bed next time."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "short_text",
+          "answer": [
+            "on"
+          ],
+          "maxWords": 1,
+          "explanationZh": "句中保留冠詞 an 時，應使用 travel on a train；travel by train 通常不接冠詞。",
+          "evidence": "travelled on an overnight train"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "short_text",
+          "answer": [
+            "than"
+          ],
+          "maxWords": 1,
+          "explanationZh": "smaller than 是比較級結構。",
+          "evidence": "smaller than"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "short_text",
+          "answer": [
+            "were"
+          ],
+          "maxWords": 1,
+          "explanationZh": "mountains 為複數，且過去敘事，用 were covered。",
+          "evidence": "mountains were covered"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "short_text",
+          "answer": [
+            "than"
+          ],
+          "maxWords": 1,
+          "explanationZh": "longer than flying 為比較。",
+          "evidence": "longer than flying"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "short_text",
+          "answer": [
+            "that"
+          ],
+          "maxWords": 1,
+          "explanationZh": "provided that 表示『只要／條件是』。",
+          "evidence": "provided that"
+        }
+      ],
+      "strategyTags": [
+        "open cloze",
+        "comparison",
+        "prepositions",
+        "verb agreement"
+      ],
+      "vocabularyTags": [
+        "overnight train",
+        "compartment",
+        "provided that"
+      ]
+    },
+    {
+      "id": "gr-two-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_two_question_mc",
+      "level": "B2+",
+      "topic": "technology and study",
+      "title": "A student's e-reader review",
+      "directions": "Read the review and answer both questions.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "I bought an e-reader mainly because carrying three textbooks to campus was becoming ridiculous. It has certainly made my bag lighter, and searching for a term across several books is quicker than using indexes. The note-taking feature is less successful. Highlighting is easy, but organising comments requires too many steps, so I still use a paper notebook when ideas need connecting. I had also expected to save money. Some academic e-books are cheaper, but several can only be rented for one term, which makes printed second-hand copies better value if you want to keep them. Overall, I would not return the device; I simply use it more selectively than the advertisements suggested."
+      },
+      "items": [
+        {
+          "id": "q1",
+          "question": "Which benefit fully met the student's expectations?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "Carrying study materials more easily"
+            },
+            {
+              "id": "B",
+              "text": "Organising connected notes"
+            },
+            {
+              "id": "C",
+              "text": "Reducing the total cost of books"
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "主要購買理由是不用背三本教科書，裝置確實讓書包變輕；筆記與省錢都有保留。",
+          "distractorRationales": {
+            "B": "整理評論步驟過多。",
+            "C": "租期限制讓二手紙本有時更划算。"
+          },
+          "evidence": "made my bag lighter"
+        },
+        {
+          "id": "q2",
+          "question": "What is the student's overall opinion?",
+          "responseType": "single_choice",
+          "options": [
+            {
+              "id": "A",
+              "text": "The device is useful, but not for every study task."
+            },
+            {
+              "id": "B",
+              "text": "The device should be returned because of poor value."
+            },
+            {
+              "id": "C",
+              "text": "Digital books are generally superior to printed ones."
+            }
+          ],
+          "answer": "A",
+          "explanationZh": "他不會退貨，但比廣告暗示的更有選擇地使用，表示有用卻非全面取代其他工具。",
+          "distractorRationales": {
+            "B": "明說不會退貨。",
+            "C": "文中指出二手紙本有時價值更好。"
+          },
+          "evidence": "use it more selectively"
+        }
+      ],
+      "strategyTags": [
+        "writer opinion",
+        "comparison",
+        "qualified judgement"
+      ],
+      "vocabularyTags": [
+        "e-reader",
+        "highlight",
+        "rent",
+        "second-hand"
+      ]
+    },
+    {
+      "id": "gr-sentence-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_missing_sentence",
+      "level": "C1",
+      "topic": "citizen science",
+      "title": "Why ordinary observations matter",
+      "directions": "Choose the sentence that best fits each gap. There are extra sentences.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "article",
+        "text": "Citizen-science projects invite members of the public to collect or classify information for research. Their value is not simply that volunteers provide free labour. {{1}} A professional research team could never be present in all those places at once.\n\nThe most successful projects make the task specific. Asking people to report whether they enjoyed a walk may produce interesting comments, but the information is hard to compare. {{2}} Consistent observations can then be combined meaningfully.\n\nTraining is still essential, even when the task appears simple. Volunteers may interpret colours, quantities or animal behaviour differently. {{3}} Short practice examples with feedback often improve accuracy substantially.\n\nResearchers also need to explain what happens to the data. People lose motivation if observations disappear into a database without any visible result. {{4}} Maps, regular updates and explanations of unexpected findings show that each contribution forms part of a larger investigation.\n\nFinally, citizen science should not be presented as a replacement for professional expertise. {{5}} The partnership works best when public participation expands the reach of carefully designed research.",
+        "removed": [
+          {
+            "id": "A",
+            "text": "For example, a project might define exactly when, where and how to count a particular bird."
+          },
+          {
+            "id": "B",
+            "text": "They can observe changes across huge areas and over long periods."
+          },
+          {
+            "id": "C",
+            "text": "Scientists must therefore test the instructions and identify common misunderstandings."
+          },
+          {
+            "id": "D",
+            "text": "Sharing progress helps volunteers understand why their effort matters."
+          },
+          {
+            "id": "E",
+            "text": "Experts are needed to frame questions, check quality and interpret patterns."
+          },
+          {
+            "id": "F",
+            "text": "Many volunteers prefer to work alone rather than attend public events."
+          },
+          {
+            "id": "G",
+            "text": "Projects should always offer financial rewards for accurate reports."
+          },
+          {
+            "id": "H",
+            "text": "Modern phones are more expensive than traditional field equipment."
+          }
+        ]
+      },
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "For example, a project might define exactly when, where and how to count a particular bird."
+        },
+        {
+          "id": "B",
+          "text": "They can observe changes across huge areas and over long periods."
+        },
+        {
+          "id": "C",
+          "text": "Scientists must therefore test the instructions and identify common misunderstandings."
+        },
+        {
+          "id": "D",
+          "text": "Sharing progress helps volunteers understand why their effort matters."
+        },
+        {
+          "id": "E",
+          "text": "Experts are needed to frame questions, check quality and interpret patterns."
+        },
+        {
+          "id": "F",
+          "text": "Many volunteers prefer to work alone rather than attend public events."
+        },
+        {
+          "id": "G",
+          "text": "Projects should always offer financial rewards for accurate reports."
+        },
+        {
+          "id": "H",
+          "text": "Modern phones are more expensive than traditional field equipment."
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Gap 1",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "後句的 all those places 回指志工能跨大範圍、長時間觀察。",
+          "evidence": "all those places at once"
+        },
+        {
+          "id": "q2",
+          "question": "Gap 2",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "段落要求任務明確，鳥類計數例子具體界定何時、何地、如何觀察，後句才能談一致資料。",
+          "evidence": "make the task specific"
+        },
+        {
+          "id": "q3",
+          "question": "Gap 3",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "志工可能有不同理解，因此科學家要測試指示並找出常見誤解，後句再說練習回饋可提高準確度。",
+          "evidence": "interpret ... differently"
+        },
+        {
+          "id": "q4",
+          "question": "Gap 4",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "資料去向不明會降低動機，因此分享進度使志工理解努力的意義，後句列出分享方式。",
+          "evidence": "Maps, regular updates"
+        },
+        {
+          "id": "q5",
+          "question": "Gap 5",
+          "responseType": "matching",
+          "answer": "E",
+          "explanationZh": "公民科學不是取代專業；專家仍負責問題設計、品質檢查與解讀，公眾則擴大研究範圍。",
+          "evidence": "not ... a replacement for professional expertise"
+        }
+      ],
+      "strategyTags": [
+        "cohesion",
+        "reference",
+        "argument structure",
+        "example"
+      ],
+      "vocabularyTags": [
+        "citizen science",
+        "classify",
+        "interpret",
+        "public participation"
+      ]
+    },
+    {
+      "id": "gr-multi-001",
+      "domain": "general",
+      "skill": "reading",
+      "taskType": "reading_multiple_text_matching",
+      "level": "B2+",
+      "topic": "weekend activities",
+      "title": "Four weekend courses",
+      "directions": "Read the four course descriptions. Match each person with the most suitable course.",
+      "prepSeconds": 0,
+      "maxPlays": 0,
+      "audio": null,
+      "stimulus": {
+        "format": "multiple_texts",
+        "texts": [
+          {
+            "id": "A",
+            "heading": "Urban Sketching",
+            "text": "Explore the old town on foot and learn quick drawing techniques. Suitable for complete beginners. Materials are supplied, but participants should be comfortable walking for two hours."
+          },
+          {
+            "id": "B",
+            "heading": "Bread from Around the World",
+            "text": "Prepare three traditional breads in a small-group kitchen. All ingredients are provided. The course includes gluten, and substitutions cannot be offered."
+          },
+          {
+            "id": "C",
+            "heading": "Introduction to Podcasting",
+            "text": "Plan, record and edit a five-minute audio story. Bring a laptop; microphones are available. Basic computer confidence is required, but no audio experience is needed."
+          },
+          {
+            "id": "D",
+            "heading": "Garden Photography",
+            "text": "Develop close-up photography skills in the botanical garden. Participants must know the basic controls of their own camera. The indoor glasshouses provide an alternative if it rains."
+          }
+        ]
+      },
+      "sharedOptions": [
+        {
+          "id": "A",
+          "text": "Urban Sketching"
+        },
+        {
+          "id": "B",
+          "text": "Bread from Around the World"
+        },
+        {
+          "id": "C",
+          "text": "Introduction to Podcasting"
+        },
+        {
+          "id": "D",
+          "text": "Garden Photography"
+        }
+      ],
+      "items": [
+        {
+          "id": "q1",
+          "question": "Hana wants a creative outdoor activity but owns none of the necessary specialist equipment.",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "Urban Sketching 在戶外舊城進行、歡迎初學者且提供材料。",
+          "evidence": "Materials are supplied"
+        },
+        {
+          "id": "q2",
+          "question": "Luis can use a computer confidently and wants to tell a story using sound for the first time.",
+          "responseType": "matching",
+          "answer": "C",
+          "explanationZh": "Podcast 課程適合有基本電腦能力、無音訊經驗者，並完成五分鐘聲音故事。",
+          "evidence": "no audio experience is needed"
+        },
+        {
+          "id": "q3",
+          "question": "Priya already understands her camera but needs an activity that can continue in wet weather.",
+          "responseType": "matching",
+          "answer": "D",
+          "explanationZh": "攝影課要求熟悉相機基本控制，雨天可移至室內溫室。",
+          "evidence": "indoor glasshouses provide an alternative if it rains"
+        },
+        {
+          "id": "q4",
+          "question": "Martin enjoys practical cooking, can eat wheat, and prefers working with only a few other learners.",
+          "responseType": "matching",
+          "answer": "B",
+          "explanationZh": "麵包課為小組廚房實作且含麩質，符合他的條件。",
+          "evidence": "small-group kitchen ... includes gluten"
+        },
+        {
+          "id": "q5",
+          "question": "Elise wants an activity requiring movement and has never learnt the skill before.",
+          "responseType": "matching",
+          "answer": "A",
+          "explanationZh": "速寫課適合完全初學者，且包含兩小時步行。",
+          "evidence": "complete beginners ... walking for two hours"
+        }
+      ],
+      "strategyTags": [
+        "multiple-text matching",
+        "constraints",
+        "requirements"
+      ],
+      "vocabularyTags": [
+        "sketching",
+        "substitution",
+        "podcasting",
+        "glasshouse"
+      ]
+    }
+  ]
+}

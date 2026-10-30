@@ -1,0 +1,12 @@
+{
+  "name": "jasmine-linguaskill-practice",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-content.mjs",
+    "test": "node tests/site/logic.test.mjs && node scripts/tts/test-wav.mjs",
+    "build": "node scripts/build-static.mjs",
+    "check": "npm run validate && npm test && npm run build"
+  }
+}
