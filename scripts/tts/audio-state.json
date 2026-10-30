@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "sourceContentVersion": "2026-10-31.3",
+  "jobs": {
+    "bl-short-001": {
+      "sourceDigest": "819f1ba9c44c4fb6b37673cf682a6b74d7cc030b70ed9f55b2c875a4834487cb",
+      "masterSha256": "d91f0cf601e9a2c367d32b14edd52f614237eefa152a576c9798b6ee6c20d5b6",
+      "mp3Sha256": "edb2a64f18f961055b1fab9b4f9007b8137dd69b90502bc230fa5976235ce6fd",
+      "durationSeconds": 20.4,
+      "masterBytes": 985316,
+      "mp3Bytes": 163820
+    },
+    "bl-short-002": {
+      "sourceDigest": "c454737bb1046132e8bbab93ef5c6894869954afacd9858a3ed88969d69f8e7e",
+      "masterSha256": "98128bb513710721aaf26cebcd732fb37dbdaad2ee0da813585940c4ea19380c",
+      "mp3Sha256": "760533173af762ca8c7a023f089aff873716de57f1895e8a701e4737a3bed3cb",
+      "durationSeconds": 18.62,
+      "masterBytes": 893804,
+      "mp3Bytes": 149612
+    },
+    "bl-short-003": {
+      "sourceDigest": "6ccc916543fa9e417b48627e6d2c4c4174b34365874344a0ae4095b01fa99186",
+      "masterSha256": "e7bc54abd400b0361e00235b1922be03c24a20f9611f41826c6120875ce442a2",
+      "mp3Sha256": "f231f02494b70aa6c37f88f8ae6352a025890505ce2aa2203519040f91061f38",
+      "durationSeconds": 18.68,
+      "masterBytes": 902756,
+      "mp3Bytes": 150188
+    },
+    "bl-short-004": {
+      "sourceDigest": "856776a03f5c7a691cc62109c18f09ecc2f14df6a5c4875668230014b3174175",
+      "masterSha256": "2b42c49fc8fc557b06261474f931f64fd8ebc946601a3a5d1214db818d2d17c8",
+      "mp3Sha256": "ed3320023235070b2a889558c62791e4a652dac97ee625ee056a9c2b8bd26c17",
+      "durationSeconds": 19.44,
+      "masterBytes": 939236,
+      "mp3Bytes": 156140
+    },
+    "bl-two-001": {
+      "sourceDigest": "eb605861d2f6c3df3fd7476ceaa2c6d86e58df165bbfc4970410519c6845bb68",
+      "masterSha256": "66db81579423f552db445c9598a7d7f7a2e7f0f80e1c6ff7fa0c0456016ea575",
+      "mp3Sha256": "1ca98d0008f7f7da0c594051d6c1617e9bc423f566c1d8155f45216fd4f85c62",
+      "durationSeconds": 48.18,
+      "masterBytes": 2312684,
+      "mp3Bytes": 386156
+    },
+    "bl-two-002": {
+      "sourceDigest": "fd6d9c03f03ab05808093e06deb51dc77f9b30ebaba0f04caab13893f2a741d7",
+      "masterSha256": "d6287f66eff2f07c01364141b3be0aa932ec2a9ccc17a4790b7600204592b4b4",
+      "mp3Sha256": "e5c435bb046fe2683dacc59125eddc5e82fdba5dfd4ee378b5323fb0465ebffa",
+      "durationSeconds": 50.94,
+      "masterBytes": 2445164,
+      "mp3Bytes": 408236
+    },
+    "bl-five-001": {
+      "sourceDigest": "95323141029c662581e41f9cc9d07cc988cad11e5343b8a6eb452b4458991cac",
+      "masterSha256": "063ee2ea22198488388da76b9919a637e966a47116b8b55cd125eb6d041501f3",
+      "mp3Sha256": "cffbc473925a7878cdc0738084232ae1f182333f5fbdfb0015d850cbc3631a82",
+      "durationSeconds": 77.72,
+      "masterBytes": 3736676,
+      "mp3Bytes": 622508
+    },
+    "bl-note-001": {
+      "sourceDigest": "4fbf34bb6ca4e472c414658a8a17d8066b5195110c6039be302219f8e319d061",
+      "masterSha256": "2024761126cb0871d303e05d2bd03febd5583c66a85606bae7057776f37884df",
+      "mp3Sha256": "18dac879fe8db6e7bdfac1183e8b86648e77e8576f2372888bf6ebbe5dcca23a",
+      "durationSeconds": 55.56,
+      "masterBytes": 2672996,
+      "mp3Bytes": 445100
+    },
+    "bl-match-one-001": {
+      "sourceDigest": "026b7721c3ce8ab9d8595239665d70eb8f3d3d5f008caa373737e5874865046a",
+      "masterSha256": "f1c2a76be7ca972debe377ea9f5f5bd003a31c3f2af6b230e5f29af31984fe7a",
+      "mp3Sha256": "8002c2686a61668bcd24fd4206303642a8b2f8b4660d2113620d46cb8009d22c",
+      "durationSeconds": 86.38,
+      "masterBytes": 4146284,
+      "mp3Bytes": 691820
+    },
+    "bl-match-two-001": {
+      "sourceDigest": "6ed5148f947c6fe82d5ddf6a4e0cfcd8fff435c10eab8b8aa788c4931932fcf5",
+      "masterSha256": "b8a6078d370979e895735c9e0521f2398f587f8014ef5e5f04a4189ee2edf206",
+      "mp3Sha256": "a80fc6380ef3fc4d4d32561440809454ffa27d56729171929c6f281bf1cbd7da",
+      "durationSeconds": 65.1,
+      "masterBytes": 3124844,
+      "mp3Bytes": 521516
+    },
+    "gl-short-001": {
+      "sourceDigest": "4a3d58c2c00b13875d8ff41698292bcc85d606ce89ce1f6be2674349804e6311",
+      "masterSha256": "842c34e426b974333103bbc9381bf3d977b48df601be557464a564393ce11dd5",
+      "mp3Sha256": "bb040be8afa90d05c1786cd1b77da74f7b54c693b1a8b248bd90b1b75fb0e52e",
+      "durationSeconds": 20.32,
+      "masterBytes": 981476,
+      "mp3Bytes": 163244
+    },
+    "gl-short-002": {
+      "sourceDigest": "dd99db9531102a16243b8a7c2acf320cd597bcd637bdf058ca446a6c37aa8d7a",
+      "masterSha256": "9273c9770f97e1d97fd6072d17f8ae3155e22c59adbaa77f9f929d0a29b3d861",
+      "mp3Sha256": "82565e8b81f57a8a84ccf8e46c29e9edc32c6c42f81ab4ee70e8a21f3f2b201c",
+      "durationSeconds": 22.08,
+      "masterBytes": 1065956,
+      "mp3Bytes": 177260
+    },
+    "gl-two-001": {
+      "sourceDigest": "a81087a25ec38babb88fbf0fd700e8f730026b1449db8c49dee9b179686ad72e",
+      "masterSha256": "3a0985aaafdbb361030d305dda2b94c7b5d8d9671ab4a1f98a501d647996ec9a",
+      "mp3Sha256": "f1b6e56cfeab383b90f1c21b52ea8ea82489eb16d3b95d6e5011dad6ef72e55f",
+      "durationSeconds": 36.46,
+      "masterBytes": 1750124,
+      "mp3Bytes": 292460
+    },
+    "gl-five-001": {
+      "sourceDigest": "029429faae866a955a94fc5dab5e98dfcecbb9fcbc0735dfa19c8b897f69ec1f",
+      "masterSha256": "ccfd522d202ba8c961360b3a07df868cc50c9cc8f7e88064b78e9fab68e2f8cf",
+      "mp3Sha256": "4b3d23908d3b7d144b18fe07c347478c51b21cb623ca61a55ef766a715557017",
+      "durationSeconds": 88.46,
+      "masterBytes": 4246124,
+      "mp3Bytes": 708332
+    },
+    "gl-note-001": {
+      "sourceDigest": "9d9529e3f088b3d82ad9e1770d55865a64376df2b96997e7cd95145b20b9f587",
+      "masterSha256": "db4b72c97732d81146c59ee6c8bb85a1deeff3fb03ef7fee6f32f8b6faaf77bd",
+      "mp3Sha256": "fe7ff6f73e510a425aa2ac285519bd7f41976e0f3cce70cdb88d6ee0e29574d5",
+      "durationSeconds": 54,
+      "masterBytes": 2598116,
+      "mp3Bytes": 432620
+    },
+    "gl-match-one-001": {
+      "sourceDigest": "8ddf39565fa10be08b93640fb77ff338a2983e06cf66bb0f40b6463792ed657a",
+      "masterSha256": "eed969cfe5eeb9712858413ff0ea3fcb511b9bc3c3d41fcd084eeb7d3c090be0",
+      "mp3Sha256": "5607f85e52759cfa3e98ea0a398c1ddeda32cf8a652cf68a394df2c7a88079ac",
+      "durationSeconds": 70.76,
+      "masterBytes": 3396524,
+      "mp3Bytes": 566828
+    },
+    "gl-match-two-001": {
+      "sourceDigest": "a4cba1380ad60a5d6afd1ce2781c38be54dd70e931ad4fe1686a006d0b86cf94",
+      "masterSha256": "37cfcd7fec5aab8288d522405ffbe0f3749659e3e90ceaf18e54f830e81949d0",
+      "mp3Sha256": "2a0aa8f72ad973f3e1604d555a124814c6b9a731abf291cfb075b83ffb109b6c",
+      "durationSeconds": 51.58,
+      "masterBytes": 2475884,
+      "mp3Bytes": 413420
+    },
+    "bl-expand-001": {
+      "sourceDigest": "b4c985af20ea908a22686e08807890138622231cec84257a443367b723ebf9af",
+      "masterSha256": "968bda87d51d083cda4b0f92616c565419f21b411ba2a445b9454bebee2c3d1c",
+      "mp3Sha256": "902f0c1c5c74a3120e324de91ff1f7d907a3ec5b31c006899b64495d962f9833",
+      "durationSeconds": 28.56,
+      "masterBytes": 1376996,
+      "mp3Bytes": 229100
+    },
+    "bl-expand-002": {
+      "sourceDigest": "c77d5cf080920dd996e295efcfe50b3e7b0c57411e0c6b73419e12cec8fd8af8",
+      "masterSha256": "f6f98db02ebc2e4dc38ba13e3e759c5dc5b3afccf68250e44ef289c41a7dfae2",
+      "mp3Sha256": "ee6514ec68169be66cf764b24b73a9028fb05483b15cdcb3e1edde9874dfed07",
+      "durationSeconds": 29.08,
+      "masterBytes": 1401956,
+      "mp3Bytes": 233324
+    },
+    "bl-expand-003": {
+      "sourceDigest": "c7f38a307b2fd2d9c738fcbce92a60daf1969d9dbef878a3d110cfa0245bcded",
+      "masterSha256": "9be1b4165c48637a253e86a878cb6ea50188e9fff5477e0926ed414941581785",
+      "mp3Sha256": "aa3eefd5927266981c17a18af935302f565a5e921ecb43a3a4d1930a45fe8bb1",
+      "durationSeconds": 28.44,
+      "masterBytes": 1371236,
+      "mp3Bytes": 228140
+    },
+    "bl-expand-004": {
+      "sourceDigest": "397e2ae48e8bef0f6447c70f6a0e6ca4110d6543303488a356deaa005cc1a6b4",
+      "masterSha256": "648f03426de46c2ff8b6fdacc6a7e245b06aa76e8f662f9f07146f1dd53a73a6",
+      "mp3Sha256": "c6d9ccd4e607319e98f294ed90981f4787cfbda395a69316dc9bc9c0bbc39e94",
+      "durationSeconds": 29.12,
+      "masterBytes": 1403876,
+      "mp3Bytes": 233708
+    },
+    "bl-expand-005": {
+      "sourceDigest": "500183e7e67734bce4613c78d52fbfe0606ef5df510dd1598bb66f81e77a4a05",
+      "masterSha256": "055e4ab4d4f023ae2045262a9975af829f59e0a590570f9f39215172ede34321",
+      "mp3Sha256": "8c0ab1cbc3d7bf972c8c4961d8d2567a401f982019897fa9ffe47a7b7b5a539f",
+      "durationSeconds": 25.4,
+      "masterBytes": 1225316,
+      "mp3Bytes": 203948
+    },
+    "bl-expand-006": {
+      "sourceDigest": "eb4fd427018bb5f042e6194f2b346cea32a5d14480d5c397e81ddd5fdb0d810d",
+      "masterSha256": "6b954f41b08c83ab250c955194b122935cc20e089f9d9b9681e29ece3f939808",
+      "mp3Sha256": "deb7e6dd8eeea7e33c5e2030b3d4c96cd30d5cb4bf1e15f7c4f23ff15e63482d",
+      "durationSeconds": 29.04,
+      "masterBytes": 1400036,
+      "mp3Bytes": 232940
+    },
+    "bl-expand-007": {
+      "sourceDigest": "158439b4aa4d4ff73c60b32b9c4ca4de1cf1c92be382e8fecb7ba06c28f97f98",
+      "masterSha256": "fe670f2787a2c40b31e2dd9b80e693e0127512647101eef89292ee206dd9e547",
+      "mp3Sha256": "76a3305bc190067ca22a70375238cccf67c42ef87651ed85c1b44a2ec94cb2cf",
+      "durationSeconds": 29.8,
+      "masterBytes": 1436516,
+      "mp3Bytes": 239084
+    },
+    "bl-expand-008": {
+      "sourceDigest": "50914a1fb4720b3861a6b5324295874595aebd4caed620054bd3dcdaf69549db",
+      "masterSha256": "a30e1d263c041bf7844d67368af01025b72d78f98231df5ce72e4b02e5b2a222",
+      "mp3Sha256": "19cb98db579656ed68c6d8af7f06e28e5619899d5dd3c37cf0ddfdaaf037662a",
+      "durationSeconds": 34,
+      "masterBytes": 1638116,
+      "mp3Bytes": 272684
+    },
+    "bl-expand-009": {
+      "sourceDigest": "64fcd4c121e9b549edba418ab63663b976fe94c0e7501d39eff6dbb15b9a59ff",
+      "masterSha256": "145efeb96bf1d46b623d7d648bcdfd99d42a20f3ac1758b45fb546b3b2b81f21",
+      "mp3Sha256": "ebec6c53fb12d362a12267886a1652db2698db723aaff4973c34bc89fcc8cc3a",
+      "durationSeconds": 33.72,
+      "masterBytes": 1624676,
+      "mp3Bytes": 270380
+    },
+    "bl-expand-010": {
+      "sourceDigest": "8599f70c778c8b2375b5eed40232d501cbf1afcd69f6f24992023070a5b7158e",
+      "masterSha256": "544bb3bf96efbd30afc1dd353044ae739292484c4dc45065fb6b6dbe7a11cea1",
+      "mp3Sha256": "d935b7fb634b6965ea51457e07acd4b1087aed1746d1e11df43ec382b5e2298d",
+      "durationSeconds": 32.52,
+      "masterBytes": 1567076,
+      "mp3Bytes": 260780
+    },
+    "bl-expand-011": {
+      "sourceDigest": "3ecee31803dd627464437305b67dee03e7a0e052f0414435a6e9cb723f9c28c8",
+      "masterSha256": "47576c84d0ca0dedb2f0deb35f1713ccb2905d13719e71d6ba03bf19fa5d0bdd",
+      "mp3Sha256": "5845c21fd22bfa7709e48d37f035343756d99c8d2f5b0228c85a179c91527baa",
+      "durationSeconds": 29.4,
+      "masterBytes": 1417316,
+      "mp3Bytes": 235820
+    },
+    "bl-expand-012": {
+      "sourceDigest": "fff9d22473dd97caa4685d3503aff9564452e772cb1e112d1db516bfbd521177",
+      "masterSha256": "145776691cadc78d3941a1027c29b6ffe0b7889dc236eb71a94778c979f642cc",
+      "mp3Sha256": "a18cc4b1b7d511311dec5f93139e2e286abad00ce97b0f6c860f131bb6798438",
+      "durationSeconds": 30.88,
+      "masterBytes": 1488356,
+      "mp3Bytes": 247724
+    },
+    "bl-expand-013": {
+      "sourceDigest": "f37098537de1db1b0ef939fc98a7045022b1925fcfff2170be27268ec48be9bd",
+      "masterSha256": "06b959ba47f7568570f13d8763940c957e27956cc7293d62650c8ab9583ab9cc",
+      "mp3Sha256": "6a2dc70e342c531c1c787975431d25c14760920b1aa3a212fba9c1ba951efd85",
+      "durationSeconds": 31.08,
+      "masterBytes": 1497956,
+      "mp3Bytes": 249260
+    },
+    "bl-expand-014": {
+      "sourceDigest": "c782f9123e055d0c86628192d249c4861d6b5d423d48c052d81b15f9cf18241f",
+      "masterSha256": "d836521066ffca227dd172839e21d3b85bb2be0e6a03ac21ebb1884d228e7fea",
+      "mp3Sha256": "51fff1ee542511da62525ffd59d010cd839813b272f28739d36fee3d46df4a82",
+      "durationSeconds": 34.6,
+      "masterBytes": 1666916,
+      "mp3Bytes": 277484
+    },
+    "bl-expand-015": {
+      "sourceDigest": "1b47ac08543d1eb0e06dbf0249353f3ebdb5d0887107d64d1ae0138bdd73974c",
+      "masterSha256": "188b362d2ad1c83459b7f151700ef47c0a8d06c4800fa2b240b5176e1aca9501",
+      "mp3Sha256": "067fcff87bee1840c7498855f6d400b4e25c2b99daec638cee44a08728d7cc02",
+      "durationSeconds": 35.32,
+      "masterBytes": 1701476,
+      "mp3Bytes": 283244
+    },
+    "gl-expand-001": {
+      "sourceDigest": "697852bf9ee40ab4f58e99ca4e554d542bfb034c86da3740bb522e491c15ba8f",
+      "masterSha256": "7db574e514f4c1c675a5ecc5f57218d6fa1069de6349740fb834598e9347e53d",
+      "mp3Sha256": "484f3276e675b6cd3b7d0310ff9f2c46928a1ae34bf79f89fe359a66ab997c65",
+      "durationSeconds": 30.52,
+      "masterBytes": 1471076,
+      "mp3Bytes": 244844
+    },
+    "gl-expand-002": {
+      "sourceDigest": "2b45d2b30b44d074c512377c6f4647ee727d34c435c1ee4e0e270a482a935eef",
+      "masterSha256": "a061dd32791eb0025d5b23c48f4bd4d098acb0b654584455ed77abe581e6006b",
+      "mp3Sha256": "ea9b5c99c6e35e7123d8ff82f485e321431cc19bde7628ff73763c9786151566",
+      "durationSeconds": 28.68,
+      "masterBytes": 1382756,
+      "mp3Bytes": 230060
+    },
+    "gl-expand-003": {
+      "sourceDigest": "a81692667c8281e166af6e5afa23c32964f814e7ecd9e842992626bb78fa9832",
+      "masterSha256": "5d246e0d158d04a3a42a4576e70e8a31365e8a6119856b9c56e98dade05f748a",
+      "mp3Sha256": "a438d3612504b8f1d3761f0aed54dc2d36b551a2aa25435c2e9bc84d49dcab3e",
+      "durationSeconds": 27.8,
+      "masterBytes": 1340516,
+      "mp3Bytes": 223148
+    },
+    "gl-expand-004": {
+      "sourceDigest": "364c27c8006cb888691e161fc3b4fa02d1757b899be37a6e7b1c14d678d532cc",
+      "masterSha256": "f57a3687cd2ac7bbdf7c9b169fbb5a166df8b423ef33c597d27242d7fcc5f1d3",
+      "mp3Sha256": "e6d13f765ed59695095ed9b99c9ca28a3f01972657d3b96bbd929fbccc523430",
+      "durationSeconds": 25.36,
+      "masterBytes": 1223396,
+      "mp3Bytes": 203564
+    },
+    "gl-expand-005": {
+      "sourceDigest": "02791cd982422caa413688c18fcbb61a724bd998b363cb542149b0aafe018077",
+      "masterSha256": "8da012d5820c25ebd14bb53cc9c1a3e3a2949e07ef8a4e3ff5688ab5a08e1034",
+      "mp3Sha256": "b09afd64f279bee498b5f72cde8c92198d0f489f1ce6ccc4bf81e9967fb968bd",
+      "durationSeconds": 31.72,
+      "masterBytes": 1528676,
+      "mp3Bytes": 254444
+    },
+    "gl-expand-006": {
+      "sourceDigest": "6e7fea1596a33e8738a6f6c2b86f0d24ec8977853cc5ca4b2e0210937a4a1127",
+      "masterSha256": "dfde6f62ce9bca7941316736fbc56fa32c625035c2ce52fc9ce75ff2caf00f3e",
+      "mp3Sha256": "8ad4f765e4f107e2375d27e90f0ac568cc2edc5e19fb600bd3aa6d9366473b07",
+      "durationSeconds": 28.04,
+      "masterBytes": 1352036,
+      "mp3Bytes": 225068
+    },
+    "gl-expand-007": {
+      "sourceDigest": "d0979934f8456b4e592961a13b371fbf809ad4c98a27ffa8565461c5d1b81eac",
+      "masterSha256": "fe5e213a330e7a7684cbbc097cee8215e0accf7f6da32a59ccd4de1d2391e8fb",
+      "mp3Sha256": "3da3dd3808b2fe0ebd9c70e6449c7241aabe7c6845602d97a2f8170110c099b2",
+      "durationSeconds": 29.12,
+      "masterBytes": 1403876,
+      "mp3Bytes": 233708
+    },
+    "gl-expand-008": {
+      "sourceDigest": "82c91cfdcb8675afd17fb3db98f66adeb32dd52e6b0096cb46e96b471de0154a",
+      "masterSha256": "d7d37c081b469f119a88815295e1a9911cd071b3f3ddc32c5949d0c77cc9f7e2",
+      "mp3Sha256": "d1c969831d2ba095d60fc3ca704edef955c370ed79c900a6487f666c46ab4244",
+      "durationSeconds": 27.88,
+      "masterBytes": 1344356,
+      "mp3Bytes": 223724
+    },
+    "gl-expand-009": {
+      "sourceDigest": "fbafb7f0a76831ceaae010e1dccf06cd8c1ec4fd7ccc63d128fdc40da331ba6f",
+      "masterSha256": "999e50720e69075adfd4f0c0569ed33a2a24e3a09870931ceab8a0fcfdc27698",
+      "mp3Sha256": "2555b6c8e5ef64baba97e7bdec45c95ac3b7ad0bc379f95e25408f63e88b83d9",
+      "durationSeconds": 31.4,
+      "masterBytes": 1513316,
+      "mp3Bytes": 251948
+    },
+    "gl-expand-010": {
+      "sourceDigest": "1871a6cef0bad364a3bb09800311c6226718bfa288f4fb7d4a8b9750c2e163a4",
+      "masterSha256": "a83d43e83bb9030dd4ac3c4745066f464cb6ff41b126e4b7e3aa7d4589658e62",
+      "mp3Sha256": "74681ab091b27625ffe83ef8504b87c46ccdfc10aca4c1bb34d6dd62808ba675",
+      "durationSeconds": 30.4,
+      "masterBytes": 1465316,
+      "mp3Bytes": 243884
+    },
+    "gl-expand-011": {
+      "sourceDigest": "a6ff731db81a2bc92aba6952390dad18e45158d33ab415db4b92c7e6e82cf897",
+      "masterSha256": "820019fd8fa1b5c0d98d98c3bd168c025095ed56cd7f905016641f71cc6dbc0b",
+      "mp3Sha256": "0f272bc4f8355f373dc85c1622f9814668c28eb07150eed1d5f65a75c8470f26",
+      "durationSeconds": 29.32,
+      "masterBytes": 1413476,
+      "mp3Bytes": 235244
+    },
+    "gl-expand-012": {
+      "sourceDigest": "0cb9e47f923709f6c69122350a186fd1020b6a3f22b1a5e86c2d4c74376a5315",
+      "masterSha256": "8d9d3f45f2cefc0c276f29acf066e3a088a8b47ded9b00fd2589cb1f092b6b3a",
+      "mp3Sha256": "309bd6cc577909f9f439e62d0d549f51837aa2c6e1e09ae7529742afc81103a4",
+      "durationSeconds": 27.36,
+      "masterBytes": 1319396,
+      "mp3Bytes": 219500
+    },
+    "gl-expand-013": {
+      "sourceDigest": "a39a5783ff4a0a83dde9f5fb74a2034748c583e7e498f1a1a02e52f392dc5d81",
+      "masterSha256": "22fdaca3f5714dc918c196f0dc5754c76ced6a10fccb2c2a5201788940c13658",
+      "mp3Sha256": "9a8922a7cd23526c8856cf74499943b03633d0ebf4782ec002adde212c51c4a5",
+      "durationSeconds": 29.76,
+      "masterBytes": 1434596,
+      "mp3Bytes": 238700
+    },
+    "gl-expand-014": {
+      "sourceDigest": "ac5ef00b3575096f0b49ecdcffac8201833a82ed71d3e2513fe8395e1d087642",
+      "masterSha256": "32170bc02e7ce78a51c0091e949093f02d8357183f19fbb8131dd3abaf73db58",
+      "mp3Sha256": "710b2feffd270d9c93b69a46888e892941328df32ed0f2bae3a480f35da740c9",
+      "durationSeconds": 28.44,
+      "masterBytes": 1371236,
+      "mp3Bytes": 228140
+    },
+    "gl-expand-015": {
+      "sourceDigest": "b01069f2ad712fe41f1fed3def2b5bf3290efd591596f697e4c5b3c82e8919a1",
+      "masterSha256": "532c7003fb6d2fa6937fe06d3403d9425d8d9228c0bf289584d937eab8909f84",
+      "mp3Sha256": "39bdfc45e82f0cfbc1a4c5c76783eb51e6dc29463cd2f437112726c26a642cb0",
+      "durationSeconds": 27.72,
+      "masterBytes": 1336676,
+      "mp3Bytes": 222380
+    }
+  }
+}

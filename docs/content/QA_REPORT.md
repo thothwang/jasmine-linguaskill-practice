@@ -68,6 +68,57 @@ Automated validation additionally confirmed:
 - Matching tasks that contain two dimensions use prefixed option IDs (for example `S`/`L` and `A`/`B`). The UI should visually separate the two option families so learners cannot choose a lesson option for a situation field.
 - Multiple-text matching deliberately permits reuse of a source text; missing-sentence/paragraph and speaker-matching sets use each keyed option only once.
 
+## Expanded-bank validation
+
+The bank was subsequently expanded without removing or rewriting any of the original 32 reviewed sets. It now contains:
+
+| Domain | Scored responses |
+|---|---:|
+| Business Listening | 104 |
+| Business Reading | 109 |
+| General Listening | 100 |
+| General Reading | 103 |
+| **Total** | **416** |
+
+The expanded bank has 93 task sets. All 61 added sets contain five scored responses. New Listening sets use exactly two TTS identities (a narrator and one content speaker), include complete authoritative transcripts, and retain the two-play rule. New questions rotate the correct option position rather than systematically placing the key under one label.
+
+The 31 added Reading sets were independently authored and do not reuse a paired Listening topic, script, or answer fact. Their stimuli are natural articles, notices, or four-part texts of 160–280 words. They test paraphrase, purpose, implication, evidence evaluation, and cross-text location rather than copying a visible bullet. The added Reading mix is 11 extended multiple-choice sets, 10 five-gap cloze sets, and 10 multiple-text matching sets.
+
+Exact scored-response counts by task family across the complete bank:
+
+| Task family | Responses |
+|---|---:|
+| listening_one_question_mc | 6 |
+| listening_two_question_mc | 6 |
+| listening_five_question_mc | 130 |
+| listening_note_completion | 40 |
+| listening_one_task_matching | 10 |
+| listening_two_task_matching | 12 |
+| reading_one_question_mc | 2 |
+| reading_one_question_gap_mc | 1 |
+| reading_two_question_mc | 4 |
+| reading_five_question_mc | 60 |
+| reading_five_question_gap_mc | 60 |
+| reading_open_gap | 10 |
+| reading_missing_sentence | 10 |
+| reading_missing_paragraph | 5 |
+| reading_multiple_text_matching | 60 |
+
+Across the complete bank, every schema-supported Listening and Reading family remains represented.
+
+`content/counts.json` is the machine-readable count report. `content/expand-bank.mjs` makes the expansion reproducible and idempotent by refusing to append an ID already present.
+
+Post-expansion automated checks confirmed:
+
+- 93 unique set IDs and 416 unique set/item pairs;
+- at least 100 scored responses in every domain;
+- valid answer references and complete distractor diagnostics;
+- no completion answer above its declared one-to-three-word ceiling;
+- no more than two TTS speaker identities in any newly added Listening set;
+- every expanded Reading stimulus is between 160 and 280 words;
+- no expanded Reading topic or title duplicates an expanded Listening topic or title;
+- valid JSON, valid expansion-script syntax, and no whitespace errors.
+
 ## Residual release requirements
 
 These are production checks, not unresolved answer-key defects:

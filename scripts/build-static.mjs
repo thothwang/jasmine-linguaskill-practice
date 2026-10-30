@@ -10,7 +10,22 @@ await mkdir(dist,{recursive:true});
 await cp(resolve(root,"src"),dist,{recursive:true});
 await cp(resolve(root,"public"),dist,{recursive:true});
 const bank = resolve(root,"content","questions.json");
-try { await access(bank,constants.R_OK); await mkdir(resolve(dist,"content"),{recursive:true}); await cp(bank,resolve(dist,"content","questions.json")); }
+try {
+  await access(bank,constants.R_OK);
+  const questionBank = JSON.parse(await readFile(bank,"utf8"));
+  const omitted = [];
+  const deployableSets = [];
+  for (const set of questionBank.sets || []) {
+    if (set.skill === "listening" && set.audio?.asset) {
+      try { await access(resolve(root,"public",set.audio.asset),constants.R_OK); }
+      catch { omitted.push(set.id); continue; }
+    }
+    deployableSets.push(set);
+  }
+  await mkdir(resolve(dist,"content"),{recursive:true});
+  await writeFile(resolve(dist,"content","questions.json"),JSON.stringify({ ...questionBank, sets:deployableSets },null,2),"utf8");
+  if (omitted.length) console.warn(`Omitted ${omitted.length} listening sets without generated audio: ${omitted.join(", ")}`);
+}
 catch { console.warn("No production question bank found; demo bank only."); }
 
 async function filesUnder(directory) {

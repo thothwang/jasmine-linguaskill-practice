@@ -61,3 +61,16 @@ Validate the dependency-free WAV joining utility:
 node scripts/tts/test-wav.mjs
 ```
 
+Track accepted audio against the exact transcript/voice manifest and create a resumable missing-or-stale-only manifest:
+
+```powershell
+node scripts/tts/plan-audio.mjs `
+  --manifest scripts/tts/question-audio.manifest.json `
+  --masters public/audio/masters `
+  --public public `
+  --state scripts/tts/audio-state.json `
+  --pending scripts/tts/pending-audio.manifest.json
+```
+
+After generation, human review, MP3 compression, and decode checks, add `--trust-existing --write-state` once to accept the validated files. Later content changes are then reported as `stale`, while newly added sets are `missing`. Generate only `pending-audio.manifest.json`; use `--force` for a pending manifest that contains stale jobs.
+

@@ -97,7 +97,11 @@ The final choice should be made from the blinded scores, not the provider name.
 - `.env` files should remain ignored; prefer session-scoped environment variables.
 - GitHub Pages cannot protect a secret. All TTS calls must happen before deployment.
 
-Environment check on 2026-10-31: none of the three accepted key variables was present, Node.js 24 was available, Python was not runnable, and `ffmpeg` was not installed. Therefore no provider call or paid-credit use was attempted, and no synthetic sample was produced yet.
+Production update on 2026-10-31: the authenticated Jasmine Google Cloud project
+generated 30 new Listening masters and one corrected master. The restricted key
+was retrieved only into a process-scoped environment and removed after each run.
+All 47 deployment MP3s now decode successfully; no provider credential is stored
+in the repository or shipped to the browser.
 
 ## Why not collect and clip existing real voices
 

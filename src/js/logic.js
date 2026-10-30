@@ -57,7 +57,7 @@ export function datePhase(now = new Date()) {
   return "balanced";
 }
 
-export function selectSets(sets, { domain, skill, progress, count = 5, mock = false }) {
+export function selectSets(sets, { domain, skill, progress, count = 5 }) {
   const eligible = sets.filter(set => set.domain === domain && set.skill === skill);
   const attempts = progress?.attempts || [];
   const seen = new Map();
@@ -67,14 +67,12 @@ export function selectSets(sets, { domain, skill, progress, count = 5, mock = fa
     if (aSeen !== bSeen) return aSeen - bSeen;
     const rank = { B2: 0, "B2+": 1, B2_PLUS: 1, C1: 2 };
     return (rank[a.level] ?? 0) - (rank[b.level] ?? 0) || a.id.localeCompare(b.id);
-  }).slice(0, mock ? Math.min(count, eligible.length) : Math.min(count, eligible.length));
+  }).slice(0,Math.min(count,eligible.length));
 }
 
 export function progressSummary(attempts = [], key) {
   const rows = key ? attempts.filter(a => a.domainKey === key) : attempts;
   const correct = rows.filter(a => a.correct).length;
   const accuracy = rows.length ? Math.round(correct / rows.length * 100) : 0;
-  let band = "建立練習資料中";
-  if (rows.length >= 8) band = accuracy >= 80 ? "B2+/C1 挑戰區" : accuracy >= 65 ? "B2 練習範圍" : "B2 技能養成中";
-  return { attempts: rows.length, correct, accuracy, band };
+  return { attempts: rows.length, correct, accuracy };
 }

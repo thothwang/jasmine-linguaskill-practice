@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "sourceContentVersion": "2026-10-31.3",
+  "defaults": {
+    "provider": "gemini",
+    "gemini": {
+      "model": "gemini-3.8-flash-tts",
+      "voice": "Kore"
+    }
+  },
+  "jobs": []
+}

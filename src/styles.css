@@ -41,7 +41,6 @@ main[tabindex="-1"]:focus { outline: none; }
 .eyebrow { margin: 0 0 .35rem; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; color: #bde8de; }
 .hero h1 { margin: 0; max-width: 18ch; font-size: clamp(1.7rem,7vw,3.3rem); line-height: 1.12; letter-spacing: -.035em; }
 .hero-message { margin: 1.15rem 0; max-width: 42rem; font-size: clamp(1rem,3.2vw,1.2rem); color: #f8fbfb; }
-.target-pill { display: inline-flex; gap: .5rem; align-items: center; padding: .48rem .7rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(255,255,255,.1); font-size: .86rem; }
 .grid { display: grid; gap: 1rem; }
 .domain-grid { margin-top: 1rem; grid-template-columns: 1fr; }
 .card { padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 7px 22px rgba(19,47,58,.06); }
@@ -96,6 +95,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .settings-grid { display: grid; gap: 1rem; }
 .setting-row { display: grid; gap: .5rem; }
 .footer-note { margin-top: 1.2rem; padding: 1rem 0; color: var(--muted); font-size: .84rem; }
+.page-actions { margin-top: 1.2rem; }
 .sr-only { position: absolute!important; width: 1px!important; height: 1px!important; padding: 0!important; margin: -1px!important; overflow: hidden!important; clip: rect(0,0,0,0)!important; white-space: nowrap!important; border: 0!important; }
 @media (min-width: 680px) {
   .domain-grid { grid-template-columns: repeat(2,1fr); }

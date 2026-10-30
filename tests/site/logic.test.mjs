@@ -18,7 +18,7 @@ assert.equal(datePhase(new Date("2026-11-06T03:00:00Z")),"general");
 assert.equal(datePhase(new Date("2026-11-08T03:00:00Z")),"balanced");
 const selected = selectSets([set,{...set,id:"s2",level:"C1"}],{domain:"business",skill:"reading",progress:{attempts:[{taskSetId:"s1"}]},count:1});
 assert.equal(selected[0].id,"s2");
-assert.equal(progressSummary(Array.from({length:8},(_,i)=>({correct:i<6}))).band,"B2 練習範圍");
+assert.deepEqual(progressSummary(Array.from({length:8},(_,i)=>({correct:i<6}))),{attempts:8,correct:6,accuracy:75});
 const dualMatching = { sharedOptions:[
   {id:"S1",text:"Situation one"},{id:"S2",text:"Situation two"},
   {id:"L1",text:"Lesson one"},{id:"L2",text:"Lesson two"}

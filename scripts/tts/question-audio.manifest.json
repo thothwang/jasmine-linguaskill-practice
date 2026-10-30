@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "sourceContentVersion": "2026-10-31.1",
+  "sourceContentVersion": "2026-10-31.3",
   "defaults": {
     "provider": "gemini",
     "gemini": {
@@ -739,6 +739,816 @@
               "voice": "Aoede",
               "text": "At the community kitchen I organise donated ingredients before the cooks arrive. The quantities change every week, so fixed recipes rarely work. Finding sensible substitutions has made me far more inventive with meals at home, where I now waste much less food.",
               "style": "Canadian woman, 30s; calm. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-001",
+      "sourceAsset": "audio/bl-expand-001.mp3",
+      "masterFile": "bl-expand-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear an office manager explaining a visitor procedure.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about new visitor passes. From Monday, visitors will receive a numbered pass at reception. The change follows several cases in which guests entered the wrong work area. Please remember that hosts must meet their guests in the reception area. Another important point is that guests may not use staff lifts unless accompanied. Finally, reception will record delays for the first two weeks.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-002",
+      "sourceAsset": "audio/bl-expand-002.mp3",
+      "masterFile": "bl-expand-002.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a buyer announcing a supplier briefing.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about supplier briefing online. The supplier briefing will be held online rather than in Conference Room Two. More overseas suppliers registered than the room could hold. Please remember that suppliers should test the joining link before Wednesday. Another important point is that the question session will still begin at three o'clock. Finally, a recording will be available for seven days.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-003",
+      "sourceAsset": "audio/bl-expand-003.mp3",
+      "masterFile": "bl-expand-003.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a finance officer describing an expense update.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Umbriel",
+              "text": "Here is an update about receipt submission. Receipts must now be photographed through the expenses application. Email attachments were often separated from the correct claim. Please remember that staff should keep original receipts until a claim is approved. Another important point is that mileage claims do not require a receipt image. Finally, a short demonstration will run at lunchtime on Tuesday.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-004",
+      "sourceAsset": "audio/bl-expand-004.mp3",
+      "masterFile": "bl-expand-004.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a product manager explaining a customer trial.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about customer trial. Selected customers will test the new dashboard for four weeks. They use both the mobile and desktop versions regularly. Please remember that participants should record tasks that take longer than expected. Another important point is that staff must not guide customers through unfinished features. Finally, the team will compare completion times with the current dashboard.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-005",
+      "sourceAsset": "audio/bl-expand-005.mp3",
+      "masterFile": "bl-expand-005.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear a facilities manager discussing renovation.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Umbriel",
+              "text": "Here is an update about temporary work area. The design team will use the third-floor training room next week. Their usual area is being rewired. Please remember that staff should take their laptop chargers home on Friday. Another important point is that the large-format printer will be unavailable for two days. Finally, the team expects to return on Thursday morning.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-006",
+      "sourceAsset": "audio/bl-expand-006.mp3",
+      "masterFile": "bl-expand-006.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a support manager announcing a rota.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Schedar",
+              "text": "Here is an update about weekend support rota. Weekend support will rotate between two regional teams. Recent weekend enquiries have increased but remain unpredictable. Please remember that the duty team must acknowledge urgent messages within thirty minutes. Another important point is that requests to change account details can wait until Monday. Finally, managers will review call and message volumes after six weekends.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-007",
+      "sourceAsset": "audio/bl-expand-007.mp3",
+      "masterFile": "bl-expand-007.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear a team leader describing onboarding.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Laomedeia",
+              "text": "Here is an update about first-week schedule. New starters will spend Monday morning with the operations team. Understanding order processing makes later product training clearer. Please remember that managers should prepare one realistic task for shadowing. Another important point is that new starters are not expected to answer customer calls in week one. Finally, a short review will take place on Friday afternoon.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-008",
+      "sourceAsset": "audio/bl-expand-008.mp3",
+      "masterFile": "bl-expand-008.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a quality manager preparing a warehouse audit.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about warehouse audit. Auditors will first trace three randomly selected orders from receipt to dispatch. It reveals whether records remain consistent across different stages. Please remember that supervisors must provide the current exception log. Another important point is that teams should not tidy historical entries before the visit. Finally, managers will receive a factual findings note before recommendations are discussed.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-009",
+      "sourceAsset": "audio/bl-expand-009.mp3",
+      "masterFile": "bl-expand-009.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear an events coordinator giving conference instructions.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about conference stand. Our stand is opposite the main coffee area, not beside registration. The organiser requires all screens to be tested before visitors enter. Please remember that staff should wear the blue company badge with normal business clothes. Another important point is that prototype price sheets must not be given to visitors. Finally, interested visitors should scan a code on the tablet.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-010",
+      "sourceAsset": "audio/bl-expand-010.mp3",
+      "masterFile": "bl-expand-010.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "You hear a trainer introducing a security workshop.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Laomedeia",
+              "text": "Here is an update about data-security workshop. The workshop focuses on recognising convincing social-engineering messages. Recent incidents began with apparently routine requests from senior staff. Please remember that participants will compare genuine and fabricated approval requests. Another important point is that participants should not bring real confidential emails to the session. Finally, a short unannounced simulation will take place later in the month.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-011",
+      "sourceAsset": "audio/bl-expand-011.mp3",
+      "masterFile": "bl-expand-011.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a warehouse supervisor explaining a stock count.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Autonoe",
+              "text": "Here is an update about annual stock count. Dispatch will stop at four on Friday afternoon. No goods may move while the physical count is under way. Please remember that teams should label all returned items before Friday lunch. Another important point is that damaged goods in the red area will be counted separately. Finally, dispatch is expected to restart on Saturday at midday.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-012",
+      "sourceAsset": "audio/bl-expand-012.mp3",
+      "masterFile": "bl-expand-012.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a sustainability lead announcing a packaging pilot.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Umbriel",
+              "text": "Here is an update about reducing packaging. Three product lines will use reusable transport boxes. Their sizes are stable and return routes already exist. Please remember that staff should record boxes that return damaged or incomplete. Another important point is that protective material inside each box remains unchanged. Finally, success depends on repeated box use without increased product damage.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-013",
+      "sourceAsset": "audio/bl-expand-013.mp3",
+      "masterFile": "bl-expand-013.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "You hear an IT programme manager describing a system launch.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Autonoe",
+              "text": "Here is an update about staged system launch. The system will launch first in two departments rather than across the company. It allows integration problems to be isolated before they affect monthly reporting. Please remember that pilot users must record the exact steps before each error. Another important point is that the payroll interface is outside the initial pilot. Finally, wider release requires two complete reporting cycles without a critical fault.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-014",
+      "sourceAsset": "audio/bl-expand-014.mp3",
+      "masterFile": "bl-expand-014.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear a travel coordinator explaining a booking policy.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about rail booking policy. For journeys under four hours, staff should book standard-class rail by default. Different teams had interpreted the previous phrase reasonable travel differently. Please remember that an exception is possible when essential equipment cannot be carried safely by train. Another important point is that a department head must approve an exception before booking. Finally, approval evidence should be attached to the travel request.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bl-expand-015",
+      "sourceAsset": "audio/bl-expand-015.mp3",
+      "masterFile": "bl-expand-015.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a human-resources manager revising performance reviews.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Schedar",
+              "text": "Here is an update about quarterly reviews. Quarterly conversations will replace one of the two formal annual reviews. Employees said useful feedback often arrived too late to influence current work. Please remember that conversations should emphasise one priority and one practical support need. Another important point is that any decision affecting pay or promotion must still be documented formally. Finally, hR will compare goal completion and survey whether feedback felt timely.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-001",
+      "sourceAsset": "audio/gl-expand-001.mp3",
+      "masterFile": "gl-expand-001.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a ferry officer giving a travel update.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Autonoe",
+              "text": "Here is an update about revised ferry stop. The afternoon ferry will use North Pier instead of Harbour Gate. A damaged ramp at Harbour Gate is awaiting inspection. Please remember that foot passengers should follow the blue signs from the station. Another important point is that the ferry still leaves at twenty past three. Finally, passengers bringing bicycles should arrive fifteen minutes earlier.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-002",
+      "sourceAsset": "audio/gl-expand-002.mp3",
+      "masterFile": "gl-expand-002.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a librarian announcing a research workshop.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Laomedeia",
+              "text": "Here is an update about research workshop. The workshop is for students beginning their first independent research project. It will focus on judging whether online sources are trustworthy. Please remember that participants should bring one article they are uncertain about. Another important point is that the session will not cover statistical analysis. Finally, people must reserve a place through the library calendar.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-003",
+      "sourceAsset": "audio/gl-expand-003.mp3",
+      "masterFile": "gl-expand-003.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a student guide describing a campus tour.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Autonoe",
+              "text": "Here is an update about campus tour. The tour begins outside the science library at ten o'clock. Building work has closed the path beside the lake. Please remember that visitors will see the engineering studios first. Another important point is that visitors should wear comfortable shoes because of several stairways. Finally, the guide will answer course questions in the café at the end.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-004",
+      "sourceAsset": "audio/gl-expand-004.mp3",
+      "masterFile": "gl-expand-004.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear a leisure-centre employee explaining a timetable.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Laomedeia",
+              "text": "Here is an update about pool timetable. An early-morning lane-swimming session starts next week. Members asked for a quiet session before work. Please remember that swimmers must book by nine o'clock the previous evening. Another important point is that the children's pool remains closed during the early session. Finally, the centre will test the session for six weeks.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-005",
+      "sourceAsset": "audio/gl-expand-005.mp3",
+      "masterFile": "gl-expand-005.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Leda",
+              "text": "You hear a museum educator introducing a drawing class.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Autonoe",
+              "text": "Here is an update about museum drawing class. The class will work in the sculpture gallery before it opens publicly. The quiet gallery allows longer observation without visitor traffic. Please remember that the museum provides paper, boards and graphite pencils. Another important point is that charcoal is prohibited because its dust can spread. Finally, learners will compare how they represented the same sculpture.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-006",
+      "sourceAsset": "audio/gl-expand-006.mp3",
+      "masterFile": "gl-expand-006.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Callirrhoe",
+              "text": "You hear a community organiser giving volunteer instructions.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about garden volunteer day. Volunteers will build raised beds for the community garden. The existing soil drains poorly after rain. Please remember that volunteers should bring strong gloves and a water bottle. Another important point is that inexperienced volunteers should not operate the power saw. Finally, heavy rain will move the work to the following Saturday.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-007",
+      "sourceAsset": "audio/gl-expand-007.mp3",
+      "masterFile": "gl-expand-007.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a club organiser describing a documentary evening.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about documentary club. The club will show a documentary about restoring urban rivers. Members requested a film linked to a current local planning debate. Please remember that viewers should read the one-page background note before arriving. Another important point is that a local ecologist will join the discussion by video. Finally, the discussion will happen before refreshments rather than after them.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-008",
+      "sourceAsset": "audio/gl-expand-008.mp3",
+      "masterFile": "gl-expand-008.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "You hear a walk leader briefing a hiking group.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Laomedeia",
+              "text": "Here is an update about hill walk. The group will take the ridge route and descend through the forest. Loose stone makes the steep return path unsafe after recent rain. Please remember that walkers should carry an extra warm layer despite the mild start. Another important point is that drinking water is available only at the visitor centre. Finally, low cloud on the ridge may require an earlier descent.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-009",
+      "sourceAsset": "audio/gl-expand-009.mp3",
+      "masterFile": "gl-expand-009.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Kore",
+              "text": "You hear a market coordinator making an announcement.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about weekend market. The market is moving to the covered square behind the town hall. The usual riverside site has no shelter from the forecast wind. Please remember that shoppers should use the eastern entrance to avoid delivery vehicles. Another important point is that there will be no bicycle parking inside the covered square. Finally, the market will close at four, an hour earlier than usual.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-010",
+      "sourceAsset": "audio/gl-expand-010.mp3",
+      "masterFile": "gl-expand-010.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a coordinator introducing a language exchange.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about conversation exchange. Partners are matched by learning goals rather than age. Similar ages did not guarantee compatible practice needs. Please remember that partners should agree how much correction they want. Another important point is that partners are discouraged from turning every meeting into a grammar lesson. Finally, a coordinator checks in after the first two meetings.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-011",
+      "sourceAsset": "audio/gl-expand-011.mp3",
+      "masterFile": "gl-expand-011.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "You hear a council officer explaining a collection service.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about food-waste collection. Households will receive a small kitchen container and outdoor bin. Food waste makes up a large share of rubbish sent to landfill. Please remember that cooked food and fruit peel may both go in the bin. Another important point is that ordinary plastic bags must not be used as liners. Finally, food-waste bins will be collected every Wednesday.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-012",
+      "sourceAsset": "audio/gl-expand-012.mp3",
+      "masterFile": "gl-expand-012.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a clinic receptionist explaining appointments.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Schedar",
+              "text": "Here is an update about clinic appointment system. Patients can now book routine nurse appointments online. Some symptoms still need telephone assessment before booking. Please remember that patients should check that their mobile number is current. Another important point is that a same-day urgent appointment still requires a phone call. Finally, the system sends a text confirmation and reminder.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-013",
+      "sourceAsset": "audio/gl-expand-013.mp3",
+      "masterFile": "gl-expand-013.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Aoede",
+              "text": "You hear a theatre manager describing a relaxed performance.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Zephyr",
+              "text": "Here is an update about relaxed performance. Audience members may move, make noise or leave and return. It may benefit people who find usual theatre conventions difficult. Please remember that sudden sound effects will be reduced in volume. Another important point is that the quiet room remains available throughout the performance. Finally, the artistic content remains the same as other performances.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-014",
+      "sourceAsset": "audio/gl-expand-014.mp3",
+      "masterFile": "gl-expand-014.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Achernar",
+              "text": "You hear a tutor introducing an evening class.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Rasalgethi",
+              "text": "Here is an update about evening computing class. Learners will create a simple personal budget spreadsheet. It practises formulas through a familiar practical task. Please remember that learners should bring several example household expenses. Another important point is that previous spreadsheet experience is not required. Finally, learners will use invented figures during shared demonstrations.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gl-expand-015",
+      "sourceAsset": "audio/gl-expand-015.mp3",
+      "masterFile": "gl-expand-015.wav",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash-tts",
+      "clips": [
+        {
+          "id": "main",
+          "pauseAfterMs": 0,
+          "turns": [
+            {
+              "speaker": "Narrator",
+              "voice": "Erinome",
+              "text": "You hear a transport planner explaining a bicycle-share change.",
+              "style": "Neutral British narrator; clear exam pace. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
+            },
+            {
+              "speaker": "Speaker",
+              "voice": "Umbriel",
+              "text": "Here is an update about bicycle-share update. New stations are being added near two suburban rail stops. Many rail passengers live beyond comfortable walking distance. Please remember that users must check that a bicycle is locked before ending a rental. Another important point is that the fee for keeping a bicycle overnight is increasing. Finally, planners will compare rail connections and car-park use.",
+              "style": "Clear adult speaker; natural international English. Read the supplied text exactly once. Add no words. Natural exam-practice delivery at a normal B2 listening pace. Do not emphasise answer-bearing words."
             }
           ]
         }
