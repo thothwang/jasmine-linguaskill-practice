@@ -40,8 +40,7 @@ async function loadBank() {
 function route() {
   clearInterval(timer); timer = null; audioState = null;
   const { path, params } = parseHash();
-  if (path === "/") renderHome();
-  else if (path === "/areas") renderAreas();
+  if (path === "/" || path === "/areas") renderHome();
   else if (path === "/section") renderSection(params.get("key"));
   else if (path === "/quiz") renderQuiz();
   else if (path === "/review") renderReview();
@@ -55,14 +54,10 @@ function renderHome() {
   const phase = datePhase();
   const phaseMessages = MESSAGES.filter(x => x.phase === phase || x.phase === "balanced");
   app.innerHTML = `<section class="hero"><p class="eyebrow">Your practice space</p><h1>Listen closely. Read confidently.</h1><p class="hero-message">${esc(nextMessage(phaseMessages))}</p></section>
-    <section class="grid domain-grid" aria-label="四大練習區">${Object.entries(DOMAIN_LABELS).map(([key,d]) => domainCard(key,d)).join("")}</section>
+    <section class="grid domain-grid" aria-label="練習類別">${Object.entries(DOMAIN_LABELS).map(([key,d]) => domainCard(key,d)).join("")}</section>
     <p class="footer-note">本網站為原創、非官方練習工具，與 Cambridge 無隸屬或背書關係；練習結果不是正式分數預測。</p>`;
 }
 function domainCard(key,d) { const stats = progressSummary(progress.attempts,key); return `<article class="card domain-card"><span class="domain-icon" aria-hidden="true">${d[3]}</span><div><h2>${esc(d[0])}</h2><p>${esc(d[1])}</p></div><p>${esc(d[2])}</p><div class="progress-track" aria-label="正確率 ${stats.accuracy}%"><span style="width:${stats.accuracy}%"></span></div><div class="card-actions"><a class="button secondary" href="#/section?key=${key}">${stats.attempts ? "繼續練習" : "開始"}</a></div></article>`; }
-
-function renderAreas() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">Practice menu</span><h1>四大練習區</h1><p>選擇聽力或閱讀，以及職場或實用英語情境。</p></div></header><section class="grid domain-grid" aria-label="四大練習區">${Object.entries(DOMAIN_LABELS).map(([key,d]) => domainCard(key,d)).join("")}</section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
-}
 
 function renderSection(key) {
   if (!DOMAIN_LABELS[key]) return renderNotFound();
@@ -71,7 +66,7 @@ function renderSection(key) {
   const modeCopy = skill === "listening" ? "每個題組先準備 5 秒，錄音將播放兩次；作答後立即查看解析與逐字稿。" : "每個題組作答後立即查看中文解析、答案線索與閱讀內容。";
   app.innerHTML = `<header class="section-header"><div><span class="tag">${esc(d[1])}</span><h1>${esc(d[0])}</h1><p>${esc(d[2])}</p></div></header>
     <section class="grid stats"><div class="card stat"><strong>${available.length}</strong><span>題組數</span></div><div class="card stat"><strong>${questionCount}</strong><span>題目數</span></div><div class="card stat"><strong>${stats.attempts}</strong><span>已作答</span></div><div class="card stat"><strong>${stats.accuracy}%</strong><span>正確率</span></div></section>
-    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">開始練習</button><a class="button secondary" href="#/areas">換一種類</a><a class="button ghost" href="#/">回主選單</a></div></section>`;
+    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">開始練習</button><a class="button secondary" href="#/">回主選單</a></div></section>`;
   app.querySelector("#startPractice").addEventListener("click", () => startSession(domain,skill));
 }
 
@@ -169,14 +164,14 @@ function submitSet(event,set) {
 }
 function showFeedback(set,result) {
   const area = app.querySelector("#feedbackArea"); app.querySelector("#answerForm").querySelectorAll("input,select,button[type=submit]").forEach(x => x.disabled = true);
-  area.innerHTML = `<section aria-labelledby="result-title"><h2 id="result-title" tabindex="-1">本題組 ${result.correct} / ${result.total}</h2>${result.details.map(d => `<div class="feedback ${d.correct ? "good" : "bad"}"><strong>${d.correct ? "答對了" : `正確答案：${esc(Array.isArray(d.item.answer) ? d.item.answer[0] : d.item.answer)}`}</strong><p>${esc(d.item.explanationZh || d.item.explanation?.zhHant || "請對照答案線索。")}</p>${!d.correct && d.item.distractorRationales?.[d.response] ? `<p>為什麼不是這個答案：${esc(d.item.distractorRationales[d.response])}</p>` : ""}<p><em>線索：</em> ${esc(d.item.evidence || "—")}</p></div>`).join("")}${set.skill === "listening" ? transcript(set) : ""}<div class="actions"><button class="button" id="nextButton">下一題組</button><a class="button secondary" href="#/areas">換一種類</a><a class="button ghost" href="#/">結束練習</a></div></section>`;
+  area.innerHTML = `<section aria-labelledby="result-title"><h2 id="result-title" tabindex="-1">本題組 ${result.correct} / ${result.total}</h2>${result.details.map(d => `<div class="feedback ${d.correct ? "good" : "bad"}"><strong>${d.correct ? "答對了" : `正確答案：${esc(Array.isArray(d.item.answer) ? d.item.answer[0] : d.item.answer)}`}</strong><p>${esc(d.item.explanationZh || d.item.explanation?.zhHant || "請對照答案線索。")}</p>${!d.correct && d.item.distractorRationales?.[d.response] ? `<p>為什麼不是這個答案：${esc(d.item.distractorRationales[d.response])}</p>` : ""}<p><em>線索：</em> ${esc(d.item.evidence || "—")}</p></div>`).join("")}${set.skill === "listening" ? transcript(set) : ""}<div class="actions"><button class="button" id="nextButton">下一題組</button><a class="button secondary" href="#/">回主選單</a></div></section>`;
   area.querySelector("#nextButton").addEventListener("click", advanceSession); area.querySelector("#result-title").focus?.(); announce(`本題組答對 ${result.correct} 題，共 ${result.total} 題`);
 }
 function transcript(set) { const segments = set.audio?.segments || []; return `<details class="transcript"><summary>查看逐字稿（AI 生成語音）</summary>${segments.map(s => `<p><strong>${esc(s.speaker)}：</strong>${esc(s.text)}</p>`).join("")}</details>`; }
 function advanceSession() {
   session.completedSets += 1;
   const next = selectSets(bank,{ domain:session.domain, skill:session.skill, progress, count:1 })[0];
-  if (!next) { location.hash = "#/areas"; return; }
+  if (!next) { location.hash = "#/"; return; }
   session.sets = [next]; session.index = 0; session.responses = {}; session.results = [];
   renderQuiz(); window.scrollTo(0,0);
 }
@@ -191,21 +186,21 @@ function renderReview() {
     return { attempt,set,item };
   }).filter(row => row.set && row.item);
   const flagged = new Set(progress.flaggedQuestionIds);
-  app.innerHTML = `<header class="section-header"><div><span class="tag">Review</span><h1>錯題複習</h1><p>只顯示每題最新一次作答仍未答對的項目；重新答對後會自動移出清單。</p></div></header>${wrong.length ? `<section class="review-list">${wrong.slice(0,50).map(({attempt,set,item},index) => `<article class="card review-row"><span class="tag">${esc(DOMAIN_LABELS[attempt.domainKey]?.[0] || "練習")}</span><h2>${esc(set.title)}</h2><p>${esc(item.question)}</p><button class="button secondary" data-redo="${esc(set.id)}" data-index="${index}">再做一次</button></article>`).join("")}</section>` : `<div class="card empty">目前沒有待複習的錯題。完成一些練習後再回來看看。</div>`}${flagged.size ? `<p class="footer-note">另有 ${flagged.size} 個已標記題組。</p>` : ""}<div class="actions page-actions"><a class="button secondary" href="#/areas">四大練習區</a><a class="button ghost" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">Review</span><h1>錯題複習</h1><p>只顯示每題最新一次作答仍未答對的項目；重新答對後會自動移出清單。</p></div></header>${wrong.length ? `<section class="review-list">${wrong.slice(0,50).map(({attempt,set,item},index) => `<article class="card review-row"><span class="tag">${esc(DOMAIN_LABELS[attempt.domainKey]?.[0] || "練習")}</span><h2>${esc(set.title)}</h2><p>${esc(item.question)}</p><button class="button secondary" data-redo="${esc(set.id)}" data-index="${index}">再做一次</button></article>`).join("")}</section>` : `<div class="card empty">目前沒有待複習的錯題。完成一些練習後再回來看看。</div>`}${flagged.size ? `<p class="footer-note">另有 ${flagged.size} 個已標記題組。</p>` : ""}<div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
   app.querySelectorAll("[data-redo]").forEach(button => button.addEventListener("click", () => {
     const set = bank.find(candidate => candidate.id === button.dataset.redo);
     if (set) startSession(set.domain,set.skill,set);
   }));
 }
 function renderSettings() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">Settings</span><h1>設定與資料</h1><p>進度只儲存在目前瀏覽器，不會上傳。</p></div></header><section class="card settings-grid"><div class="setting-row"><strong>匯出練習紀錄</strong><span>下載 JSON 備份，可保留目前的作答紀錄。</span><button class="button secondary" id="exportButton">匯出進度</button></div><div class="setting-row"><strong>清除所有本機紀錄</strong><span>此動作無法復原，請先匯出備份。</span><button class="button danger" id="resetButton">清除進度</button></div></section><div class="actions page-actions"><a class="button secondary" href="#/areas">四大練習區</a><a class="button ghost" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">Settings</span><h1>設定與資料</h1><p>進度只儲存在目前瀏覽器，不會上傳。</p></div></header><section class="card settings-grid"><div class="setting-row"><strong>匯出練習紀錄</strong><span>下載 JSON 備份，可保留目前的作答紀錄。</span><button class="button secondary" id="exportButton">匯出進度</button></div><div class="setting-row"><strong>清除所有本機紀錄</strong><span>此動作無法復原，請先匯出備份。</span><button class="button danger" id="resetButton">清除進度</button></div></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
   app.querySelector("#exportButton").addEventListener("click", () => exportProgress(progress));
   app.querySelector("#resetButton").addEventListener("click", () => { if (confirm("確定要清除這台裝置上的所有練習紀錄嗎？")) { resetProgress(); progress = loadProgress(); announce("已清除本機練習紀錄"); renderSettings(); } });
 }
 function renderAbout() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening 與 Reading 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係，也不使用真實考題。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/areas">四大練習區</a><a class="button ghost" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening 與 Reading 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係，也不使用真實考題。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
 }
-function renderNotFound() { app.innerHTML = `<div class="card empty"><h1>找不到這個頁面</h1><div class="actions"><a class="button" href="#/areas">四大練習區</a><a class="button secondary" href="#/">回主選單</a></div></div>`; }
+function renderNotFound() { app.innerHTML = `<div class="card empty"><h1>找不到這個頁面</h1><div class="actions"><a class="button" href="#/">回主選單</a></div></div>`; }
 
 async function init() {
   updateOnline();

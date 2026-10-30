@@ -47,7 +47,7 @@ async function fillSet(page,set,useAnswers) {
   if (await page.getByText("今日建議").count()) throw new Error("Homepage still shows 今日建議");
   if (await page.getByText(/Target B2|Local|練習區間/).count()) throw new Error("Homepage still shows a removed label");
   if (await page.locator("#topnav a",{hasText:"主選單"}).count() !== 1) throw new Error("Top navigation lacks 主選單");
-  if (await page.locator("#topnav a",{hasText:"四大練習區"}).count() !== 1) throw new Error("Top navigation lacks 四大練習區");
+  if (await page.locator("#topnav a",{hasText:"四大練習區"}).count() !== 0) throw new Error("Top navigation still contains the redundant 四大練習區 link");
 
   await page.getByRole("link", { name: /開始|繼續練習/, exact: true }).first().click();
   await page.getByRole("heading", { name: "職場聽力" }).waitFor();
@@ -78,8 +78,9 @@ async function fillSet(page,set,useAnswers) {
   await page.getByRole("button", { name: "檢查答案" }).click();
   await page.getByRole("heading", { name: /^本題組/ }).waitFor();
   if (!(await page.getByRole("button", { name: "下一題組" }).count())) throw new Error("Feedback lacks 下一題組");
-  if (!(await page.getByRole("link", { name: "換一種類" }).count())) throw new Error("Feedback lacks 換一種類");
-  if (!(await page.getByRole("link", { name: "結束練習" }).count())) throw new Error("Feedback lacks 結束練習");
+  if (!(await page.locator("#feedbackArea").getByRole("link", { name: "回主選單" }).count())) throw new Error("Feedback lacks 回主選單");
+  if (await page.getByText("換一種類", { exact: true }).count()) throw new Error("Feedback still contains 換一種類");
+  if (await page.getByText("結束練習", { exact: true }).count()) throw new Error("Feedback still contains 結束練習");
 
   await page.evaluate(() => { location.hash = "#/review"; });
   await page.getByRole("heading", { name: "錯題複習" }).waitFor();
