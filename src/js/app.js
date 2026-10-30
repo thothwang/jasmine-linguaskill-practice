@@ -81,9 +81,8 @@ function renderQuiz() {
   if (!session?.sets?.length) { location.hash = "#/"; return; }
   const set = session.sets[0];
   app.innerHTML = `<div class="quiz-head"><div class="quiz-meta"><span>練習模式</span><span>第 ${session.completedSets + 1} 題組</span></div></div>
-    <article class="card task-card"><span class="tag">${esc(set.topic || "Practice")}</span><h1>${esc(set.title)}</h1><p class="directions">${esc(set.directions || set.instructions)}</p>${renderStimulus(set)}${set.skill === "listening" ? renderAudio() : ""}<form id="answerForm">${set.items.map((item,i) => renderItem(set,item,i)).join("")}<div class="actions"><button class="button" id="submitButton" type="submit" ${set.skill === "listening" ? "disabled" : ""}>檢查答案</button><button class="button ghost" type="button" id="flagButton">標記題組</button></div></form><div id="feedbackArea"></div></article>`;
+    <article class="card task-card"><span class="tag">${esc(set.topic || "Practice")}</span><h1>${esc(set.title)}</h1><p class="directions">${esc(set.directions || set.instructions)}</p>${renderStimulus(set)}${set.skill === "listening" ? renderAudio() : ""}<form id="answerForm">${set.items.map((item,i) => renderItem(set,item,i)).join("")}<div class="actions"><button class="button" id="submitButton" type="submit" ${set.skill === "listening" ? "disabled" : ""}>檢查答案</button></div></form><div id="feedbackArea"></div></article>`;
   app.querySelector("#answerForm").addEventListener("submit", event => submitSet(event,set));
-  app.querySelector("#flagButton").addEventListener("click", () => toggleFlag(set));
   if (set.skill === "listening") initAudio(set);
 }
 function renderStimulus(set) {
@@ -175,8 +174,6 @@ function advanceSession() {
   session.sets = [next]; session.index = 0; session.responses = {}; session.results = [];
   renderQuiz(); window.scrollTo(0,0);
 }
-function toggleFlag(set) { const id = set.id; const index = progress.flaggedQuestionIds.indexOf(id); if (index >= 0) progress.flaggedQuestionIds.splice(index,1); else progress.flaggedQuestionIds.push(id); saveProgress(progress); announce(index >= 0 ? "已取消標記" : "已標記題組"); }
-
 function renderReview() {
   const latest = new Map();
   progress.attempts.forEach(attempt => latest.set(attempt.questionId,attempt));
@@ -185,8 +182,7 @@ function renderReview() {
     const item = set?.items.find(candidate => `${set.id}-${candidate.id}` === attempt.questionId);
     return { attempt,set,item };
   }).filter(row => row.set && row.item);
-  const flagged = new Set(progress.flaggedQuestionIds);
-  app.innerHTML = `<header class="section-header"><div><span class="tag">Review</span><h1>錯題複習</h1><p>只顯示每題最新一次作答仍未答對的項目；重新答對後會自動移出清單。</p></div></header>${wrong.length ? `<section class="review-list">${wrong.slice(0,50).map(({attempt,set,item},index) => `<article class="card review-row"><span class="tag">${esc(DOMAIN_LABELS[attempt.domainKey]?.[0] || "練習")}</span><h2>${esc(set.title)}</h2><p>${esc(item.question)}</p><button class="button secondary" data-redo="${esc(set.id)}" data-index="${index}">再做一次</button></article>`).join("")}</section>` : `<div class="card empty">目前沒有待複習的錯題。完成一些練習後再回來看看。</div>`}${flagged.size ? `<p class="footer-note">另有 ${flagged.size} 個已標記題組。</p>` : ""}<div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">Review</span><h1>錯題複習</h1><p>只顯示每題最新一次作答仍未答對的項目；重新答對後會自動移出清單。</p></div></header>${wrong.length ? `<section class="review-list">${wrong.slice(0,50).map(({attempt,set,item},index) => `<article class="card review-row"><span class="tag">${esc(DOMAIN_LABELS[attempt.domainKey]?.[0] || "練習")}</span><h2>${esc(set.title)}</h2><p>${esc(item.question)}</p><button class="button secondary" data-redo="${esc(set.id)}" data-index="${index}">再做一次</button></article>`).join("")}</section>` : `<div class="card empty">目前沒有待複習的錯題。完成一些練習後再回來看看。</div>`}<div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
   app.querySelectorAll("[data-redo]").forEach(button => button.addEventListener("click", () => {
     const set = bank.find(candidate => candidate.id === button.dataset.redo);
     if (set) startSession(set.domain,set.skill,set);

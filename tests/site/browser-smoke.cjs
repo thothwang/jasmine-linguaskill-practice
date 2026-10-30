@@ -56,6 +56,7 @@ async function fillSet(page,set,useAnswers) {
   await page.getByRole("button", { name: "開始練習" }).click();
   const audioButton = page.locator("#playButton");
   await audioButton.waitFor();
+  if (await page.getByRole("button", { name: "標記題組" }).count()) throw new Error("Quiz still contains 標記題組");
   if (!(await page.getByText("錄音將播放兩次，中間會短暫停頓。").count())) throw new Error("Listening wording does not promise two plays");
   await audioButton.click();
   await page.waitForFunction(() => document.querySelector("#audioStatus")?.textContent === "準備時間：5 秒", null, { timeout: 3000 });
