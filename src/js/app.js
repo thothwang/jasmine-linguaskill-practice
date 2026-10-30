@@ -64,10 +64,27 @@ function renderSection(key) {
   const [domain,skill] = key.split("-"); const d = DOMAIN_LABELS[key]; const available = bank.filter(s => domainKey(s) === key); const stats = progressSummary(progress.attempts,key);
   const questionCount = available.reduce((sum,set) => sum + set.items.length,0);
   const modeCopy = skill === "listening" ? "每個題組先準備 5 秒，錄音將播放兩次；作答後立即查看解析與逐字稿。" : "每個題組作答後立即查看中文解析、答案線索與閱讀內容。";
+  const officialResource = officialSampleLinks(domain,skill);
   app.innerHTML = `<header class="section-header"><div><span class="tag">${esc(d[1])}</span><h1>${esc(d[0])}</h1><p>${esc(d[2])}</p></div></header>
     <section class="grid stats"><div class="card stat"><strong>${available.length}</strong><span>題組數</span></div><div class="card stat"><strong>${questionCount}</strong><span>題目數</span></div><div class="card stat"><strong>${stats.attempts}</strong><span>已作答</span></div><div class="card stat"><strong>${stats.accuracy}%</strong><span>正確率</span></div></section>
-    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">開始練習</button><a class="button secondary" href="#/">回主選單</a></div></section>`;
+    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">開始練習</button><a class="button secondary" href="#/">回主選單</a></div></section>${officialResource}`;
   app.querySelector("#startPractice").addEventListener("click", () => startSession(domain,skill));
+}
+
+function officialSampleLinks(domain,skill) {
+  const isBusiness = domain === "business";
+  const isListening = skill === "listening";
+  const variant = isBusiness ? "Business" : "General";
+  const module = isListening ? "Listening" : "Reading";
+  const sampleUrl = `https://www.metritests.com/metricatestdelivery_QA/Assessment/Assignment?test=CLS_${variant}_${module}_sample2023`;
+  const answerUrls = {
+    "general-reading": "https://www.cambridgeenglish.org/Images/745728-linguaskill-reading-sample-test-answer-key.pdf",
+    "general-listening": "https://www.cambridgeenglish.org/Images/745730-linguaskill-listening-sample-test-answer-key.pdf",
+    "business-reading": "https://www.cambridgeenglish.org/Images/745731-linguaskill-business-reading-sample-test-answer-key.pdf",
+    "business-listening": "https://www.cambridgeenglish.org/Images/745729-linguaskill-business-listening-sample-test-answer-key.pdf",
+  };
+  const answerUrl = answerUrls[`${domain}-${skill}`];
+  return `<aside class="card official-resource"><span class="tag">Cambridge Official</span><h2>官方${isListening ? "聽力" : "閱讀"}示範題</h2><p>Cambridge 提供的免費示範測驗；會另開官方網站。示範測驗較正式考試短，而且不是自適應測驗。</p><div class="card-actions"><a class="button secondary" href="${sampleUrl}" target="_blank" rel="noopener noreferrer">開啟官方示範題</a><a class="button secondary" href="${answerUrl}" target="_blank" rel="noopener noreferrer">查看官方答案</a></div></aside>`;
 }
 
 function startSession(domain,skill,sourceSet = null) {
@@ -194,7 +211,7 @@ function renderSettings() {
   app.querySelector("#resetButton").addEventListener("click", () => { if (confirm("確定要清除這台裝置上的所有練習紀錄嗎？")) { resetProgress(); progress = loadProgress(); announce("已清除本機練習紀錄"); renderSettings(); } });
 }
 function renderAbout() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening 與 Reading 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係，也不使用真實考題。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening 與 Reading 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係。本站不重製或冒充 Cambridge 真實考題；閱讀區另提供 Cambridge 官方示範測驗與答案的外部連結。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>官方練習材料</h2><p><a href="https://www.cambridgeenglish.org/exams-and-tests/linguaskill/information-about-the-exam/practice-materials/" target="_blank" rel="noopener noreferrer">Cambridge Linguaskill 官方練習材料</a>包含免費的 General 與 Business Reading、Listening 示範測驗、答案及學習影片。官方說明指出 Reading 與 Listening 示範測驗較正式考試短，而且不是自適應測驗。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
 }
 function renderNotFound() { app.innerHTML = `<div class="card empty"><h1>找不到這個頁面</h1><div class="actions"><a class="button" href="#/">回主選單</a></div></div>`; }
 

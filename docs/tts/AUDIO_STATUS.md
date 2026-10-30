@@ -4,7 +4,7 @@ Last updated: 2026-10-31 (Asia/Taipei)
 
 ## Current bank coverage
 
-- Question bank: 93 task sets / 416 scored responses.
+- Question bank: 136 task sets / 631 scored responses.
 - Listening task sets requiring audio: 47.
 - Generated and source-matched audio: 47 task sets.
 - Pending generation: 0.

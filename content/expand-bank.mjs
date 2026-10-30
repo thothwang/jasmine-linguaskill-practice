@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const bankPath = new URL("./questions.json", import.meta.url);
+const readingPlusPath = new URL("./reading-plus-cases.json", import.meta.url);
 
 const BL = [
   ["bl-expand-001","B2","visitor management","New visitor passes","an office manager explaining a visitor procedure",[
@@ -409,13 +410,12 @@ function makeReadingCase(data, index) {
   }
 
   if (mode === 1) {
-    const gaps = [
-      ["Although","Because","Unless"],
-      ["As a result","In contrast","For example"],
-      ["because","despite","whereas"],
-      ["After","Without","Beside"],
-      ["that","what","than"],
+    const gapVariants = [
+      [["Although","Because","Unless"],["As a result","In contrast","For example"],["because","despite","whereas"],["After","Without","Beside"],["that","what","than"]],
+      [["While","If","Until"],["Consequently","Nevertheless","Similarly"],["since","despite","unless"],["Following","Across","Without"],["how","whether","than"]],
+      [["Even though","As if","So that"],["For that reason","On the contrary","In addition"],["as","although","whereas"],["At the end of","Instead of","Prior to"],["that","which","what"]],
     ];
+    const gaps = gapVariants[Math.floor(index / 3) % gapVariants.length];
     const text = `${situation} {{1}} ${lower(assumption)}, ${lower(evidence)}. {{2}}, ${lower(action)}. The response was selected {{3}} ${clean(reason)}. The team documented both benefits and difficulties, including the fact that ${lower(challenge)}. The researchers also asked participants to separate direct observations from predictions about what might happen later. This distinction mattered because an enthusiastic comment was not necessarily evidence of a lasting improvement. {{4}} the trial period, ${lower(result)}. Before publishing the summary, the team checked whether less positive experiences had been represented fairly. The organisers stressed {{5}} ${clean(lesson)}. They published the limits of their evidence instead of claiming that one local trial supplied a universal answer.`;
     return {
       ...base,
@@ -453,13 +453,16 @@ function makeReadingCase(data, index) {
 }
 
 const bank = JSON.parse(await readFile(bankPath, "utf8"));
+const readingPlus = JSON.parse(await readFile(readingPlusPath, "utf8"));
 bank.sets = bank.sets.filter((set) => !/-expand-/.test(set.id));
 const additions = [];
 
 BL.forEach((data, index) => additions.push(makeSet(data, "listening", index)));
 GL.forEach((data, index) => additions.push(makeSet(data, "listening", index)));
-BR_CASES.forEach((data, index) => additions.push(makeReadingCase(data, index)));
-GR_CASES.forEach((data, index) => additions.push(makeReadingCase(data, index)));
+const allBusinessReading = [...BR_CASES, ...readingPlus.business];
+const allGeneralReading = [...GR_CASES, ...readingPlus.general];
+allBusinessReading.forEach((data, index) => additions.push(makeReadingCase(data, index)));
+allGeneralReading.forEach((data, index) => additions.push(makeReadingCase(data, index)));
 
 const existing = new Set(bank.sets.map((set) => set.id));
 for (const set of additions) {
@@ -468,7 +471,7 @@ for (const set of additions) {
     existing.add(set.id);
   }
 }
-bank.contentVersion = "2026-10-31.4";
+bank.contentVersion = "2026-10-31.5";
 await writeFile(bankPath, `${JSON.stringify(bank, null, 2)}\n`, "utf8");
 
 const counts = {};

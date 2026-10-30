@@ -75,14 +75,16 @@ The bank was subsequently expanded without removing or rewriting any of the orig
 | Domain | Scored responses |
 |---|---:|
 | Business Listening | 104 |
-| Business Reading | 109 |
+| Business Reading | 219 |
 | General Listening | 100 |
-| General Reading | 103 |
-| **Total** | **416** |
+| General Reading | 208 |
+| **Total** | **631** |
 
-The expanded bank has 93 task sets. All 61 added sets contain five scored responses. New Listening sets use exactly two TTS identities (a narrator and one content speaker), include complete authoritative transcripts, and retain the two-play rule. New questions rotate the correct option position rather than systematically placing the key under one label.
+The expanded bank has 136 task sets. All 104 added sets contain five scored responses. New Listening sets use exactly two TTS identities (a narrator and one content speaker), include complete authoritative transcripts, and retain the two-play rule. New questions rotate the correct option position rather than systematically placing the key under one label.
 
-The 31 added Reading sets were independently authored and do not reuse a paired Listening topic, script, or answer fact. Their stimuli are natural articles, notices, or four-part texts of 160–280 words. They test paraphrase, purpose, implication, evidence evaluation, and cross-text location rather than copying a visible bullet. The added Reading mix is 11 extended multiple-choice sets, 10 five-gap cloze sets, and 10 multiple-text matching sets.
+The 74 added Reading sets were independently authored and do not reuse a paired Listening topic, script, or answer fact. Their stimuli are natural articles, notices, or four-part texts of 160–280 words. They test paraphrase, purpose, implication, evidence evaluation, and cross-text location rather than copying a visible bullet. The added Reading mix is 26 extended multiple-choice sets, 24 five-gap cloze sets, and 24 multiple-text matching sets.
+
+The task mix was checked against Cambridge's current official Linguaskill and Linguaskill Business sample tests and answer keys. No Cambridge passage, option, answer, or recording is copied into the bank. The website instead links learners to the official free sample tests and answer keys in a separate browser tab.
 
 Exact scored-response counts by task family across the complete bank:
 
@@ -97,12 +99,12 @@ Exact scored-response counts by task family across the complete bank:
 | reading_one_question_mc | 2 |
 | reading_one_question_gap_mc | 1 |
 | reading_two_question_mc | 4 |
-| reading_five_question_mc | 60 |
-| reading_five_question_gap_mc | 60 |
+| reading_five_question_mc | 135 |
+| reading_five_question_gap_mc | 130 |
 | reading_open_gap | 10 |
 | reading_missing_sentence | 10 |
 | reading_missing_paragraph | 5 |
-| reading_multiple_text_matching | 60 |
+| reading_multiple_text_matching | 130 |
 
 Across the complete bank, every schema-supported Listening and Reading family remains represented.
 
@@ -110,7 +112,7 @@ Across the complete bank, every schema-supported Listening and Reading family re
 
 Post-expansion automated checks confirmed:
 
-- 93 unique set IDs and 416 unique set/item pairs;
+- 136 unique set IDs and 631 unique set/item pairs;
 - at least 100 scored responses in every domain;
 - valid answer references and complete distractor diagnostics;
 - no completion answer above its declared one-to-three-word ceiling;
