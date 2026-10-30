@@ -6,6 +6,7 @@ const live = document.querySelector("#liveRegion");
 const menuButton = document.querySelector("#menuButton");
 const nav = document.querySelector("#topnav");
 const offlineBanner = document.querySelector("#offlineBanner");
+const LISTENING_PREP_SECONDS = 5;
 let bank = [], progress = loadProgress(), session = null, audioState = null, timer = null;
 
 const MESSAGES = [
@@ -96,7 +97,7 @@ function renderStimulus(set) {
   const extras = Array.isArray(set.stimulus.removed) ? `<ol>${set.stimulus.removed.map(x => `<li>${esc(x.text ?? x)}</li>`).join("")}</ol>` : "";
   return `<section class="stimulus" aria-label="閱讀材料">${esc(set.stimulus.text || "")}${extras}</section>`;
 }
-function renderAudio(set) { return `<section class="audio-box" aria-label="聽力播放器"><span class="audio-status" id="audioStatus">準備時間：${set.prepSeconds || 10} 秒</span><button class="button" id="playButton" type="button" disabled>播放錄音</button><span id="playCount">可播放 ${set.maxPlays || 2} 次</span><audio id="audioElement" preload="metadata"></audio></section>`; }
+function renderAudio(set) { return `<section class="audio-box" aria-label="聽力播放器"><span class="audio-status" id="audioStatus">準備時間：${LISTENING_PREP_SECONDS} 秒</span><button class="button" id="playButton" type="button" disabled>播放錄音</button><span id="playCount">可播放 ${set.maxPlays || 2} 次</span><audio id="audioElement" preload="metadata"></audio></section>`; }
 function renderItem(set,item,i) {
   const name = `answer-${item.id}`;
   const choices = choicesForItem(set,item);
@@ -109,10 +110,18 @@ function initAudio(set) {
   const status = app.querySelector("#audioStatus"), button = app.querySelector("#playButton"), element = app.querySelector("#audioElement"), count = app.querySelector("#playCount");
   const asset = set.audio?.asset || set.audio?.src; const max = set.maxPlays || 2;
   audioState = { plays: 0, max, ready: false };
-  let remaining = Math.max(0,set.prepSeconds || 10);
-  const ready = () => { audioState.ready = true; button.disabled = false; status.textContent = "準備完成，按下播放後請專心聆聽。"; clearInterval(timer); };
-  if (!remaining) ready(); else timer = setInterval(() => { remaining--; status.textContent = `準備時間：${remaining} 秒`; if (remaining <= 0) ready(); },1000);
-  if (asset) element.src = `./${String(asset).replace(/^\.\//,"")}`; else { button.disabled = true; status.textContent = "此題音檔尚未完成。"; }
+  if (asset) {
+    element.src = `./${String(asset).replace(/^\.\//,"")}`;
+    let remaining = LISTENING_PREP_SECONDS;
+    timer = setInterval(() => {
+      remaining -= 1;
+      status.textContent = `準備時間：${remaining} 秒`;
+      if (remaining <= 0) {
+        clearInterval(timer); timer = null; audioState.ready = true; button.disabled = false;
+        status.textContent = "準備完成，按下播放後請專心聆聽。";
+      }
+    }, 1000);
+  } else { button.disabled = true; status.textContent = "此題音檔尚未完成。"; }
   button.addEventListener("click", async () => { if (!audioState.ready || audioState.plays >= max) return; audioState.plays++; count.textContent = `已播放 ${audioState.plays} / ${max} 次`; button.disabled = true; status.textContent = "播放中…"; try { await element.play(); } catch { audioState.plays = Math.max(0,audioState.plays - 1); count.textContent = `已播放 ${audioState.plays} / ${max} 次`; status.textContent = "音檔暫時無法播放，請檢查網路後重試。"; button.disabled = audioState.plays >= max; } });
   element.addEventListener("ended", () => { status.textContent = "錄音播放完畢。"; button.disabled = audioState.plays >= max; });
   element.addEventListener("error", () => { status.textContent = "音檔尚未下載或暫時無法播放。"; button.disabled = audioState.plays >= max; });

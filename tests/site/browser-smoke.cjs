@@ -17,6 +17,21 @@ const { resolve } = require("node:path");
   await page.getByRole("heading", { name: "Listen closely. Read confidently." }).waitFor();
   const cards = await page.locator(".domain-card").count();
   if (cards !== 4) throw new Error(`Expected four domain cards, found ${cards}`);
+  await page.getByRole("link", { name: "開始", exact: true }).first().click();
+  await page.getByRole("heading", { name: "職場聽力" }).waitFor();
+  await page.getByRole("button", { name: "開始 5 題組" }).click();
+  const playButton = page.getByRole("button", { name: "播放錄音" });
+  await playButton.waitFor();
+  if (!(await playButton.isDisabled())) throw new Error("Listening play button should wait for the five-second preparation period");
+  const audioStatus = await page.locator("#audioStatus").textContent();
+  if (audioStatus !== "準備時間：5 秒") throw new Error(`Expected a five-second countdown, found ${audioStatus}`);
+  const audioSource = await page.locator("#audioElement").getAttribute("src");
+  if (!audioSource?.endsWith(".mp3")) throw new Error(`Expected a linked MP3 source, found ${audioSource}`);
+  await page.waitForFunction(() => !document.querySelector("#playButton")?.disabled, null, { timeout: 7000 });
+  if ((await page.locator("#audioStatus").textContent()) !== "準備完成，按下播放後請專心聆聽。") {
+    throw new Error("Listening player did not become ready after five seconds");
+  }
+  await page.goto(target, { waitUntil: "networkidle" });
   await page.getByRole("link", { name: "開始", exact: true }).nth(1).click();
   await page.getByRole("heading", { name: "職場閱讀" }).waitFor();
   await page.getByRole("button", { name: "開始 5 題組" }).click();
