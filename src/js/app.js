@@ -282,8 +282,8 @@ function renderCurrentVocabularyCard() {
       <section class="vocab-answer" id="vocabAnswer" ${vocabularySession.revealed ? "" : "hidden"}>${current.definitionEn ? `<div><span>English</span><p>${esc(current.definitionEn)}</p></div>` : ""}<div id="chineseMeaning" ${vocabularySession.usedChinese ? "" : "hidden"}><span>中文提示</span><p>${esc(current.definitionZh || "此詞暫無中文解釋。")}</p></div></section>
       <div class="vocab-reveal-actions" id="vocabRevealActions">${vocabularySession.revealed ? `<button class="button secondary" id="toggleChinese" type="button">${vocabularySession.usedChinese ? "已顯示中文" : "需要中文提示"}</button>` : `<button class="button" id="revealMeaning" type="button">看英文解釋</button>`}</div>
     </article>
-    <div class="vocab-grade-actions" id="vocabGradeActions" ${vocabularySession.revealed ? "" : "hidden"}><button class="button danger" id="forgotWord" type="button">← 忘記了</button><button class="button remember" id="rememberWord" type="button">記得 →</button></div>
-    <p class="swipe-hint">顯示解釋後，可向左滑「忘記了」、向右滑「記得」；也可以直接按按鈕。</p>`;
+    <div class="vocab-grade-actions" id="vocabGradeActions"><button class="button danger" id="forgotWord" type="button">← 忘記了</button><button class="button remember" id="rememberWord" type="button">記得 →</button></div>
+    <p class="swipe-hint">看到單字就可以向左滑「忘記了」、向右滑「記得」；英文與中文解釋可自由選擇是否查看。</p>`;
   app.querySelector("#speakWord").addEventListener("click", () => speakVocabularyWord(current.word));
   app.querySelector("#revealMeaning")?.addEventListener("click", () => { vocabularySession.revealed = true; renderCurrentVocabularyCard(); announce("已顯示英文解釋"); });
   app.querySelector("#toggleChinese")?.addEventListener("click", () => {
@@ -318,14 +318,13 @@ function initVocabularySwipe(card) {
     if (startX === null) return;
     const dx = event.clientX - startX, dy = event.clientY - startY; startX = startY = null;
     if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    if (!vocabularySession.revealed) { announce("請先查看英文解釋，再判斷記得或忘記"); return; }
     gradeVocabulary(dx > 0);
   });
 }
 
 function gradeVocabulary(remembered) {
   const current = vocabularySession.cards[vocabularySession.index];
-  if (!current || !vocabularySession.revealed) return;
+  if (!current) return;
   vocabularyProgress = applyVocabularyReview(vocabularyProgress,current.id,remembered,{usedChinese:vocabularySession.usedChinese});
   saveVocabularyProgress(vocabularyProgress);
   if (remembered) vocabularySession.remembered += 1; else vocabularySession.forgotten += 1;
