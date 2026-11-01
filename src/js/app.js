@@ -330,7 +330,7 @@ function gradeVocabulary(remembered) {
   saveVocabularyProgress(vocabularyProgress);
   if (remembered) vocabularySession.remembered += 1; else vocabularySession.forgotten += 1;
   vocabularySession.index += 1; vocabularySession.revealed = false; vocabularySession.usedChinese = false;
-  announce(remembered ? "已記錄為記得" : "已記錄為忘記了；稍後會再出現");
+  announce(remembered ? "已記錄為記得；若在忘記單字中，現在已移除" : "已加入忘記單字");
   renderCurrentVocabularyCard(); window.scrollTo({top:0,behavior:"instant"});
 }
 
