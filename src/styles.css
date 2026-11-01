@@ -101,6 +101,14 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .vocab-overview div { display: grid; gap: .1rem; }
 .vocab-overview strong { font-size: clamp(1.25rem,5vw,1.8rem); }
 .vocab-overview span,.vocab-mini-stats { color: var(--muted); font-size: .8rem; }
+.vocab-forgotten-card { display: grid; grid-template-columns: auto 1fr; gap: .8rem 1rem; align-items: center; margin-bottom: 1rem; border-color: #edc1bd; background: linear-gradient(135deg,#fff8f6,#fff); }
+.forgotten-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; color: #8b2929; background: #ffe4df; font-size: 1.7rem; font-weight: 800; }
+.vocab-forgotten-card h2 { margin-top: .3rem; }
+.vocab-forgotten-card p { margin-top: .25rem; }
+.forgotten-count { display: grid; align-content: center; }
+.forgotten-count strong { color: var(--bad); font-size: 1.8rem; line-height: 1; }
+.forgotten-count span { color: var(--muted); font-size: .78rem; }
+.vocab-forgotten-card > .button { justify-self: end; }
 .vocab-deck-grid { grid-template-columns: 1fr; }
 .vocab-deck-card { display: grid; gap: .7rem; min-height: 250px; }
 .vocab-mini-stats { display: flex; flex-wrap: wrap; gap: .45rem; }
@@ -141,6 +149,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .domain-grid { grid-template-columns: repeat(2,1fr); }
   .vocab-deck-grid { grid-template-columns: repeat(2,1fr); }
   .vocab-search-form { grid-template-columns: 180px 1fr auto; align-items: end; }
+  .vocab-forgotten-card { grid-template-columns: auto 1fr auto auto; }
   .stats { grid-template-columns: repeat(4,1fr); }
   .icon-button { display: none; }
   .speak-button { display: inline-grid; }

@@ -12,7 +12,7 @@ export function normaliseVocabulary(raw) {
 }
 
 export function cardIsDue(record, now = Date.now()) {
-  return Boolean(record?.dueAt) && new Date(record.dueAt).getTime() <= Number(now);
+  return record?.lastResult !== "forgotten" && Boolean(record?.dueAt) && new Date(record.dueAt).getTime() <= Number(now);
 }
 
 export function vocabularySummary(cards, progress, domain, now = Date.now()) {
@@ -21,18 +21,20 @@ export function vocabularySummary(cards, progress, domain, now = Date.now()) {
   const reviewed = eligible.filter(card => records[card.id]?.reps > 0).length;
   const mastered = eligible.filter(card => records[card.id]?.step >= 4).length;
   const due = eligible.filter(card => cardIsDue(records[card.id], now)).length;
-  return { total: eligible.length, reviewed, mastered, due };
+  const forgotten = eligible.filter(card => records[card.id]?.lastResult === "forgotten").length;
+  return { total: eligible.length, reviewed, mastered, due, forgotten };
 }
 
 export function selectVocabularyCards(cards, { domain, mode = "sprint", progress, now = Date.now(), query = "" }) {
   const records = progress?.cards || {};
   const normalizedQuery = query.trim().toLocaleLowerCase("en");
-  let eligible = cards.filter(card => card.domains.includes(domain));
+  let eligible = mode === "forgotten" ? cards.filter(card => records[card.id]?.lastResult === "forgotten") : cards.filter(card => card.domains.includes(domain));
   if (mode === "sprint") eligible = eligible.filter(card => card.sprint && card.level !== "Foundation");
   else if (mode === "due") eligible = eligible.filter(card => cardIsDue(records[card.id], now));
   if (normalizedQuery) eligible = eligible.filter(card => card.word.toLocaleLowerCase("en").includes(normalizedQuery));
   return [...eligible].sort((left, right) => {
     const leftRecord = records[left.id], rightRecord = records[right.id];
+    if (mode === "forgotten") return (rightRecord?.lastReviewedAt || "").localeCompare(leftRecord?.lastReviewedAt || "") || left.word.localeCompare(right.word);
     const leftDue = cardIsDue(leftRecord, now) ? 0 : leftRecord?.reps ? 2 : 1;
     const rightDue = cardIsDue(rightRecord, now) ? 0 : rightRecord?.reps ? 2 : 1;
     return leftDue - rightDue || (leftRecord?.dueAt || "").localeCompare(rightRecord?.dueAt || "") || left.rank - right.rank || left.word.localeCompare(right.word);
@@ -45,10 +47,11 @@ export function applyVocabularyReview(progress, cardId, remembered, { usedChines
   let step;
   let dueAt;
   if (!remembered) {
-    step = 0;
-    dueAt = new Date(Number(now) + 10 * 60 * 1000).toISOString();
+    step = -1;
+    dueAt = null;
   } else {
-    step = Math.min(Math.max(0, previous.step + 1), INTERVAL_DAYS.length - 1);
+    const previousStep = previous.lastResult === "forgotten" ? -1 : previous.step;
+    step = Math.min(Math.max(0, previousStep + 1), INTERVAL_DAYS.length - 1);
     const interval = usedChinese ? Math.min(1, INTERVAL_DAYS[step]) : INTERVAL_DAYS[step];
     dueAt = new Date(Number(now) + interval * DAY).toISOString();
   }

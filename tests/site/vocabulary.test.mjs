@@ -17,8 +17,15 @@ assert.equal(cardIsDue(progress.cards.allocate,now + 86400000),true);
 
 progress = applyVocabularyReview(progress,"allocate",false,{now:now + 1000});
 assert.equal(progress.cards.allocate.lapses,1);
+assert.equal(progress.cards.allocate.step,-1);
+assert.equal(progress.cards.allocate.dueAt,null);
+assert.equal(cardIsDue(progress.cards.allocate,now + 86400000),false);
+assert.deepEqual(selectVocabularyCards(cards,{domain:"all",mode:"forgotten",progress,now}).map(card => card.id),["allocate"]);
+
+progress = applyVocabularyReview(progress,"allocate",true,{now:now + 2000});
+assert.equal(progress.cards.allocate.lastResult,"remembered");
 assert.equal(progress.cards.allocate.step,0);
-assert.equal(cardIsDue(progress.cards.allocate,now + 11 * 60000),true);
+assert.deepEqual(selectVocabularyCards(cards,{domain:"all",mode:"forgotten",progress,now}).map(card => card.id),[]);
 
 const hinted = applyVocabularyReview({schemaVersion:1,cards:{allocate:{step:4,reps:5,lapses:0}}},"allocate",true,{usedChinese:true,now});
 assert.equal(Date.parse(hinted.cards.allocate.dueAt),now + 86400000);
@@ -27,6 +34,6 @@ const businessSprint = selectVocabularyCards(cards,{domain:"business",mode:"spri
 assert.deepEqual(businessSprint.map(card => card.id),["allocate"]);
 const generalFull = selectVocabularyCards(cards,{domain:"general",mode:"full",progress:{cards:{}},now});
 assert.deepEqual(generalFull.map(card => card.id),["journey","simple"]);
-assert.deepEqual(vocabularySummary(cards,progress,"business",now + 11 * 60000),{total:1,reviewed:1,mastered:0,due:1});
+assert.deepEqual(vocabularySummary(cards,progress,"business",now + 86400000 + 2000),{total:1,reviewed:1,mastered:0,due:1,forgotten:0});
 
 console.log("Vocabulary logic tests passed.");

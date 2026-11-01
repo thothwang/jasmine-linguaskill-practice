@@ -231,6 +231,7 @@ async function renderVocabularyHome() {
   const sprintCount = vocabulary.cards.filter(card => card.sprint && card.level !== "Foundation").length;
   app.innerHTML = `<header class="section-header"><div><span class="tag">Vocabulary</span><h1>單字複習</h1><p>依職場與生活情境練習；「考前衝刺」集中在 B2、B2+ 與 C1，不會從太簡單的字開始。</p></div></header>
     <section class="vocab-overview card"><div><strong>${vocabulary.cards.length.toLocaleString("en")}</strong><span>完整字庫</span></div><div><strong>${sprintCount.toLocaleString("en")}</strong><span>考前衝刺</span></div><div><strong>${overall.due}</strong><span>目前到期</span></div></section>
+    <section class="card vocab-forgotten-card"><span class="forgotten-icon" aria-hidden="true">↺</span><div><span class="tag">Review</span><h2>忘記單字</h2><p>按過「忘記了」的單字會立即出現在這裡；之後選擇「記得」就會自動移除。</p></div><div class="forgotten-count"><strong>${overall.forgotten}</strong><span>個待複習</span></div><button class="button${overall.forgotten ? "" : " secondary"}" data-vocab-start data-domain="all" data-mode="forgotten" ${overall.forgotten ? "" : "disabled"}>${overall.forgotten ? "開始複習" : "目前沒有忘記的單字"}</button></section>
     <section class="grid vocab-deck-grid" aria-label="單字類別">
       ${vocabularyDeckCard("business","職場單字","Business Vocabulary","會議、專案、財務、人資與商務溝通常見語彙。",business)}
       ${vocabularyDeckCard("general","實用單字","General Vocabulary","學習、旅行、科技、服務與日常生活常見語彙。",general)}
@@ -257,8 +258,8 @@ function vocabularyDeckCard(domain,title,english,description,stats) {
 async function renderVocabularyStudy(params) {
   try { await loadVocabulary(); }
   catch (error) { app.innerHTML = `<div class="card empty"><h1>暫時無法載入單字庫</h1><p>${esc(error.message)}</p><a class="button" href="#/vocabulary">回單字選單</a></div>`; return; }
-  const domain = params.get("domain") === "business" ? "business" : "general";
-  const mode = ["sprint","full","due"].includes(params.get("mode")) ? params.get("mode") : "sprint";
+  const mode = ["sprint","full","due","forgotten"].includes(params.get("mode")) ? params.get("mode") : "sprint";
+  const domain = mode === "forgotten" ? "all" : (params.get("domain") === "business" ? "business" : "general");
   const query = params.get("q") || "";
   const key = `${domain}:${mode}:${query}`;
   if (!vocabularySession || vocabularySession.key !== key) {
@@ -271,8 +272,8 @@ function renderCurrentVocabularyCard() {
   const current = vocabularySession?.cards[vocabularySession.index];
   if (!current) return renderVocabularyComplete();
   const total = vocabularySession.cards.length;
-  const modeLabel = vocabularySession.query ? `搜尋「${vocabularySession.query}」` : ({sprint:"考前衝刺",full:"完整字庫",due:"到期複習"}[vocabularySession.mode]);
-  const domainLabel = vocabularySession.domain === "business" ? "職場單字" : "實用單字";
+  const modeLabel = vocabularySession.query ? `搜尋「${vocabularySession.query}」` : ({sprint:"考前衝刺",full:"完整字庫",due:"到期複習",forgotten:"忘記單字複習"}[vocabularySession.mode]);
+  const domainLabel = vocabularySession.domain === "all" ? "全部單字" : (vocabularySession.domain === "business" ? "職場單字" : "實用單字");
   app.innerHTML = `<div class="vocab-study-head"><a class="back-link" href="#/vocabulary">← 回單字選單</a><span>${domainLabel} · ${modeLabel}</span><strong>${vocabularySession.index + 1} / ${total}</strong></div>
     <div class="progress-track" aria-label="複習進度"><span style="width:${Math.round((vocabularySession.index / total) * 100)}%"></span></div>
     <article class="vocab-card" id="vocabCard" tabindex="0" aria-label="單字卡：${esc(current.word)}">
@@ -336,7 +337,7 @@ function gradeVocabulary(remembered) {
 function renderVocabularyComplete() {
   const session = vocabularySession;
   const attempted = session.remembered + session.forgotten;
-  app.innerHTML = `<section class="card vocab-complete"><span class="tag">Session complete</span><h1>${session.query ? "搜尋結果複習完成" : "這一輪完成了"}</h1><p>這次看了 ${attempted} 個字：記得 ${session.remembered}，忘記 ${session.forgotten}。忘記或查看中文提示的字，會更早排回複習。</p><div class="card-actions"><a class="button" href="#/vocabulary">回單字選單</a><button class="button secondary" id="restartVocabulary">再練一次</button></div></section>`;
+  app.innerHTML = `<section class="card vocab-complete"><span class="tag">Session complete</span><h1>${session.query ? "搜尋結果複習完成" : "這一輪完成了"}</h1><p>這次看了 ${attempted} 個字：記得 ${session.remembered}，忘記 ${session.forgotten}。選擇「忘記了」會保留在忘記單字區；之後選擇「記得」就會移除。</p><div class="card-actions"><a class="button" href="#/vocabulary">回單字選單</a><button class="button secondary" id="restartVocabulary">再練一次</button></div></section>`;
   app.querySelector("#restartVocabulary").addEventListener("click", () => { vocabularySession = null; const {domain,mode,query} = session; location.hash = `#/vocabulary/study?domain=${domain}&mode=${mode}${query ? `&q=${encodeURIComponent(query)}` : ""}`; route(); });
 }
 
