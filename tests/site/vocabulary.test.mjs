@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { applyVocabularyReview, cardIsDue, normaliseVocabulary, selectVocabularyCards, vocabularySummary } from "../../src/js/vocabulary.js";
+import { applyVocabularyReview, cardIsDue, normaliseVocabulary, selectVocabularyCards, shuffleVocabularyCards, vocabularySummary } from "../../src/js/vocabulary.js";
 
 const now = Date.parse("2026-11-01T00:00:00Z");
 const cards = normaliseVocabulary({cards:[
@@ -33,6 +33,9 @@ assert.equal(Date.parse(hinted.cards.allocate.dueAt),now + 86400000);
 const businessSprint = selectVocabularyCards(cards,{domain:"business",mode:"sprint",progress:{cards:{}},now});
 assert.deepEqual(businessSprint.map(card => card.id),["allocate"]);
 const generalFull = selectVocabularyCards(cards,{domain:"general",mode:"full",progress:{cards:{}},now});
+assert.deepEqual(generalFull.map(card => card.id),["journey","simple"]);
+const shuffled = shuffleVocabularyCards(generalFull,() => 0);
+assert.deepEqual(shuffled.map(card => card.id),["simple","journey"]);
 assert.deepEqual(generalFull.map(card => card.id),["journey","simple"]);
 assert.deepEqual(vocabularySummary(cards,progress,"business",now + 86400000 + 2000),{total:1,reviewed:1,mastered:0,due:1,forgotten:0});
 

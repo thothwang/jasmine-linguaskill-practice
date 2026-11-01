@@ -41,6 +41,15 @@ export function selectVocabularyCards(cards, { domain, mode = "sprint", progress
   });
 }
 
+export function shuffleVocabularyCards(cards, random = Math.random) {
+  const shuffled = [...cards];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
 export function applyVocabularyReview(progress, cardId, remembered, { usedChinese = false, now = Date.now() } = {}) {
   const next = { ...progress, cards: { ...(progress?.cards || {}) } };
   const previous = next.cards[cardId] || { step: -1, reps: 0, lapses: 0 };

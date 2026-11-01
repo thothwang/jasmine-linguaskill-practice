@@ -1,6 +1,6 @@
 import { DOMAIN_LABELS, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem } from "./logic.js";
 import { loadProgress, saveProgress, loadVocabularyProgress, saveVocabularyProgress, resetAllProgress, exportAllProgress, nextMessage } from "./store.js";
-import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, applyVocabularyReview } from "./vocabulary.js";
+import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, shuffleVocabularyCards, applyVocabularyReview } from "./vocabulary.js";
 
 const app = document.querySelector("#app");
 const live = document.querySelector("#liveRegion");
@@ -263,7 +263,9 @@ async function renderVocabularyStudy(params) {
   const query = params.get("q") || "";
   const key = `${domain}:${mode}:${query}`;
   if (!vocabularySession || vocabularySession.key !== key) {
-    vocabularySession = { key,domain,mode,query,cards:selectVocabularyCards(vocabulary.cards,{domain,mode,progress:vocabularyProgress,query}),index:0,revealed:false,usedChinese:false,remembered:0,forgotten:0 };
+    const selected = selectVocabularyCards(vocabulary.cards,{domain,mode,progress:vocabularyProgress,query});
+    const cards = query ? selected : shuffleVocabularyCards(selected);
+    vocabularySession = { key,domain,mode,query,cards,index:0,revealed:false,usedChinese:false,remembered:0,forgotten:0 };
   }
   renderCurrentVocabularyCard();
 }
