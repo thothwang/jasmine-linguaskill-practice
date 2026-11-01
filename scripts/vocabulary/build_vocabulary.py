@@ -33,15 +33,28 @@ def clean_word(value: str) -> str:
     return value.strip().lower().replace("’", "'")
 
 
-def add_word(catalog: dict, word: str, source: str, rank: int) -> None:
+def add_word(
+    catalog: dict,
+    word: str,
+    source: str,
+    rank: int,
+    level: str = "",
+    part_of_speech: str = "",
+) -> None:
     word = clean_word(word)
     if not re.fullmatch(r"[a-z][a-z' -]{1,38}", word):
         return
-    row = catalog.setdefault(word, {"sources": {}, "domains": set()})
+    row = catalog.setdefault(word, {
+        "sources": {}, "domains": set(), "sourceLevels": {}, "sourceParts": {},
+    })
     row["sources"][source] = min(rank, row["sources"].get(source, rank))
+    if level:
+        row["sourceLevels"][source] = level
+    if part_of_speech:
+        row["sourceParts"][source] = part_of_speech
     if source == "bsl":
         row["domains"].add("business")
-    elif source in {"ngsl", "supplementary"}:
+    elif source in {"ngsl", "supplementary", "efllex"}:
         row["domains"].add("general")
     else:
         row["domains"].update(("business", "general"))
@@ -63,6 +76,14 @@ def load_lists() -> dict:
         for rank, row in enumerate(csv.reader(handle), start=1):
             if row:
                 add_word(catalog, row[0], "supplementary", rank)
+    efllex = SOURCES / "efllex-curated.csv"
+    if efllex.exists():
+        with efllex.open(encoding="utf-8-sig", newline="") as handle:
+            for rank, row in enumerate(csv.DictReader(handle), start=1):
+                add_word(
+                    catalog, row["word"], "efllex", rank,
+                    row["cefr_level"], row["part_of_speech"],
+                )
     return catalog
 
 
@@ -198,6 +219,8 @@ def template_examples(word: str, pos: str, domains: set[str]) -> list[dict]:
 
 def level_for(row: dict) -> str:
     sources = row["sources"]
+    if "efllex" in sources and len(sources) == 1:
+        return row["sourceLevels"]["efllex"]
     if "supplementary" in sources and len(sources) == 1:
         return "Foundation"
     if "nawl" in sources:
@@ -222,6 +245,8 @@ def rank_for(row: dict) -> int:
         scores.append(1400 + row["sources"]["ngsl"])
     if "supplementary" in row["sources"]:
         scores.append(9000 + row["sources"]["supplementary"])
+    if "efllex" in row["sources"]:
+        scores.append(6500 + row["sources"]["efllex"])
     return min(scores)
 
 
@@ -238,16 +263,21 @@ def main() -> None:
             missing_dictionary.append(word)
             continue
         domains = row["domains"] or {"general"}
+        sources = row["sources"]
+        part_of_speech = (
+            row["sourceParts"].get("efllex")
+            if "efllex" in sources and len(sources) == 1
+            else info.get("partOfSpeech", "word")
+        )
         examples = natural_examples.get(word, [])
         natural_count += len(examples)
         if len(examples) < 3:
             existing = {example["text"] for example in examples}
-            for example in template_examples(word, info.get("partOfSpeech", "word"), domains):
+            for example in template_examples(word, part_of_speech, domains):
                 if example["text"] not in existing:
                     examples.append(example)
                 if len(examples) == 3:
                     break
-        sources = row["sources"]
         sprint = (
             ("bsl" in sources and sources["bsl"] <= 450)
             or ("nawl" in sources and sources["nawl"] <= 150)
@@ -256,7 +286,7 @@ def main() -> None:
         cards.append({
             "id": re.sub(r"[^a-z0-9]+", "-", word).strip("-"),
             "word": word,
-            "partOfSpeech": info.get("partOfSpeech", "word"),
+            "partOfSpeech": part_of_speech,
             "phonetic": info.get("phonetic", ""),
             "definitionEn": info.get("definitionEn", ""),
             "definitionZh": info.get("definitionZh", ""),

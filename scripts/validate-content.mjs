@@ -12,7 +12,7 @@ const setIds = new Set();
 const questionIds = new Set();
 const domains = new Set(["business", "general"]);
 const skills = new Set(["listening", "reading"]);
-const levels = new Set(["B2", "B2+", "C1"]);
+const levels = new Set(["B1", "B2", "B2+", "C1"]);
 const responseTypes = new Set(["single_choice", "short_text", "gap_text", "matching"]);
 
 if (bank.schemaVersion !== "1.0.0") errors.push("Unsupported schemaVersion");
