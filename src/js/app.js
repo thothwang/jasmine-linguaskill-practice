@@ -278,16 +278,15 @@ function renderCurrentVocabularyCard() {
   const domainLabel = vocabularySession.domain === "all" ? "全部單字" : (vocabularySession.domain === "business" ? "職場單字" : "實用單字");
   app.innerHTML = `<div class="vocab-study-head"><a class="back-link" href="#/vocabulary">← 回單字選單</a><span>${domainLabel} · ${modeLabel}</span><strong>${vocabularySession.index + 1} / ${total}</strong></div>
     <div class="progress-track" aria-label="複習進度"><span style="width:${Math.round((vocabularySession.index / total) * 100)}%"></span></div>
-    <article class="vocab-card" id="vocabCard" tabindex="0" aria-label="單字卡：${esc(current.word)}">
-      <div class="vocab-card-top"><div><span class="tag">${esc(current.level)}</span><span class="vocab-pos">${esc(current.partOfSpeech)}</span></div><button class="icon-button speak-button" id="speakWord" type="button" aria-label="播放 ${esc(current.word)} 發音">🔊</button></div>
+    <article class="vocab-card" id="vocabCard" aria-label="單字卡：${esc(current.word)}">
+      <div class="vocab-card-top"><div><span class="tag">${esc(current.level)}</span><span class="vocab-pos">${esc(current.partOfSpeech)}</span></div><button class="button secondary speak-button" id="speakWord" type="button" aria-label="播放 ${esc(current.word)} 發音"><span aria-hidden="true">🔊</span> 發音</button></div>
       <h1>${esc(current.word)}</h1>${current.phonetic ? `<p class="vocab-phonetic">/${esc(current.phonetic)}/</p>` : ""}
       <section class="vocab-examples" aria-label="例句"><h2>Examples</h2><ol>${current.examples.map(example => `<li><span>${highlightVocabularyWord(example.text,current.word)}</span>${example.sourceId ? `<a class="example-source" href="https://tatoeba.org/en/sentences/show/${encodeURIComponent(example.sourceId)}" target="_blank" rel="noopener noreferrer" aria-label="Tatoeba 例句來源">Tatoeba${example.sourceUser && example.sourceUser !== "\\N" ? ` · ${esc(example.sourceUser)}` : ""}</a>` : ""}</li>`).join("")}</ol></section>
       <section class="vocab-answer" id="vocabAnswer" ${vocabularySession.revealed ? "" : "hidden"}>${current.definitionEn ? `<div><span>English</span><p>${esc(current.definitionEn)}</p></div>` : ""}<div id="chineseMeaning" ${vocabularySession.usedChinese ? "" : "hidden"}><span>中文提示</span><p>${esc(current.definitionZh || "此詞暫無中文解釋。")}</p></div></section>
       <div class="vocab-reveal-actions" id="vocabRevealActions">${vocabularySession.revealed ? `<button class="button secondary" id="toggleChinese" type="button">${vocabularySession.usedChinese ? "已顯示中文" : "需要中文提示"}</button>` : `<button class="button" id="revealMeaning" type="button">看英文解釋</button>`}</div>
     </article>
-    <div class="vocab-grade-actions" id="vocabGradeActions"><button class="button danger" id="forgotWord" type="button">← 忘記了</button><button class="button remember" id="rememberWord" type="button">記得 →</button></div>
-    <p class="swipe-hint">看到單字就可以向左滑「忘記了」、向右滑「記得」；英文與中文解釋可自由選擇是否查看。</p>`;
-  app.querySelector("#speakWord").addEventListener("click", () => speakVocabularyWord(current.word));
+    <div class="vocab-grade-actions" id="vocabGradeActions"><button class="button danger" id="forgotWord" type="button">忘記了</button><button class="button remember" id="rememberWord" type="button">記得</button></div>`;
+  app.querySelector("#speakWord").addEventListener("click", event => speakVocabularyWord(current.word,event.currentTarget));
   app.querySelector("#revealMeaning")?.addEventListener("click", () => { vocabularySession.revealed = true; renderCurrentVocabularyCard(); announce("已顯示英文解釋"); });
   app.querySelector("#toggleChinese")?.addEventListener("click", () => {
     vocabularySession.usedChinese = true;
@@ -298,7 +297,6 @@ function renderCurrentVocabularyCard() {
   });
   app.querySelector("#forgotWord")?.addEventListener("click", () => gradeVocabulary(false));
   app.querySelector("#rememberWord")?.addEventListener("click", () => gradeVocabulary(true));
-  initVocabularySwipe(app.querySelector("#vocabCard"));
 }
 
 function highlightVocabularyWord(sentence,word) {
@@ -306,23 +304,21 @@ function highlightVocabularyWord(sentence,word) {
   return esc(sentence).replace(pattern,"<mark>$1</mark>");
 }
 
-function speakVocabularyWord(word) {
-  if (!("speechSynthesis" in window)) { announce("這個瀏覽器不支援發音功能"); return; }
-  window.speechSynthesis.cancel();
+function speakVocabularyWord(word,button) {
+  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+    announce("這個瀏覽器不支援發音功能");
+    return;
+  }
+  const synthesis = window.speechSynthesis;
+  synthesis.cancel();
+  synthesis.resume();
   const utterance = new SpeechSynthesisUtterance(word);
   utterance.lang = "en-GB"; utterance.rate = .82;
-  window.speechSynthesis.speak(utterance);
-}
-
-function initVocabularySwipe(card) {
-  let startX = null, startY = null;
-  card.addEventListener("pointerdown", event => { startX = event.clientX; startY = event.clientY; card.setPointerCapture?.(event.pointerId); });
-  card.addEventListener("pointerup", event => {
-    if (startX === null) return;
-    const dx = event.clientX - startX, dy = event.clientY - startY; startX = startY = null;
-    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    gradeVocabulary(dx > 0);
-  });
+  const resetButton = () => { if (button?.isConnected) button.innerHTML = '<span aria-hidden="true">🔊</span> 發音'; };
+  utterance.onstart = () => { if (button?.isConnected) button.textContent = "播放中…"; announce(`正在播放 ${word}`); };
+  utterance.onend = resetButton;
+  utterance.onerror = event => { resetButton(); announce(event.error === "canceled" ? "已停止發音" : "目前無法播放發音，請再試一次"); };
+  synthesis.speak(utterance);
 }
 
 function gradeVocabulary(remembered) {

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { applyVocabularyReview, cardIsDue, normaliseVocabulary, selectVocabularyCards, shuffleVocabularyCards, vocabularySummary } from "../../src/js/vocabulary.js";
 
 const now = Date.parse("2026-11-01T00:00:00Z");
@@ -38,5 +39,13 @@ const shuffled = shuffleVocabularyCards(generalFull,() => 0);
 assert.deepEqual(shuffled.map(card => card.id),["simple","journey"]);
 assert.deepEqual(generalFull.map(card => card.id),["journey","simple"]);
 assert.deepEqual(vocabularySummary(cards,progress,"business",now + 86400000 + 2000),{total:1,reviewed:1,mastered:0,due:1,forgotten:0});
+
+const appSource = await readFile(new URL("../../src/js/app.js",import.meta.url),"utf8");
+const styleSource = await readFile(new URL("../../src/styles.css",import.meta.url),"utf8");
+assert.doesNotMatch(appSource,/initVocabularySwipe|setPointerCapture|pointerdown|pointerup/);
+assert.doesNotMatch(appSource,/向左滑|向右滑|swipe-hint/);
+assert.match(appSource,/id="forgotWord" type="button">忘記了<\/button>/);
+assert.match(appSource,/id="rememberWord" type="button">記得<\/button>/);
+assert.match(styleSource,/-webkit-user-select:\s*text/);
 
 console.log("Vocabulary logic tests passed.");

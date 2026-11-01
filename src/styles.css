@@ -120,13 +120,13 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .vocab-study-head { display: grid; grid-template-columns: 1fr auto; gap: .25rem .75rem; align-items: center; margin-bottom: .7rem; color: var(--muted); font-size: .85rem; }
 .vocab-study-head .back-link { grid-column: 1 / -1; width: max-content; text-decoration: none; font-weight: 750; }
 .vocab-study-head strong { color: var(--ink); }
-.vocab-card { position: relative; min-height: 510px; margin-top: .8rem; padding: clamp(1.1rem,5vw,2rem); border: 1px solid var(--line); border-radius: 26px; background: radial-gradient(circle at 95% 5%,rgba(243,165,63,.13),transparent 26%),white; box-shadow: var(--shadow); touch-action: pan-y; }
+.vocab-card { position: relative; min-height: 510px; margin-top: .8rem; padding: clamp(1.1rem,5vw,2rem); border: 1px solid var(--line); border-radius: 26px; background: radial-gradient(circle at 95% 5%,rgba(243,165,63,.13),transparent 26%),white; box-shadow: var(--shadow); user-select: text; -webkit-user-select: text; }
 .vocab-card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .vocab-card-top > div { display: flex; align-items: center; gap: .55rem; }
 .vocab-pos { color: var(--muted); font-size: .82rem; }
 .vocab-card h1 { margin: .55rem 0 0; font: 700 clamp(2.6rem,12vw,5rem)/1.02 Georgia,"Times New Roman",serif; letter-spacing: -.04em; overflow-wrap: anywhere; }
 .vocab-phonetic { margin: .35rem 0 1.1rem; color: var(--brand); font-size: 1.05rem; }
-.speak-button { display: inline-grid; place-items: center; flex: 0 0 auto; }
+.speak-button { display: inline-flex; align-items: center; justify-content: center; gap: .35rem; flex: 0 0 auto; }
 .vocab-examples { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .vocab-examples h2 { margin: 0; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
 .vocab-examples ol { margin: .65rem 0 0; padding-left: 1.35rem; }
@@ -140,7 +140,6 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .vocab-grade-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; position: sticky; bottom: max(.7rem,env(safe-area-inset-bottom)); z-index: 5; }
 .vocab-grade-actions .button { min-height: 52px; box-shadow: 0 8px 20px rgba(19,47,58,.15); }
 .button.remember { background: var(--good); }
-.swipe-hint { margin: .75rem auto 0; max-width: 38rem; color: var(--muted); text-align: center; font-size: .78rem; }
 .vocab-complete { display: grid; gap: .8rem; max-width: 650px; margin: 2rem auto; text-align: center; }
 .vocab-complete .tag { margin: 0 auto; }
 .vocab-complete .card-actions { justify-content: center; }
@@ -152,7 +151,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .vocab-forgotten-card { grid-template-columns: auto 1fr auto auto; }
   .stats { grid-template-columns: repeat(4,1fr); }
   .icon-button { display: none; }
-  .speak-button { display: inline-grid; }
+  .speak-button { display: inline-flex; }
   .topnav { display: flex; position: static; width: auto; padding: 0; border: 0; box-shadow: none; background: transparent; }
   .topnav a { padding: .55rem .7rem; }
   main { padding-top: 1.75rem; }
