@@ -377,35 +377,229 @@ function readingChoice(id, question, correct, wrongOne, wrongTwo, evidence, offs
   return choiceItem([question, evidence, correct, wrongOne, wrongTwo], offset, Number(id.slice(1)) - 1);
 }
 
+const READING_DEPTH_NOTES = [
+  ({ title, topic }) => `The ${title.toLowerCase()} review concerned ${topic}, but the team deliberately kept its claim narrow. In this ${topic} case, records were dated, comments were checked against observations, and disagreements were retained so that the final account would not describe only the most favourable experience.`,
+  ({ title }) => `For ${title.toLowerCase()}, the organisers agreed in advance what would count as a useful result. The ${title.toLowerCase()} record also includes unexpected effects, since a change can solve one problem while creating another that is less visible in an overall average.`,
+  ({ title, topic }) => `Because the case involved ${topic}, several groups were affected in different ways. The ${title.toLowerCase()} report therefore distinguishes direct measurements from personal preferences and explains which conclusions depend on the particular setting in which the trial took place.`,
+  ({ title }) => `The account of ${title.toLowerCase()} draws on a limited review period. Its ${title.toLowerCase()} timeline includes the original plan, observations made during delivery and a later comparison, allowing readers to see where interpretation begins rather than treating every comment as equivalent evidence.`,
+  ({ title, topic }) => `The ${topic} project was not evaluated only by the people who designed it. Participants in ${title.toLowerCase()} were invited to identify disadvantages, and the final record preserves points on which the group did not reach agreement.`,
+  ({ title }) => `Before the ${title.toLowerCase()} decision was confirmed, the team checked whether the apparent improvement could have another explanation. That ${title.toLowerCase()} check did not remove every uncertainty, but it made the recommendation more precise and easier to test later.`,
+  ({ title, topic }) => `In this ${topic} case, success was defined before the trial began. The ${title.toLowerCase()} organisers compared the final evidence with that definition instead of selecting whichever result made the change appear most successful.`,
+  ({ title }) => `People reviewing ${title.toLowerCase()} were asked to separate what they had observed from what they hoped would happen in future. In the ${title.toLowerCase()} report, this distinction reduced the risk that enthusiasm for the idea would be mistaken for proof of a lasting effect.`,
+  ({ title, topic }) => `The evidence in the ${topic} review comes from one local context. For ${title.toLowerCase()}, its value lies in showing why a decision was made and what happened next, not in promising that another group will obtain an identical result.`,
+  ({ title }) => `A short follow-up to ${title.toLowerCase()} was scheduled before the report closed. The ${title.toLowerCase()} follow-up was intended to show whether early difficulties reflected the design itself or simply the time people needed to adjust to a new process.`,
+  ({ title, topic }) => `The ${topic} evaluation includes both the intended outcome and the effort required to achieve it. In ${title.toLowerCase()}, this helps decision-makers judge whether an improvement is large enough to justify the practical cost of introducing the change.`,
+  ({ title }) => `The final note on ${title.toLowerCase()} does not present disagreement as failure. In the ${title.toLowerCase()} case, contrasting experiences show which part of the conclusion is strongly supported and which part still requires a longer test.`,
+  ({ title, topic }) => `Readers of the ${topic} report are given enough context to judge the limits of the evidence. For ${title.toLowerCase()}, the organisers describe the setting, the period observed and the main constraint before recommending any wider application.`,
+];
+
+function addReadingDepth(text, style, values) {
+  const note = READING_DEPTH_NOTES[style % READING_DEPTH_NOTES.length](values);
+  let result = `${text}\n\n${note}`;
+  if (result.trim().split(/\s+/).length < 160) {
+    result += ` Further evidence about ${values.title.toLowerCase()} will be collected so that the ${values.topic} conclusion can be checked over a longer period.`;
+  }
+  return result;
+}
+
+function addMatchingDepth(texts, style, values) {
+  const note = READING_DEPTH_NOTES[style % READING_DEPTH_NOTES.length](values);
+  const target = style % texts.length;
+  let result = texts.map((entry, index) => index === target ? { ...entry, text: `${entry.text} ${note}` } : entry);
+  if (result.flatMap(entry => entry.text.trim().split(/\s+/)).length < 160) {
+    result = result.map((entry, index) => index === target ? { ...entry, text: `${entry.text} Further evidence about ${values.title.toLowerCase()} will be collected so that the ${values.topic} conclusion can be checked over a longer period.` } : entry);
+  }
+  return result;
+}
+
+function buildMcItems(style, values, setIndex) {
+  const { title, assumption, evidence, action, reason, challenge, result, lesson, lower } = values;
+  const candidates = [
+    [`What is the main purpose of the account of ${title}?`,
+      `to explain how evidence changed the approach to ${title.toLowerCase()}`,
+      `to advertise ${title.toLowerCase()} as a solution for every organisation`,
+      `to argue that collecting evidence delays useful action`,
+      `${evidence} ${action}`],
+    [`In the account “${title}”, what role does the early evidence play?`,
+      "It weakens an explanation that had initially seemed convincing.",
+      "It proves that the proposed response will work in every setting.",
+      "It shows that the practical difficulty was caused by participants.",
+      evidence],
+    [`What can be inferred about the response tested in “${title}”?`,
+      "It was intended as a testable step, not an irreversible final decision.",
+      "It was chosen mainly because it required no additional effort.",
+      "It repeated the arrangement that had already produced the problem.",
+      `${action} ${reason}`],
+    [`Why does the writer include the implementation problem in “${title}”?`,
+      "to acknowledge that the reported benefit came with a practical limitation",
+      "to suggest that the entire trial should be treated as invalid",
+      "to blame one individual for the outcome of the project",
+      challenge],
+    [`Which interpretation of the result in “${title}” is best supported?`,
+      "The trial produced useful local evidence, although some questions remain open.",
+      "The result guarantees that the same method will succeed elsewhere.",
+      "The outcome was based entirely on participants' predictions.",
+      result],
+    [`How does the final lesson in “${title}” relate to the trial?`,
+      "It turns a local finding into cautious guidance without claiming universal proof.",
+      "It rejects the measured result in favour of the original assumption.",
+      "It focuses on a difficulty that the trial did not actually encounter.",
+      lesson],
+    [`Which description best matches the writer's attitude in “${title}”?`,
+      "positive about the evidence but careful about its limits",
+      "certain that the project offers a complete answer",
+      "uninterested in whether the change produced a measurable result",
+      `${result} ${lesson}`],
+    [`What does the account “${title}” suggest about the organisers?`,
+      "They were prepared to revise their view when observations contradicted it.",
+      "They protected their first explanation by ignoring inconvenient information.",
+      "They valued a quick decision more than a reversible experiment.",
+      `${assumption} ${evidence}`],
+    [`In “${title}”, which statement best distinguishes the action from the conclusion?`,
+      "The action tested a practical response; the conclusion drew a broader principle from the result.",
+      "The action simply repeated the initial belief; the conclusion ignored the evidence.",
+      "The action measured no outcome; the conclusion focused only on the obstacle.",
+      `${action} ${lesson}`],
+  ];
+  const order = Array.from({ length: candidates.length }, (_, offset) => (style * 2 + offset * 5) % candidates.length);
+  const selected = order.slice(0, 5);
+  return selected.map((candidateIndex, itemIndex) => {
+    const [question, correct, wrongOne, wrongTwo, clue] = candidates[candidateIndex];
+    return readingChoice(`q${itemIndex + 1}`, question, correct, wrongOne, wrongTwo, clue, setIndex);
+  });
+}
+
+function buildMcArticle(style, values) {
+  const { situation, assumption, evidence, action, reason, challenge, result, lesson, lower, clean, upper } = values;
+  const articles = [
+    () => `Case study: testing an assumption\n\n${situation} ${assumption} Yet the first review produced an awkward finding. ${evidence}\n\nThe group did not move directly from concern to permanent policy. ${action} The choice had a practical basis: ${lower(reason)}. During the trial, ${lower(challenge)}. That complication was logged rather than treated as a reason to abandon the work.\n\nThe closing review found that ${lower(result)}. The organisers compared this outcome with their original expectation and with comments from the people affected. Their final lesson was that ${lower(lesson)}. They recommended another evidence check before the approach was transferred elsewhere.`,
+    () => `Internal evaluation memo\n\nIssue under review\n${situation}\n\nInitial position\n${assumption}\n\nEvidence received\n${evidence} This evidence mattered because it described what was actually happening, not what the team expected to happen.\n\nResponse and constraints\n${action} It was selected because ${lower(reason)} Implementation was not completely smooth: ${lower(challenge)}\n\nDecision note\n${upper(result)}. The review therefore records one main conclusion: ${lower(lesson)} The result supports a next step, but it is not presented as proof that every department or community would obtain the same outcome.`,
+    () => `Interview with the project lead\n\nQ: What prompted the review?\nA: ${situation} ${assumption}\n\nQ: When did that view begin to change?\nA: ${evidence}\n\nQ: What did you do next?\nA: ${action} We chose that route because ${lower(reason)}.\n\nQ: Was the change easy to introduce?\nA: No. ${challenge}\n\nQ: And what did the final evidence show?\nA: ${result}\n\nQ: What should another team take from this?\nA: Our strongest conclusion is that ${lower(lesson)}. But another setting should still test its own assumptions instead of copying our decision automatically.`,
+    () => `A small change with measurable consequences\n\n${situation} ${assumption} The data, however, pointed in a different direction. ${evidence}\n\nRather than debate the issue indefinitely, ${lower(action)}. The experiment was designed this way because ${lower(reason)}. One weakness soon became visible—${lower(challenge)}—so the team documented when and where that problem occurred.\n\nBy the end, ${lower(result)}. That did not settle every question, but it gave the discussion firmer ground. The people running the project now argue that ${lower(lesson)}. Their report distinguishes between the measured result and benefits that supporters merely hoped the change would produce.`,
+    () => `Project diary\n\nWeek 1 — The question\n${situation} ${assumption}\n\nWeek 2 — A surprise\n${evidence} We realised that our explanation rested more on habit than on recent information.\n\nWeeks 3–6 — The trial\n${action} The reasoning was that ${lower(reason)} A difficulty appeared almost immediately: ${lower(challenge)} We kept the trial running but noted the limitation.\n\nFinal week — What changed\n${result} Looking back, the most useful lesson was that ${lower(lesson)} The diary will be reviewed again after a longer period to see whether the improvement lasts.`,
+    () => `Briefing for decision-makers\n\nPurpose: to decide whether an established approach still matched current needs. ${situation}\n\n${assumption} That position became difficult to maintain once the review found that ${lower(evidence)}.\n\nThe recommended test was specific: ${lower(action)}. It offered a reasonable way forward because ${lower(reason)}. The risk log also records that ${lower(challenge)}.\n\nThe trial produced a useful but limited result: ${lower(result)}. On that basis, the briefing recommends treating the following as the guiding principle—${lower(lesson)}—while continuing to collect evidence before a wider rollout.`,
+    () => `Independent observer's note\n\nI joined the project after its members had already agreed on the likely cause of the problem. ${situation} ${assumption} Soon afterwards, though, ${lower(evidence)}.\n\nThe group responded by taking a reversible step. ${action} Their explanation for the choice was that ${lower(reason)}. From an observer's perspective, the main operational weakness was clear: ${lower(challenge)}.\n\nWhen the figures were reviewed, ${lower(result)}. My reading of the evidence is close to the team's own conclusion: ${lower(lesson)}. What deserves praise is not simply the outcome, but the willingness to revise an attractive explanation when the facts did not support it.`,
+    () => `What we changed—and why\n\nThe problem\n${situation}\n\nWhat we used to believe\n${assumption}\n\nWhat users or staff showed us\n${evidence}\n\nOur response\n${action} This was not chosen for novelty. It was chosen because ${lower(reason)}\n\nWhat nearly went wrong\n${challenge}\n\nWhat the trial showed\n${result}\n\nWhat we would tell another organisation\n${upper(lesson)}. Start with the evidence behind the problem, preserve a way to reverse the change, and record disadvantages as carefully as improvements.`,
+    () => `Retrospective: from certainty to evidence\n\n${situation} ${assumption} That confidence faded when ${lower(evidence)}.\n\nThe team then asked what it could test without committing to a permanent redesign. Its answer was to proceed as follows: ${lower(action)}. The idea was defensible because ${lower(reason)}. Even so, ${lower(challenge)}.\n\nAt the retrospective meeting, the most important result was that ${lower(result)}. Participants disagreed about some secondary benefits, so those claims were left out of the final recommendation. What remained was a more cautious lesson: ${lower(lesson)}.`,
+    () => `Consultation summary\n\nWhy people were consulted\n${situation} ${assumption}\n\nWhat respondents added\n${evidence} That contribution changed the focus from defending the existing arrangement to testing an alternative.\n\nWhat was tested\n${action} This option was preferred because ${lower(reason)}. Several respondents warned about implementation, and in practice ${lower(challenge)}.\n\nWhat happens next\n${result} The summary does not claim universal success. It records that ${lower(lesson)}. Further comments will be collected before any longer-term decision.`,
+    () => `Research digest\n\nQuestion: ${situation}\n\nWorking hypothesis: ${assumption}\n\nContrary observation: ${evidence}\n\nMethod: ${action} This method was selected because ${lower(reason)}\n\nLimitation: ${challenge}\n\nFinding: ${result}\n\nInterpretation: ${upper(lesson)}. The finding is useful because it links the intervention to an observed outcome, although the short trial and local conditions prevent a claim that the same effect will occur in every context.`,
+    () => `Email from the review coordinator\n\nSubject: What the trial tells us\n\nThank you to everyone who contributed. ${situation} ${assumption} The evidence submitted during the first week challenged it. ${evidence}\n\nWe therefore agreed that ${lower(action)}. This option made sense because ${lower(reason)}. Please note one problem that affected delivery: ${lower(challenge)}.\n\nThe final comparison shows that ${lower(result)}. My recommendation is based on a narrower but more defensible conclusion: ${lower(lesson)}. The attached action list separates that evidence from suggestions that still need testing.`,
+    () => `A decision in four stages\n\n1 — Define the concern\n${situation}\n\n2 — Test the explanation\n${assumption} It weakened when ${lower(evidence)}.\n\n3 — Try a limited response\n${action} The team selected it because ${lower(reason)}. Delivery revealed a constraint: ${lower(challenge)}.\n\n4 — Compare and learn\n${result} The final record states that ${lower(lesson)}. It also identifies which parts of the process depended on local conditions, so future teams know what must be tested again.`,
+  ];
+  return articles[style % articles.length]();
+}
+
+function buildMatchingTexts(style, values) {
+  const { situation, assumption, evidence, action, reason, challenge, result, lesson, lower, clean, upper } = values;
+  const headingSets = [
+    ["Morgan", "Leila", "Chen", "Priya"], ["Reviewer 1", "Reviewer 2", "Reviewer 3", "Reviewer 4"],
+    ["North team", "East team", "South team", "West team"], ["Alex", "Sam", "Jordan", "Riley"],
+    ["Comment A", "Comment B", "Comment C", "Comment D"], ["Operations", "Users", "Evaluation", "Planning"],
+    ["First account", "Second account", "Third account", "Fourth account"], ["Nadia", "Tomas", "Mei", "Owen"],
+  ];
+  const wrappers = [
+    [
+      `${situation} ${assumption} The idea appeared plausible, so the team wrote it down as a claim to be checked rather than a fact.`,
+      `${evidence} This changed the discussion because the new information described actual experience rather than an expected pattern.`,
+      `${action} The approach was selected because ${lower(reason)} During delivery, ${lower(challenge)} Both the intended effect and this drawback were recorded.`,
+      `${upper(result)}. The organisers concluded that ${lower(lesson)} They recommended retesting the principle before using it in a different setting.`,
+    ],
+    [
+      `${situation} In the first meeting, ${lower(assumption)}. Nobody objected, but the group agreed that confidence was not the same as evidence.`,
+      `The review then produced a fact that did not fit the story: ${lower(evidence)} Attention shifted from defending the old explanation to understanding the new result.`,
+      `A reversible trial followed. ${action} This made sense because ${lower(reason)} One complication was that ${lower(challenge)}`,
+      `At the final meeting, ${lower(result)} The group kept one conclusion for future work: ${lower(lesson)} Other possible benefits were left as questions, not reported as findings.`,
+    ],
+    [
+      `${situation} ${assumption} This working assumption shaped the earliest proposal, although no recent measurement yet supported it.`,
+      `${evidence} Once this information was available, the team could no longer treat its starting view as a sufficient explanation.`,
+      `${action} The reason for this design was that ${lower(reason)} The log also shows that ${lower(challenge)}`,
+      `${result} The report's recommendation is cautious: ${lower(lesson)} Local conditions are listed so that readers can judge whether the finding transfers.`,
+    ],
+    [
+      `The review began with a practical concern. ${situation} ${assumption}`,
+      `A different picture emerged from the first evidence: ${lower(evidence)} The project question was rewritten before any action was approved.`,
+      `${action} It was preferred because ${lower(reason)} Yet implementation exposed a weakness: ${lower(challenge)}`,
+      `${upper(result)}. The clearest learning point was that ${lower(lesson)} The team separated that conclusion from personal impressions in its published note.`,
+    ],
+    [
+      `${situation} ${assumption} The organisers scheduled a short evidence review before committing resources.`,
+      `That review found that ${lower(evidence)} It did not reveal a complete solution, but it showed why the first proposal needed revision.`,
+      `The revised response was specific. ${action} It was justified on the grounds that ${lower(reason)} In practice, ${lower(challenge)}`,
+      `The evaluation found that ${lower(result)} From this, the organisers inferred that ${lower(lesson)} They avoided making claims about outcomes they had not measured.`,
+    ],
+    [
+      `${situation} Asked for an immediate answer, the group offered a simple explanation. ${assumption} It later agreed to test this account.`,
+      `${evidence} That observation mattered because it came from the process itself, not from opinions about how the process ought to work.`,
+      `${action} The group chose this action because ${lower(reason)} The most significant delivery issue was that ${lower(challenge)}`,
+      `${result} The final reflection states that ${lower(lesson)} A follow-up will examine whether the outcome continues over time.`,
+    ],
+    [
+      `${situation} ${assumption} Before approval, a reviewer asked what evidence would disprove that explanation.`,
+      `The answer arrived quickly: ${lower(evidence)} This reality check narrowed the options considered suitable for testing.`,
+      `${action} The limited test was chosen because ${lower(reason)} Its record notes one unexpected burden: ${lower(challenge)}`,
+      `${upper(result)}. The next step is guided by the conclusion that ${lower(lesson)} Any wider rollout will include a new baseline measurement.`,
+    ],
+    [
+      `${situation} ${assumption} The review panel treated this as an initial case, not a settled conclusion.`,
+      `Counter-evidence came from recent experience: ${lower(evidence)} It required the panel to consider a different response.`,
+      `${action} The method was selected because ${lower(reason)} During implementation, ${lower(challenge)} This reduced certainty but did not make the trial unusable.`,
+      `${result} The panel's recommendation is based on one defensible lesson: ${lower(lesson)} It calls for the limits of the evidence to remain visible.`,
+    ],
+  ];
+  const paragraphs = wrappers[style % wrappers.length];
+  const source = [
+    { roles: ["assumption"], text: paragraphs[0] },
+    { roles: ["evidence"], text: paragraphs[1] },
+    { roles: ["reason", "challenge"], text: paragraphs[2] },
+    { roles: ["result", "lesson"], text: paragraphs[3] },
+  ];
+  const permutations = [
+    [2,0,3,1], [1,3,0,2], [3,1,2,0], [0,2,1,3],
+    [2,3,1,0], [1,0,3,2], [3,2,0,1], [0,3,2,1],
+  ];
+  const permutation = permutations[style % permutations.length];
+  const headings = headingSets[style % headingSets.length];
+  const roleMap = {};
+  const texts = permutation.map((sourceIndex, displayIndex) => {
+    const id = String.fromCharCode(65 + displayIndex);
+    source[sourceIndex].roles.forEach((role) => { roleMap[role] = id; });
+    return { id, heading: headings[displayIndex], text: source[sourceIndex].text };
+  });
+  return { texts, roleMap };
+}
+
+const MATCH_PROMPTS = {
+  assumption: ["mentions a belief that was accepted before evidence was gathered", "describes what people expected at the beginning", "identifies the explanation the group first considered likely"],
+  evidence: ["reports an observation that did not fit the initial explanation", "contains information that forced the team to reconsider", "describes the finding that changed the direction of the review"],
+  reason: ["explains why the tested response was considered suitable", "gives the justification for the action that was chosen", "states the reasoning behind the trial design"],
+  challenge: ["mentions a cost or difficulty that appeared during implementation", "describes an obstacle encountered while the response was tested", "acknowledges a practical limitation of the trial"],
+  result: ["reports what changed after the response was introduced", "describes the measured outcome of the trial", "states what the final comparison found"],
+  lesson: ["draws a principle that could guide later decisions", "states the broader lesson taken from the local result", "offers a cautious recommendation for future work"],
+};
+
 function makeReadingCase(data, index) {
   const [id, level, topic, title, situation, assumption, evidence, action, reason, challenge, result, lesson] = data;
   const clean = (value) => value.replace(/[.!?]+$/, "");
   const lower = (value) => clean(value).charAt(0).toLowerCase() + clean(value).slice(1);
   const upper = (value) => clean(value).charAt(0).toUpperCase() + clean(value).slice(1);
   const mode = index % 3;
+  const style = Math.floor(index / 3) + (id.startsWith("gr-") ? 7 : 0);
   const base = {
     id, domain: id.startsWith("br-") ? "business" : "general", skill: "reading", level, topic, title,
     prepSeconds: 0, maxPlays: 0, audio: null,
     strategyTags: ["paraphrase", "purpose", "implication", "evidence"],
     vocabularyTags: [topic, "B2-C1 reading"],
   };
-  const opening = `${situation} ${assumption} ${evidence}`;
-  const middle = `Instead of making a permanent decision immediately, ${lower(action)}. This approach was chosen because ${clean(reason)}. The organisers recorded what happened rather than relying on informal impressions. The change was not effortless: ${lower(challenge)}.`;
-  const ending = `After the trial period, ${lower(result)}. The result did not prove that the same solution would work everywhere, but it provided stronger evidence for the next decision. Before releasing their summary, the organisers invited people affected by the change to challenge their interpretation. Several comments led them to distinguish outcomes that had been measured from benefits that participants merely hoped to see. The organisers concluded that ${clean(lesson)}. They also published the limitations of the trial so that other groups could interpret the outcome cautiously.`;
+  const values = { title, topic, situation, assumption, evidence, action, reason, challenge, result, lesson, clean, lower, upper };
 
   if (mode === 0) {
     return {
       ...base,
       taskType: "reading_five_question_mc",
       directions: "Read the article and answer the five questions.",
-      stimulus: { format: "article", text: `${opening}\n\n${middle}\n\n${ending}` },
-      items: [
-        readingChoice("q1", "What evidence challenged the original expectation?", evidence, assumption, challenge, evidence, index),
-        readingChoice("q2", "Why was the chosen response considered appropriate?", reason, assumption, lesson, reason, index),
-        readingChoice("q3", "What practical difficulty arose?", challenge, evidence, result, challenge, index),
-        readingChoice("q4", "What happened after the trial?", result, challenge, assumption, result, index),
-        readingChoice("q5", "What broader lesson did the organisers draw?", lesson, reason, evidence, lesson, index),
-      ],
+      stimulus: { format: "article", text: addReadingDepth(buildMcArticle(style, values), style, values) },
+      items: buildMcItems(style, values, index),
     };
   }
 
@@ -416,23 +610,93 @@ function makeReadingCase(data, index) {
       [["Even though","As if","So that"],["For that reason","On the contrary","In addition"],["as","although","whereas"],["At the end of","Instead of","Prior to"],["that","which","what"]],
     ];
     const gaps = gapVariants[Math.floor(index / 3) % gapVariants.length];
-    const text = `${situation} {{1}} ${lower(assumption)}, ${lower(evidence)}. {{2}}, ${lower(action)}. The response was selected {{3}} ${clean(reason)}. The team documented both benefits and difficulties, including the fact that ${lower(challenge)}. The researchers also asked participants to separate direct observations from predictions about what might happen later. This distinction mattered because an enthusiastic comment was not necessarily evidence of a lasting improvement. {{4}} the trial period, ${lower(result)}. Before publishing the summary, the team checked whether less positive experiences had been represented fairly. The organisers stressed {{5}} ${clean(lesson)}. They published the limits of their evidence instead of claiming that one local trial supplied a universal answer.`;
+    const frameOpeners = [
+      "Evaluation note", "Lessons from a pilot", "Reviewer's summary", "A change under examination", "Project update", "Evidence brief", "Field report", "Decision log", "What the trial revealed", "A measured response", "Implementation review", "Testing the first explanation", "Follow-up note",
+    ];
+    const bridgeOne = [
+      "The contradiction was important enough to test rather than explain away.",
+      "That contrast shifted attention from opinions to observable behaviour.",
+      "The group therefore replaced a broad debate with a limited experiment.",
+      "This made the original proposal less certain and a reversible trial more useful.",
+      "Instead of defending its first account, the team defined what evidence it needed next.",
+      "The new information did not supply an answer, but it clarified the decision.",
+      "People affected by the issue were invited to comment before the response began.",
+      "The assumption remained possible, but it could no longer be treated as established fact.",
+      "A short test offered a way to compare the competing explanations.",
+      "The organisers agreed to measure an outcome rather than rely on enthusiasm.",
+      "The review panel asked for a trial with a clear end point.",
+      "This evidence changed both the question and the standard for success.",
+      "A baseline was recorded before any practical change was made.",
+    ];
+    const bridgeTwo = [
+      "The difficulty was included in the final evaluation.",
+      "Staff recorded when the problem occurred so that it would not be hidden by the average result.",
+      "This limitation reduced confidence in some claims but did not erase the measured outcome.",
+      "The project log distinguishes this cost from the benefits reported by supporters.",
+      "Organisers adjusted the schedule but did not change the agreed success measure.",
+      "The complication is important because another setting might experience it differently.",
+      "Both positive and negative experiences were retained in the evidence summary.",
+      "The team treated the obstacle as data about implementation, not merely inconvenience.",
+      "A later review will check whether this problem becomes smaller with experience.",
+      "The final report explains how this issue affected the interpretation of results.",
+      "No attempt was made to remove less favourable responses from the comparison.",
+      "The trial continued, but the limitation remained visible in the recommendation.",
+      "Readers can therefore separate the outcome from the effort required to achieve it.",
+    ];
+    const closingChecks = [
+      "The closing review compared this change with the position recorded at the beginning.",
+      "Evaluators checked the figures against both the baseline and the experiences reported by participants.",
+      "The group separated the measured outcome from improvements that supporters only hoped to see.",
+      "Before agreeing its conclusion, the panel looked again at responses that were less positive.",
+      "The final comparison considered the outcome, the implementation cost and the original objective.",
+      "A reviewer who had not managed the project checked whether the evidence supported the claim.",
+      "The summary identifies which result was measured and which possible benefit remains uncertain.",
+      "Participants were invited to question the interpretation before the report was completed.",
+      "The decision record links its recommendation to the evidence collected during the test.",
+      "Results were compared across the full trial rather than only its most successful period.",
+      "The team reviewed unexpected effects before deciding what should happen next.",
+      "The evaluation retained observations that complicated the most favourable interpretation.",
+      "The report explains the standard used to decide whether the change had been worthwhile.",
+    ];
+    const closingLimits = [
+      "It remains a finding from one setting and should be tested again before wider use.",
+      "The recommendation is deliberately narrower than a claim that the method will always work.",
+      "Other groups are advised to examine their own conditions before adopting the same response.",
+      "The evidence supports another step, but not a promise of identical results elsewhere.",
+      "The authors describe a useful direction rather than a universal solution.",
+      "A longer follow-up is still needed to show whether the effect will last.",
+      "The local result is informative, although it does not remove the need for further comparison.",
+      "The report avoids extending its conclusion beyond the people and period actually studied.",
+      "Future trials will need to check whether the same balance of benefits and costs appears.",
+      "The conclusion guides the next decision while leaving room for contrary evidence.",
+      "No claim is made that a different organisation would face the same constraints.",
+      "The organisers present the lesson as testable guidance, not a rule.",
+      "Readers are given the limits of the trial so they can judge how far the result applies.",
+    ];
+    const text = `${frameOpeners[style % frameOpeners.length]}\n\n${situation} {{1}} ${lower(assumption)}, ${lower(evidence)}. ${bridgeOne[style % bridgeOne.length]}\n\n{{2}}, ${lower(action)}. The response was selected {{3}} ${clean(reason)}. During implementation, ${lower(challenge)}. ${bridgeTwo[style % bridgeTwo.length]}\n\n{{4}} the trial period, ${lower(result)}. ${closingChecks[style % closingChecks.length]} They stressed {{5}} ${clean(lesson)}. ${closingLimits[style % closingLimits.length]}`;
     return {
       ...base,
       taskType: "reading_five_question_gap_mc",
       directions: "Choose the word or phrase that best completes each gap.",
-      stimulus: { format: "article", text },
+      stimulus: { format: "article", text: addReadingDepth(text, style, values) },
       items: gaps.map((entry, itemIndex) => readingChoice(`q${itemIndex + 1}`, `Gap ${itemIndex + 1}`, entry[0], entry[1], entry[2], entry[0], index)),
     };
   }
 
-  const texts = [
-    { id: "A", heading: "Starting point", text: `${situation} ${assumption} The proposal looked reasonable because it matched what organisers had previously observed, but they agreed to test it before treating it as fact.` },
-    { id: "B", heading: "New evidence", text: `${evidence} This did not automatically identify a solution, but it changed the question the group needed to answer and prevented them from acting only on their first impression.` },
-    { id: "C", heading: "The trial", text: `${action} The approach was selected because ${clean(reason)}. During implementation, ${lower(challenge)}. The team recorded this difficulty alongside the intended benefits.` },
-    { id: "D", heading: "What followed", text: `${upper(result)}. The organisers concluded that ${clean(lesson)}. They described the finding as useful local evidence, not a guarantee that an identical approach would succeed in every setting.` },
-  ];
+  const builtMatching = buildMatchingTexts(style, values);
+  const texts = addMatchingDepth(builtMatching.texts, style, values);
+  const { roleMap } = builtMatching;
   const sharedOptions = texts.map(({ id: optionId, heading }) => ({ id: optionId, text: heading }));
+  const roleClues = { assumption, evidence, reason, challenge, result, lesson };
+  const roleOrders = [
+    ["challenge","assumption","lesson","evidence","reason"],
+    ["result","reason","evidence","challenge","lesson"],
+    ["evidence","lesson","assumption","result","challenge"],
+    ["reason","challenge","result","assumption","lesson"],
+    ["lesson","evidence","reason","result","assumption"],
+    ["assumption","result","challenge","reason","evidence"],
+  ];
+  const roles = roleOrders[style % roleOrders.length];
   const match = (itemId, question, answer, clue) => ({
     id: itemId, question, responseType: "matching", answer,
     explanationZh: `線索「${clue}」出現在 ${answer} 段，因此應配對該段。`, evidence: clue,
@@ -443,11 +707,12 @@ function makeReadingCase(data, index) {
     directions: "Read the four sections. Match each statement with the section that contains the information.",
     stimulus: { format: "multiple_texts", texts }, sharedOptions,
     items: [
-      match("q1", "This section describes the organisers' first expectation.", "A", assumption),
-      match("q2", "This section explains information that altered the original view.", "B", evidence),
-      match("q3", "This section gives the reason for choosing a particular response.", "C", reason),
-      match("q4", "This section mentions a difficulty during implementation.", "C", challenge),
-      match("q5", "This section states the wider conclusion.", "D", lesson),
+      ...roles.map((role, itemIndex) => match(
+        `q${itemIndex + 1}`,
+        `In “${title}”, which section ${MATCH_PROMPTS[role][style % MATCH_PROMPTS[role].length]}?`,
+        roleMap[role],
+        roleClues[role],
+      )),
     ],
   };
 }
@@ -471,7 +736,7 @@ for (const set of additions) {
     existing.add(set.id);
   }
 }
-bank.contentVersion = "2026-10-31.5";
+bank.contentVersion = "2026-11-01.1";
 await writeFile(bankPath, `${JSON.stringify(bank, null, 2)}\n`, "utf8");
 
 const counts = {};

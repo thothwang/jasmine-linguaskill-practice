@@ -86,6 +86,20 @@ The 74 added Reading sets were independently authored and do not reuse a paired 
 
 The task mix was checked against Cambridge's current official Linguaskill and Linguaskill Business sample tests and answer keys. No Cambridge passage, option, answer, or recording is copied into the bank. The website instead links learners to the official free sample tests and answer keys in a separate browser tab.
 
+### Reading-template correction (2026-11-01)
+
+Learner testing identified that the first expanded Reading release reused three predictable structures. Multiple-text matching repeatedly followed the same rhetorical order, and extended multiple-choice answers copied source wording too closely. The passages were therefore regenerated with varied document forms and question purposes rather than merely changing surface topics.
+
+The corrected bank now enforces these additional checks:
+
+- all 130 prompts in expanded five-question multiple-choice sets are unique;
+- all 120 prompts in expanded multiple-text matching sets are unique;
+- 24 matching sets use 19 answer sequences, with no fixed `ABCCD` sequence;
+- correct multiple-choice options are not verbatim substrings of their passage;
+- no complete sentence of eight or more words appears in five or more expanded Reading sets;
+- no pair of expanded Reading passages exceeds 0.35 four-word-phrase Jaccard similarity;
+- every expanded Reading stimulus remains between 160 and 280 words.
+
 Exact scored-response counts by task family across the complete bank:
 
 | Task family | Responses |

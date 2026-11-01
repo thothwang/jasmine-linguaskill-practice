@@ -51,6 +51,79 @@ for (const set of bank.sets || []) {
   }
 }
 
+const normalise = (value) => String(value ?? "")
+  .toLowerCase()
+  .replace(/\{\{\d+\}\}/g, "gap")
+  .replace(/[^a-z0-9 ]/g, " ")
+  .replace(/\s+/g, " ")
+  .trim();
+const stimulusText = (set) => Array.isArray(set.stimulus?.texts)
+  ? set.stimulus.texts.map(entry => entry.text).join(" ")
+  : set.stimulus?.text || "";
+const expandedReading = (bank.sets || []).filter(set => /-expand-/.test(set.id) && set.skill === "reading");
+const promptOwners = new Map();
+const repeatedSentences = new Map();
+
+for (const set of expandedReading) {
+  const source = stimulusText(set);
+  const words = source.trim().split(/\s+/).filter(Boolean).length;
+  if (words < 160 || words > 280) errors.push(`${set.id}: expanded Reading stimulus must contain 160-280 words (found ${words})`);
+
+  if (["reading_five_question_mc", "reading_multiple_text_matching"].includes(set.taskType)) {
+    for (const item of set.items) {
+      if (promptOwners.has(item.question)) errors.push(`${set.id}/${item.id}: repeats prompt from ${promptOwners.get(item.question)}`);
+      else promptOwners.set(item.question, `${set.id}/${item.id}`);
+    }
+  }
+
+  if (set.taskType === "reading_five_question_mc") {
+    const normalisedSource = normalise(source);
+    for (const item of set.items) {
+      const correct = item.options?.find(option => option.id === item.answer)?.text;
+      if (correct && normalise(correct).length > 12 && normalisedSource.includes(normalise(correct))) {
+        errors.push(`${set.id}/${item.id}: correct option is copied verbatim from the passage`);
+      }
+    }
+  }
+
+  for (const sentence of source.split(/[.!?]\s+/)) {
+    const key = normalise(sentence);
+    if (key.split(" ").length < 8) continue;
+    if (!repeatedSentences.has(key)) repeatedSentences.set(key, new Set());
+    repeatedSentences.get(key).add(set.id);
+  }
+}
+
+for (const [sentence, owners] of repeatedSentences) {
+  if (owners.size >= 5) errors.push(`Expanded Reading sentence repeated in ${owners.size} sets: ${sentence.slice(0, 90)}...`);
+}
+
+const matchingSets = expandedReading.filter(set => set.taskType === "reading_multiple_text_matching");
+const answerPatterns = new Set(matchingSets.map(set => set.items.map(item => item.answer).join("")));
+if (answerPatterns.size < Math.ceil(matchingSets.length / 2)) {
+  errors.push(`Expanded matching tasks use only ${answerPatterns.size} answer patterns across ${matchingSets.length} sets`);
+}
+if (matchingSets.some(set => set.items.map(item => item.answer).join("") === "ABCCD")) {
+  errors.push("Expanded matching task still uses the predictable ABCCD answer sequence");
+}
+
+const ngrams = (value, size = 4) => {
+  const words = normalise(value).split(" ");
+  const result = new Set();
+  for (let index = 0; index <= words.length - size; index += 1) result.add(words.slice(index, index + size).join(" "));
+  return result;
+};
+for (let leftIndex = 0; leftIndex < expandedReading.length; leftIndex += 1) {
+  for (let rightIndex = leftIndex + 1; rightIndex < expandedReading.length; rightIndex += 1) {
+    const left = ngrams(stimulusText(expandedReading[leftIndex]));
+    const right = ngrams(stimulusText(expandedReading[rightIndex]));
+    let overlap = 0;
+    for (const gram of left) if (right.has(gram)) overlap += 1;
+    const similarity = overlap / (left.size + right.size - overlap);
+    if (similarity > 0.35) errors.push(`${expandedReading[leftIndex].id}/${expandedReading[rightIndex].id}: Reading passages too similar (${similarity.toFixed(3)})`);
+  }
+}
+
 const manifestPath = resolve(root, "scripts", "tts", "question-audio.manifest.json");
 try {
   await access(manifestPath, constants.R_OK);
