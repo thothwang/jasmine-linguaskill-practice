@@ -227,9 +227,10 @@ async function renderVocabularyHome() {
   catch (error) { app.innerHTML = `<div class="card empty"><h1>暫時無法載入單字庫</h1><p>${esc(error.message)}</p><button class="button" id="retryVocabulary">重新載入</button></div>`; app.querySelector("#retryVocabulary")?.addEventListener("click",renderVocabularyHome); return; }
   const business = vocabularySummary(vocabulary.cards,vocabularyProgress,"business");
   const general = vocabularySummary(vocabulary.cards,vocabularyProgress,"general");
+  const overall = vocabularySummary(vocabulary.cards,vocabularyProgress);
   const sprintCount = vocabulary.cards.filter(card => card.sprint && card.level !== "Foundation").length;
   app.innerHTML = `<header class="section-header"><div><span class="tag">Vocabulary</span><h1>單字複習</h1><p>依職場與生活情境練習；「考前衝刺」集中在 B2、B2+ 與 C1，不會從太簡單的字開始。</p></div></header>
-    <section class="vocab-overview card"><div><strong>${vocabulary.cards.length.toLocaleString("en")}</strong><span>完整字庫</span></div><div><strong>${sprintCount.toLocaleString("en")}</strong><span>考前衝刺</span></div><div><strong>${business.due + general.due}</strong><span>目前到期</span></div></section>
+    <section class="vocab-overview card"><div><strong>${vocabulary.cards.length.toLocaleString("en")}</strong><span>完整字庫</span></div><div><strong>${sprintCount.toLocaleString("en")}</strong><span>考前衝刺</span></div><div><strong>${overall.due}</strong><span>目前到期</span></div></section>
     <section class="grid vocab-deck-grid" aria-label="單字類別">
       ${vocabularyDeckCard("business","職場單字","Business Vocabulary","會議、專案、財務、人資與商務溝通常見語彙。",business)}
       ${vocabularyDeckCard("general","實用單字","General Vocabulary","學習、旅行、科技、服務與日常生活常見語彙。",general)}
