@@ -1,5 +1,6 @@
 const KEY = "jlp.progress.v1";
 const MESSAGE_KEY = "jlp.messageDeck.v1";
+const VOCABULARY_KEY = "jlp.vocabulary.v1";
 
 function defaults() { return { schemaVersion: 1, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), attempts: [], flaggedQuestionIds: [], disclosureSeen: false }; }
 export function loadProgress() {
@@ -15,8 +16,25 @@ export function saveProgress(progress) {
   localStorage.setItem(KEY, JSON.stringify(progress));
 }
 export function resetProgress() { localStorage.removeItem(KEY); localStorage.removeItem(MESSAGE_KEY); }
+export function loadVocabularyProgress() {
+  const empty = { schemaVersion: 1, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), cards: {} };
+  try {
+    const value = JSON.parse(localStorage.getItem(VOCABULARY_KEY));
+    return value?.schemaVersion === 1 && value.cards && typeof value.cards === "object" ? { ...empty, ...value } : empty;
+  } catch { return empty; }
+}
+export function saveVocabularyProgress(progress) {
+  progress.updatedAt = new Date().toISOString();
+  localStorage.setItem(VOCABULARY_KEY, JSON.stringify(progress));
+}
+export function resetAllProgress() { resetProgress(); localStorage.removeItem(VOCABULARY_KEY); }
 export function exportProgress(progress) {
   const blob = new Blob([JSON.stringify(progress, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob); const link = document.createElement("a");
+  link.href = url; link.download = `jasmine-practice-progress-${new Date().toISOString().slice(0,10)}.json`; link.click(); URL.revokeObjectURL(url);
+}
+export function exportAllProgress(progress, vocabulary) {
+  const blob = new Blob([JSON.stringify({ exportedAt:new Date().toISOString(), practice:progress, vocabulary }, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob); const link = document.createElement("a");
   link.href = url; link.download = `jasmine-practice-progress-${new Date().toISOString().slice(0,10)}.json`; link.click(); URL.revokeObjectURL(url);
 }

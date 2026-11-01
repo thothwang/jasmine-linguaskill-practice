@@ -1,5 +1,6 @@
 import { DOMAIN_LABELS, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem } from "./logic.js";
-import { loadProgress, saveProgress, resetProgress, exportProgress, nextMessage } from "./store.js";
+import { loadProgress, saveProgress, loadVocabularyProgress, saveVocabularyProgress, resetAllProgress, exportAllProgress, nextMessage } from "./store.js";
+import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, applyVocabularyReview } from "./vocabulary.js";
 
 const app = document.querySelector("#app");
 const live = document.querySelector("#liveRegion");
@@ -8,6 +9,7 @@ const nav = document.querySelector("#topnav");
 const offlineBanner = document.querySelector("#offlineBanner");
 const LISTENING_PREP_SECONDS = 5;
 let bank = [], progress = loadProgress(), session = null, audioState = null, timer = null;
+let vocabulary = null, vocabularyProgress = loadVocabularyProgress(), vocabularySession = null;
 
 const MESSAGES = [
   { id:"b1", phase:"business", text:"Jasmine，今天的每一題，都讓你更熟悉考試節奏。" },
@@ -39,15 +41,28 @@ async function loadBank() {
 
 function route() {
   clearInterval(timer); timer = null; audioState = null;
+  window.speechSynthesis?.cancel?.();
   const { path, params } = parseHash();
   if (path === "/" || path === "/areas") renderHome();
   else if (path === "/section") renderSection(params.get("key"));
   else if (path === "/quiz") renderQuiz();
   else if (path === "/review") renderReview();
+  else if (path === "/vocabulary") void renderVocabularyHome();
+  else if (path === "/vocabulary/study") void renderVocabularyStudy(params);
   else if (path === "/settings") renderSettings();
   else if (path === "/about") renderAbout();
   else renderNotFound();
   app.focus(); window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+async function loadVocabulary() {
+  if (vocabulary) return vocabulary;
+  app.innerHTML = `<p class="loading">載入 5,000+ 單字庫中…</p>`;
+  const response = await fetch("./content/vocabulary.json");
+  if (!response.ok) throw new Error(`單字庫載入失敗 (${response.status})`);
+  const raw = await response.json();
+  vocabulary = { cards:normaliseVocabulary(raw), metadata:raw.metadata || {} };
+  return vocabulary;
 }
 
 function renderHome() {
@@ -205,13 +220,133 @@ function renderReview() {
     if (set) startSession(set.domain,set.skill,set);
   }));
 }
+
+async function renderVocabularyHome() {
+  vocabularySession = null;
+  try { await loadVocabulary(); }
+  catch (error) { app.innerHTML = `<div class="card empty"><h1>暫時無法載入單字庫</h1><p>${esc(error.message)}</p><button class="button" id="retryVocabulary">重新載入</button></div>`; app.querySelector("#retryVocabulary")?.addEventListener("click",renderVocabularyHome); return; }
+  const business = vocabularySummary(vocabulary.cards,vocabularyProgress,"business");
+  const general = vocabularySummary(vocabulary.cards,vocabularyProgress,"general");
+  const sprintCount = vocabulary.cards.filter(card => card.sprint && card.level !== "Foundation").length;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">Vocabulary</span><h1>單字複習</h1><p>依職場與生活情境練習；「考前衝刺」集中在 B2、B2+ 與 C1，不會從太簡單的字開始。</p></div></header>
+    <section class="vocab-overview card"><div><strong>${vocabulary.cards.length.toLocaleString("en")}</strong><span>完整字庫</span></div><div><strong>${sprintCount.toLocaleString("en")}</strong><span>考前衝刺</span></div><div><strong>${business.due + general.due}</strong><span>目前到期</span></div></section>
+    <section class="grid vocab-deck-grid" aria-label="單字類別">
+      ${vocabularyDeckCard("business","職場單字","Business Vocabulary","會議、專案、財務、人資與商務溝通常見語彙。",business)}
+      ${vocabularyDeckCard("general","實用單字","General Vocabulary","學習、旅行、科技、服務與日常生活常見語彙。",general)}
+    </section>
+    <section class="card vocab-search"><h2>查一個字</h2><p>可直接從 5,000+ 字庫中搜尋，並從搜尋結果開始複習。</p><form id="vocabSearchForm" class="vocab-search-form"><label><span>情境</span><select id="vocabSearchDomain"><option value="general">實用英語</option><option value="business">職場英語</option></select></label><label><span>英文單字</span><input id="vocabSearchInput" type="search" autocomplete="off" minlength="2" required placeholder="例如 negotiate"></label><button class="button" type="submit">搜尋並開始</button></form></section>
+    <p class="footer-note">這是獨立、非官方的學習字庫，不是 Cambridge 公布的 Linguaskill 必考字表。進度只儲存在這台裝置。</p>`;
+  app.querySelectorAll("[data-vocab-start]").forEach(button => button.addEventListener("click", () => {
+    const { domain,mode } = button.dataset;
+    location.hash = `#/vocabulary/study?domain=${domain}&mode=${mode}`;
+  }));
+  app.querySelector("#vocabSearchForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const domain = app.querySelector("#vocabSearchDomain").value;
+    const query = app.querySelector("#vocabSearchInput").value.trim();
+    location.hash = `#/vocabulary/study?domain=${domain}&mode=full&q=${encodeURIComponent(query)}`;
+  });
+}
+
+function vocabularyDeckCard(domain,title,english,description,stats) {
+  const available = vocabulary.cards.filter(card => card.domains.includes(domain)).length;
+  return `<article class="card vocab-deck-card"><span class="domain-icon" aria-hidden="true">${domain === "business" ? "▦" : "◎"}</span><div><h2>${title}</h2><p>${english}</p></div><p>${description}</p><div class="vocab-mini-stats"><span>${available.toLocaleString("en")} 字</span><span>已複習 ${stats.reviewed}</span><span>到期 ${stats.due}</span></div><div class="card-actions"><button class="button" data-vocab-start data-domain="${domain}" data-mode="sprint">考前衝刺</button><button class="button secondary" data-vocab-start data-domain="${domain}" data-mode="${stats.due ? "due" : "full"}">${stats.due ? `複習到期 ${stats.due} 字` : "完整字庫"}</button>${stats.due ? `<button class="button ghost" data-vocab-start data-domain="${domain}" data-mode="full">完整字庫</button>` : ""}</div></article>`;
+}
+
+async function renderVocabularyStudy(params) {
+  try { await loadVocabulary(); }
+  catch (error) { app.innerHTML = `<div class="card empty"><h1>暫時無法載入單字庫</h1><p>${esc(error.message)}</p><a class="button" href="#/vocabulary">回單字選單</a></div>`; return; }
+  const domain = params.get("domain") === "business" ? "business" : "general";
+  const mode = ["sprint","full","due"].includes(params.get("mode")) ? params.get("mode") : "sprint";
+  const query = params.get("q") || "";
+  const key = `${domain}:${mode}:${query}`;
+  if (!vocabularySession || vocabularySession.key !== key) {
+    vocabularySession = { key,domain,mode,query,cards:selectVocabularyCards(vocabulary.cards,{domain,mode,progress:vocabularyProgress,query}),index:0,revealed:false,usedChinese:false,remembered:0,forgotten:0 };
+  }
+  renderCurrentVocabularyCard();
+}
+
+function renderCurrentVocabularyCard() {
+  const current = vocabularySession?.cards[vocabularySession.index];
+  if (!current) return renderVocabularyComplete();
+  const total = vocabularySession.cards.length;
+  const modeLabel = vocabularySession.query ? `搜尋「${vocabularySession.query}」` : ({sprint:"考前衝刺",full:"完整字庫",due:"到期複習"}[vocabularySession.mode]);
+  const domainLabel = vocabularySession.domain === "business" ? "職場單字" : "實用單字";
+  app.innerHTML = `<div class="vocab-study-head"><a class="back-link" href="#/vocabulary">← 回單字選單</a><span>${domainLabel} · ${modeLabel}</span><strong>${vocabularySession.index + 1} / ${total}</strong></div>
+    <div class="progress-track" aria-label="複習進度"><span style="width:${Math.round((vocabularySession.index / total) * 100)}%"></span></div>
+    <article class="vocab-card" id="vocabCard" tabindex="0" aria-label="單字卡：${esc(current.word)}">
+      <div class="vocab-card-top"><div><span class="tag">${esc(current.level)}</span><span class="vocab-pos">${esc(current.partOfSpeech)}</span></div><button class="icon-button speak-button" id="speakWord" type="button" aria-label="播放 ${esc(current.word)} 發音">🔊</button></div>
+      <h1>${esc(current.word)}</h1>${current.phonetic ? `<p class="vocab-phonetic">/${esc(current.phonetic)}/</p>` : ""}
+      <section class="vocab-examples" aria-label="例句"><h2>Examples</h2><ol>${current.examples.map(example => `<li><span>${highlightVocabularyWord(example.text,current.word)}</span>${example.sourceId ? `<a class="example-source" href="https://tatoeba.org/en/sentences/show/${encodeURIComponent(example.sourceId)}" target="_blank" rel="noopener noreferrer" aria-label="Tatoeba 例句來源">Tatoeba${example.sourceUser && example.sourceUser !== "\\N" ? ` · ${esc(example.sourceUser)}` : ""}</a>` : ""}</li>`).join("")}</ol></section>
+      <section class="vocab-answer" id="vocabAnswer" ${vocabularySession.revealed ? "" : "hidden"}>${current.definitionEn ? `<div><span>English</span><p>${esc(current.definitionEn)}</p></div>` : ""}<div id="chineseMeaning" ${vocabularySession.usedChinese ? "" : "hidden"}><span>中文提示</span><p>${esc(current.definitionZh || "此詞暫無中文解釋。")}</p></div></section>
+      <div class="vocab-reveal-actions" id="vocabRevealActions">${vocabularySession.revealed ? `<button class="button secondary" id="toggleChinese" type="button">${vocabularySession.usedChinese ? "已顯示中文" : "需要中文提示"}</button>` : `<button class="button" id="revealMeaning" type="button">看英文解釋</button>`}</div>
+    </article>
+    <div class="vocab-grade-actions" id="vocabGradeActions" ${vocabularySession.revealed ? "" : "hidden"}><button class="button danger" id="forgotWord" type="button">← 忘記了</button><button class="button remember" id="rememberWord" type="button">記得 →</button></div>
+    <p class="swipe-hint">顯示解釋後，可向左滑「忘記了」、向右滑「記得」；也可以直接按按鈕。</p>`;
+  app.querySelector("#speakWord").addEventListener("click", () => speakVocabularyWord(current.word));
+  app.querySelector("#revealMeaning")?.addEventListener("click", () => { vocabularySession.revealed = true; renderCurrentVocabularyCard(); announce("已顯示英文解釋"); });
+  app.querySelector("#toggleChinese")?.addEventListener("click", () => {
+    vocabularySession.usedChinese = true;
+    app.querySelector("#chineseMeaning").hidden = false;
+    app.querySelector("#toggleChinese").textContent = "已顯示中文";
+    app.querySelector("#toggleChinese").disabled = true;
+    announce("已顯示中文提示；這張卡會提早再出現");
+  });
+  app.querySelector("#forgotWord")?.addEventListener("click", () => gradeVocabulary(false));
+  app.querySelector("#rememberWord")?.addEventListener("click", () => gradeVocabulary(true));
+  initVocabularySwipe(app.querySelector("#vocabCard"));
+}
+
+function highlightVocabularyWord(sentence,word) {
+  const pattern = new RegExp(`(${word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")})`,`ig`);
+  return esc(sentence).replace(pattern,"<mark>$1</mark>");
+}
+
+function speakVocabularyWord(word) {
+  if (!("speechSynthesis" in window)) { announce("這個瀏覽器不支援發音功能"); return; }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-GB"; utterance.rate = .82;
+  window.speechSynthesis.speak(utterance);
+}
+
+function initVocabularySwipe(card) {
+  let startX = null, startY = null;
+  card.addEventListener("pointerdown", event => { startX = event.clientX; startY = event.clientY; card.setPointerCapture?.(event.pointerId); });
+  card.addEventListener("pointerup", event => {
+    if (startX === null) return;
+    const dx = event.clientX - startX, dy = event.clientY - startY; startX = startY = null;
+    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+    if (!vocabularySession.revealed) { announce("請先查看英文解釋，再判斷記得或忘記"); return; }
+    gradeVocabulary(dx > 0);
+  });
+}
+
+function gradeVocabulary(remembered) {
+  const current = vocabularySession.cards[vocabularySession.index];
+  if (!current || !vocabularySession.revealed) return;
+  vocabularyProgress = applyVocabularyReview(vocabularyProgress,current.id,remembered,{usedChinese:vocabularySession.usedChinese});
+  saveVocabularyProgress(vocabularyProgress);
+  if (remembered) vocabularySession.remembered += 1; else vocabularySession.forgotten += 1;
+  vocabularySession.index += 1; vocabularySession.revealed = false; vocabularySession.usedChinese = false;
+  announce(remembered ? "已記錄為記得" : "已記錄為忘記了；稍後會再出現");
+  renderCurrentVocabularyCard(); window.scrollTo({top:0,behavior:"instant"});
+}
+
+function renderVocabularyComplete() {
+  const session = vocabularySession;
+  const attempted = session.remembered + session.forgotten;
+  app.innerHTML = `<section class="card vocab-complete"><span class="tag">Session complete</span><h1>${session.query ? "搜尋結果複習完成" : "這一輪完成了"}</h1><p>這次看了 ${attempted} 個字：記得 ${session.remembered}，忘記 ${session.forgotten}。忘記或查看中文提示的字，會更早排回複習。</p><div class="card-actions"><a class="button" href="#/vocabulary">回單字選單</a><button class="button secondary" id="restartVocabulary">再練一次</button></div></section>`;
+  app.querySelector("#restartVocabulary").addEventListener("click", () => { vocabularySession = null; const {domain,mode,query} = session; location.hash = `#/vocabulary/study?domain=${domain}&mode=${mode}${query ? `&q=${encodeURIComponent(query)}` : ""}`; route(); });
+}
+
 function renderSettings() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">Settings</span><h1>設定與資料</h1><p>進度只儲存在目前瀏覽器，不會上傳。</p></div></header><section class="card settings-grid"><div class="setting-row"><strong>匯出練習紀錄</strong><span>下載 JSON 備份，可保留目前的作答紀錄。</span><button class="button secondary" id="exportButton">匯出進度</button></div><div class="setting-row"><strong>清除所有本機紀錄</strong><span>此動作無法復原，請先匯出備份。</span><button class="button danger" id="resetButton">清除進度</button></div></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
-  app.querySelector("#exportButton").addEventListener("click", () => exportProgress(progress));
-  app.querySelector("#resetButton").addEventListener("click", () => { if (confirm("確定要清除這台裝置上的所有練習紀錄嗎？")) { resetProgress(); progress = loadProgress(); announce("已清除本機練習紀錄"); renderSettings(); } });
+  app.innerHTML = `<header class="section-header"><div><span class="tag">Settings</span><h1>設定與資料</h1><p>題目與單字進度只儲存在目前瀏覽器，不會上傳。</p></div></header><section class="card settings-grid"><div class="setting-row"><strong>匯出全部練習紀錄</strong><span>下載 JSON 備份，包含聽讀作答與單字複習進度。</span><button class="button secondary" id="exportButton">匯出進度</button></div><div class="setting-row"><strong>清除所有本機紀錄</strong><span>此動作會同時清除聽讀與單字進度，且無法復原。</span><button class="button danger" id="resetButton">清除進度</button></div></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
+  app.querySelector("#exportButton").addEventListener("click", () => exportAllProgress(progress,vocabularyProgress));
+  app.querySelector("#resetButton").addEventListener("click", () => { if (confirm("確定要清除這台裝置上的所有練習紀錄嗎？")) { resetAllProgress(); progress = loadProgress(); vocabularyProgress = loadVocabularyProgress(); announce("已清除本機練習紀錄"); renderSettings(); } });
 }
 function renderAbout() {
-  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening 與 Reading 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係。本站不重製或冒充 Cambridge 真實考題；閱讀區另提供 Cambridge 官方示範測驗與答案的外部連結。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>官方練習材料</h2><p><a href="https://www.cambridgeenglish.org/exams-and-tests/linguaskill/information-about-the-exam/practice-materials/" target="_blank" rel="noopener noreferrer">Cambridge Linguaskill 官方練習材料</a>包含免費的 General 與 Business Reading、Listening 示範測驗、答案及學習影片。官方說明指出 Reading 與 Listening 示範測驗較正式考試短，而且不是自適應測驗。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
+  app.innerHTML = `<header class="section-header"><div><span class="tag">About</span><h1>關於這個練習站</h1></div></header><section class="card"><h2>原創、非官方的學習工具</h2><p>本網站為 Jasmine 製作的 Listening、Reading 與 Vocabulary 練習，涵蓋 Business 與 General 情境。本站與 Cambridge University Press & Assessment 無隸屬、合作或背書關係。本站不重製或冒充 Cambridge 真實考題；閱讀區另提供 Cambridge 官方示範測驗與答案的外部連結。</p><h2>分數說明</h2><p>本站的正確率與學習建議只反映原創題目的表現，不是正式 Linguaskill 成績、證書或分數預測。</p><h2>聽力與 AI 語音</h2><p>所有聽力腳本均為原創；語音由 AI 生成，不是真人或 Cambridge 考試錄音。每個聽力題組的錄音將播放兩次，逐字稿只會在題組作答後顯示。</p><h2>單字資料來源</h2><p>單字選字結合 <a href="https://www.newgeneralservicelist.com/new-general-service-list" target="_blank" rel="noopener noreferrer">NGSL</a>、<a href="https://www.newgeneralservicelist.com/business-service-list" target="_blank" rel="noopener noreferrer">BSL</a> 與 <a href="https://www.newgeneralservicelist.com/new-academic-word-list" target="_blank" rel="noopener noreferrer">NAWL</a>（CC BY-SA 4.0）；音標與中英文釋義來自 <a href="https://github.com/skywind3000/ECDICT" target="_blank" rel="noopener noreferrer">ECDICT</a>（MIT）；部分自然例句來自 <a href="https://tatoeba.org/" target="_blank" rel="noopener noreferrer">Tatoeba</a>，每句旁保留原句連結與作者。這是本站整理的獨立字庫，不是 Cambridge 官方 Linguaskill 字表。</p><h2>官方練習材料</h2><p><a href="https://www.cambridgeenglish.org/exams-and-tests/linguaskill/information-about-the-exam/practice-materials/" target="_blank" rel="noopener noreferrer">Cambridge Linguaskill 官方練習材料</a>包含免費的 General 與 Business Reading、Listening 示範測驗、答案及學習影片。官方說明指出 Reading 與 Listening 示範測驗較正式考試短，而且不是自適應測驗。</p><h2>隱私</h2><p>本站不設帳號、不使用追蹤分析，也不會上傳進度。作答與單字複習紀錄只存在目前瀏覽器；清除網站資料或更換裝置後可能遺失。</p></section><div class="actions page-actions"><a class="button secondary" href="#/">回主選單</a></div>`;
 }
 function renderNotFound() { app.innerHTML = `<div class="card empty"><h1>找不到這個頁面</h1><div class="actions"><a class="button" href="#/">回主選單</a></div></div>`; }
 

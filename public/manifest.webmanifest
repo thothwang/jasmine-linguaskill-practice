@@ -1,7 +1,7 @@
 {
   "name": "Jasmine's Linguaskill Practice",
   "short_name": "Jasmine Practice",
-  "description": "Original phone-first Listening and Reading practice",
+  "description": "Original phone-first Listening, Reading, and Vocabulary practice",
   "start_url": "./#/",
   "scope": "./",
   "display": "standalone",

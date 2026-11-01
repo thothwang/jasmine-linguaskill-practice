@@ -28,6 +28,13 @@ try {
 }
 catch { console.warn("No production question bank found; demo bank only."); }
 
+const vocabulary = resolve(root,"content","vocabulary.json");
+try {
+  await access(vocabulary,constants.R_OK);
+  await mkdir(resolve(dist,"content"),{recursive:true});
+  await cp(vocabulary,resolve(dist,"content","vocabulary.json"));
+} catch { console.warn("No production vocabulary library found."); }
+
 async function filesUnder(directory) {
   const files = [];
   for (const entry of await readdir(directory,{withFileTypes:true})) {

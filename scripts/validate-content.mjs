@@ -135,11 +135,44 @@ try {
   errors.push("TTS manifest is missing or unreadable");
 }
 
+const vocabularyPath = resolve(root,"content","vocabulary.json");
+try {
+  const vocabulary = JSON.parse(await readFile(vocabularyPath,"utf8"));
+  const cards = vocabulary.cards || [];
+  const ids = new Set();
+  const words = new Set();
+  let sprintCount = 0;
+  let attributedExamples = 0;
+  if (vocabulary.schemaVersion !== "1.0.0") errors.push("Vocabulary: unsupported schemaVersion");
+  if (cards.length < 5000 || cards.length > 10000) errors.push(`Vocabulary: expected 5,000-10,000 cards (found ${cards.length})`);
+  for (const card of cards) {
+    if (!card.id || ids.has(card.id)) errors.push(`Vocabulary: duplicate or missing id ${card.id}`);
+    if (!card.word || words.has(card.word)) errors.push(`Vocabulary: duplicate or missing word ${card.word}`);
+    ids.add(card.id); words.add(card.word);
+    if (!Array.isArray(card.domains) || !card.domains.length || card.domains.some(domain => !domains.has(domain))) errors.push(`${card.id}: invalid vocabulary domains`);
+    if (!levels.has(card.level) && card.level !== "Foundation") errors.push(`${card.id}: invalid vocabulary level`);
+    if (!card.definitionEn && !card.definitionZh) errors.push(`${card.id}: vocabulary definition missing`);
+    if (!Array.isArray(card.examples) || card.examples.length !== 3) errors.push(`${card.id}: expected three vocabulary examples`);
+    for (const example of card.examples || []) {
+      if (!example.text || !new RegExp(`(^|[^a-z])${card.word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}([^a-z]|$)`,`i`).test(example.text)) errors.push(`${card.id}: example does not contain the headword`);
+      if (example.sourceId) {
+        attributedExamples += 1;
+        if (!example.sourceLicense) errors.push(`${card.id}: sourced example has no licence`);
+      }
+    }
+    if (card.sprint) sprintCount += 1;
+  }
+  if (sprintCount < 500 || sprintCount > 1000) errors.push(`Vocabulary: expected 500-1,000 sprint cards (found ${sprintCount})`);
+  if (attributedExamples < cards.length * 2) errors.push(`Vocabulary: too few natural sourced examples (${attributedExamples})`);
+} catch (error) {
+  errors.push(`Vocabulary library is missing or unreadable: ${error.message}`);
+}
+
 if (errors.length) {
   console.error(`Content validation failed with ${errors.length} issue(s):`);
   errors.forEach(error => console.error(`- ${error}`));
   process.exitCode = 1;
 } else {
   const itemCount = bank.sets.reduce((sum, set) => sum + set.items.length, 0);
-  console.log(`Content validation passed: ${bank.sets.length} sets, ${itemCount} scored responses.`);
+  console.log(`Content validation passed: ${bank.sets.length} sets, ${itemCount} scored responses, plus vocabulary library.`);
 }

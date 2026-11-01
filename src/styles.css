@@ -96,11 +96,53 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .setting-row { display: grid; gap: .5rem; }
 .footer-note { margin-top: 1.2rem; padding: 1rem 0; color: var(--muted); font-size: .84rem; }
 .page-actions { margin-top: 1.2rem; }
+.vocab-overview { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(135deg,#f4fbf9,#fff9ee); }
+.vocab-overview div { display: grid; gap: .1rem; }
+.vocab-overview strong { font-size: clamp(1.25rem,5vw,1.8rem); }
+.vocab-overview span,.vocab-mini-stats { color: var(--muted); font-size: .8rem; }
+.vocab-deck-grid { grid-template-columns: 1fr; }
+.vocab-deck-card { display: grid; gap: .7rem; min-height: 250px; }
+.vocab-mini-stats { display: flex; flex-wrap: wrap; gap: .45rem; }
+.vocab-mini-stats span { padding: .25rem .55rem; border-radius: 999px; background: #f5f7f5; }
+.vocab-search { margin-top: 1rem; display: grid; gap: .65rem; }
+.vocab-search-form { display: grid; gap: .75rem; }
+.vocab-search-form label { display: grid; gap: .3rem; color: var(--muted); font-size: .85rem; font-weight: 700; }
+.vocab-search-form input,.vocab-search-form select { min-height: 48px; width: 100%; padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: white; }
+.vocab-study-head { display: grid; grid-template-columns: 1fr auto; gap: .25rem .75rem; align-items: center; margin-bottom: .7rem; color: var(--muted); font-size: .85rem; }
+.vocab-study-head .back-link { grid-column: 1 / -1; width: max-content; text-decoration: none; font-weight: 750; }
+.vocab-study-head strong { color: var(--ink); }
+.vocab-card { position: relative; min-height: 510px; margin-top: .8rem; padding: clamp(1.1rem,5vw,2rem); border: 1px solid var(--line); border-radius: 26px; background: radial-gradient(circle at 95% 5%,rgba(243,165,63,.13),transparent 26%),white; box-shadow: var(--shadow); touch-action: pan-y; }
+.vocab-card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.vocab-card-top > div { display: flex; align-items: center; gap: .55rem; }
+.vocab-pos { color: var(--muted); font-size: .82rem; }
+.vocab-card h1 { margin: .55rem 0 0; font: 700 clamp(2.6rem,12vw,5rem)/1.02 Georgia,"Times New Roman",serif; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.vocab-phonetic { margin: .35rem 0 1.1rem; color: var(--brand); font-size: 1.05rem; }
+.speak-button { display: inline-grid; place-items: center; flex: 0 0 auto; }
+.vocab-examples { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.vocab-examples h2 { margin: 0; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
+.vocab-examples ol { margin: .65rem 0 0; padding-left: 1.35rem; }
+.vocab-examples li { margin: .7rem 0; padding-left: .2rem; }
+.vocab-examples mark { padding: 0 .12em; color: inherit; background: #ffedb7; border-radius: 3px; font-weight: 800; }
+.example-source { display: block; width: max-content; margin-top: .18rem; color: #76848a; font-size: .68rem; text-decoration: none; }
+.vocab-answer { display: grid; gap: .75rem; margin-top: 1rem; padding: .9rem; border-radius: 14px; background: var(--soft); }
+.vocab-answer span { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.vocab-answer p { margin: .25rem 0 0; }
+.vocab-reveal-actions { display: flex; justify-content: center; margin-top: 1.2rem; }
+.vocab-grade-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; position: sticky; bottom: max(.7rem,env(safe-area-inset-bottom)); z-index: 5; }
+.vocab-grade-actions .button { min-height: 52px; box-shadow: 0 8px 20px rgba(19,47,58,.15); }
+.button.remember { background: var(--good); }
+.swipe-hint { margin: .75rem auto 0; max-width: 38rem; color: var(--muted); text-align: center; font-size: .78rem; }
+.vocab-complete { display: grid; gap: .8rem; max-width: 650px; margin: 2rem auto; text-align: center; }
+.vocab-complete .tag { margin: 0 auto; }
+.vocab-complete .card-actions { justify-content: center; }
 .sr-only { position: absolute!important; width: 1px!important; height: 1px!important; padding: 0!important; margin: -1px!important; overflow: hidden!important; clip: rect(0,0,0,0)!important; white-space: nowrap!important; border: 0!important; }
 @media (min-width: 680px) {
   .domain-grid { grid-template-columns: repeat(2,1fr); }
+  .vocab-deck-grid { grid-template-columns: repeat(2,1fr); }
+  .vocab-search-form { grid-template-columns: 180px 1fr auto; align-items: end; }
   .stats { grid-template-columns: repeat(4,1fr); }
   .icon-button { display: none; }
+  .speak-button { display: inline-grid; }
   .topnav { display: flex; position: static; width: auto; padding: 0; border: 0; box-shadow: none; background: transparent; }
   .topnav a { padding: .55rem .7rem; }
   main { padding-top: 1.75rem; }

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-content.mjs",
-    "test": "node tests/site/logic.test.mjs && node scripts/tts/test-wav.mjs",
+    "test": "node tests/site/logic.test.mjs && node tests/site/vocabulary.test.mjs && node --check src/js/app.js && node scripts/tts/test-wav.mjs",
     "build": "node scripts/build-static.mjs",
     "check": "npm run validate && npm test && npm run build"
   }
