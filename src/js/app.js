@@ -1,6 +1,6 @@
-import { DOMAIN_LABELS, LISTENING_FAMILIES, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem, listeningFamily } from "./logic.js";
-import { loadProgress, saveProgress, loadVocabularyProgress, saveVocabularyProgress, resetAllProgress, exportAllProgress, nextMessage } from "./store.js";
-import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, shuffleVocabularyCards, applyVocabularyReview } from "./vocabulary.js";
+import { DOMAIN_LABELS, LISTENING_FAMILIES, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem, listeningFamily } from "./logic.js?v=20261104.2";
+import { loadProgress, saveProgress, loadVocabularyProgress, saveVocabularyProgress, resetAllProgress, exportAllProgress, nextMessage } from "./store.js?v=20261104.2";
+import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, shuffleVocabularyCards, applyVocabularyReview } from "./vocabulary.js?v=20261104.2";
 
 const app = document.querySelector("#app");
 const live = document.querySelector("#liveRegion");
