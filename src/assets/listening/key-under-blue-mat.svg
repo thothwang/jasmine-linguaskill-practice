@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Key beneath the mat at a blue door">
+  <rect width="600" height="450" fill="#eef7f5"/>
+  
+  <rect x="56" y="55" width="488" height="342" rx="12" fill="#fff9ec" stroke="#294b58" stroke-width="7"/>
+  <rect x="220" y="105" width="170" height="292" rx="7" fill="#2778a5" stroke="#294b58" stroke-width="7"/>
+  <circle cx="360" cy="252" r="10" fill="#f4c05d"/>
+  <rect x="196" y="385" width="218" height="35" rx="8" fill="#8a684f"/>
+  <path d="M94 145h92l-13 100H107z" fill="#b97743" stroke="#294b58" stroke-width="6"/>
+  <path d="M106 145c10-55 58-55 68 0" fill="none" stroke="#294b58" stroke-width="6"/>
+  <g fill="#4f9d61"><circle cx="119" cy="143" r="29"/><circle cx="151" cy="136" r="31"/><circle cx="169" cy="159" r="24"/></g>
+  <g transform="translate(292 402) scale(.65)"><g fill="none" stroke="#d69227" stroke-width="10" stroke-linecap="round"><circle cx="0" cy="0" r="16"/><path d="M16 0h48m-14 0v18m-18-18v13"/></g></g>
+  <path d="M60 397h480" stroke="#294b58" stroke-width="7"/>
+</svg>

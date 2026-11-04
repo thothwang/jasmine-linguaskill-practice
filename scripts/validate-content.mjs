@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { access, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { constants } from "node:fs";
 import { resolve } from "node:path";
 
@@ -58,30 +59,56 @@ for (const set of bank.sets || []) {
   }
 }
 
-const alignedGeneralListening = (bank.sets || []).filter(set => set.domain === "general" && set.skill === "listening" && set.formatAligned);
-const alignedTypes = new Set(alignedGeneralListening.map(set => set.taskType));
-for (const required of ["listening_picture_mc","listening_one_question_mc","listening_two_question_mc","listening_five_question_mc","listening_note_completion","listening_one_task_matching","listening_two_task_matching"]) {
-  if (!alignedTypes.has(required)) errors.push(`General Listening: missing format-aligned ${required}`);
+const generalListening = (bank.sets || []).filter(set => set.domain === "general" && set.skill === "listening");
+const expectedGeneralListeningResponses = {
+  listening_picture_mc: 4,
+  listening_one_question_mc: 8,
+  listening_two_question_mc: 16,
+  listening_five_question_mc: 30,
+  listening_note_completion: 20,
+  listening_one_task_matching: 10,
+  listening_two_task_matching: 12,
+};
+const actualGeneralListeningResponses = generalListening.reduce((result,set) => {
+  result[set.taskType] = (result[set.taskType] || 0) + set.items.length;
+  return result;
+},{});
+if (generalListening.length !== 34 || generalListening.reduce((total,set) => total + set.items.length,0) !== 100) {
+  errors.push(`General Listening: expected 34 sets / 100 responses`);
 }
+for (const [taskType,expected] of Object.entries(expectedGeneralListeningResponses)) {
+  if (actualGeneralListeningResponses[taskType] !== expected) errors.push(`General Listening: ${taskType} expected ${expected} responses, found ${actualGeneralListeningResponses[taskType] || 0}`);
+}
+if (generalListening.some(set => !set.formatAligned)) errors.push("General Listening: every released set must be format-aligned");
+if (generalListening.some(set => /^gl-expand-/.test(set.id))) errors.push("General Listening: legacy gl-expand sets must not be released");
+if (new Set(generalListening.map(set => set.title)).size !== generalListening.length) errors.push("General Listening: set titles must be unique");
 
-for (const set of alignedGeneralListening) {
+const normaliseListening = value => String(value ?? "").toLowerCase().replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
+for (const set of generalListening) {
   const transcript = set.audio.segments.map(segment => segment.text).join(" ");
   const transcriptWords = transcript.trim().split(/\s+/).filter(Boolean).length;
   if (set.taskType === "listening_picture_mc") {
-    if (set.items.length !== 1 || set.items[0].options?.length !== 3 || set.items[0].options.some(option => !option.image)) {
+    if (set.items.length !== 1 || transcriptWords < 35 || transcriptWords > 85 || set.items[0].options?.length !== 3 || set.items[0].options.some(option => !option.image)) {
       errors.push(`${set.id}: picture task must have one question and three image options`);
     }
   }
-  if (set.taskType === "listening_one_question_mc" && set.items.length !== 1) errors.push(`${set.id}: one-question task must have one item`);
-  if (set.taskType === "listening_two_question_mc" && set.items.length !== 2) errors.push(`${set.id}: two-question task must have two items`);
-  if (set.taskType === "listening_five_question_mc" && (set.items.length !== 5 || transcriptWords < 180)) {
-    errors.push(`${set.id}: extended Listening must have five items and at least 180 transcript words`);
+  if (set.taskType === "listening_one_question_mc" && (set.items.length !== 1 || transcriptWords < 35 || transcriptWords > 85)) {
+    errors.push(`${set.id}: one-question task must have one item and 35-85 transcript words`);
   }
-  if (set.taskType === "listening_note_completion" && (set.items.length !== 5 || set.items.some(item => item.maxWords > 3))) {
-    errors.push(`${set.id}: completion task must have five gaps of no more than three words`);
+  if (set.taskType === "listening_two_question_mc" && (set.items.length !== 2 || transcriptWords < 85 || transcriptWords > 160)) {
+    errors.push(`${set.id}: two-question task must have two items and 85-160 transcript words`);
+  }
+  if (set.taskType === "listening_five_question_mc" && (set.items.length !== 5 || transcriptWords < 280 || transcriptWords > 430)) {
+    errors.push(`${set.id}: extended Listening must have five items and 280-430 transcript words`);
+  }
+  if (set.taskType === "listening_note_completion" && (set.items.length !== 5 || transcriptWords < 150 || transcriptWords > 240 || set.items.some(item => item.maxWords > 3))) {
+    errors.push(`${set.id}: completion task must have five gaps, 150-240 transcript words, and answers of no more than three words`);
   }
   if (set.taskType === "listening_one_task_matching" && (set.items.length !== 5 || set.sharedOptions?.length !== 8)) {
     errors.push(`${set.id}: one-task matching must have five speakers and eight options`);
+  } else if (set.taskType === "listening_one_task_matching") {
+    const speakerLengths = set.audio.segments.filter(segment => segment.speaker !== "Narrator").map(segment => segment.text.trim().split(/\s+/).length);
+    if (speakerLengths.length !== 5 || speakerLengths.some(length => length < 50 || length > 85)) errors.push(`${set.id}: one-task matching speakers must each contain 50-85 words`);
   }
   if (set.taskType === "listening_two_task_matching") {
     const families = new Map();
@@ -92,12 +119,22 @@ for (const set of alignedGeneralListening) {
     if (set.items.length !== 6 || families.size !== 2 || [...families.values()].some(count => count !== 5)) {
       errors.push(`${set.id}: two-task matching must have three speakers and two groups of five options`);
     }
+    const speakerLengths = set.audio.segments.filter(segment => segment.speaker !== "Narrator").map(segment => segment.text.trim().split(/\s+/).length);
+    if (speakerLengths.length !== 3 || speakerLengths.some(length => length < 70 || length > 110)) errors.push(`${set.id}: two-task matching speakers must each contain 70-110 words`);
   }
-  if (["listening_two_question_mc","listening_five_question_mc","listening_note_completion"].includes(set.taskType)) {
+  if (!["listening_one_task_matching","listening_two_task_matching"].includes(set.taskType)) {
     const positions = set.items.map(item => transcript.toLocaleLowerCase("en").indexOf(String(item.evidence).toLocaleLowerCase("en")));
     if (positions.some((position,index) => position < 0 || (index > 0 && position <= positions[index - 1]))) {
       errors.push(`${set.id}: answer evidence must appear in the same order as the questions`);
     }
+  }
+  for (const item of set.items.filter(item => item.responseType === "single_choice")) {
+    const correct = item.options?.find(option => option.id === item.answer)?.text || "";
+    if (correct.trim().split(/\s+/).length >= 3 && normaliseListening(transcript).includes(normaliseListening(correct))) {
+      errors.push(`${set.id}/${item.id}: correct option is copied verbatim from the recording`);
+    }
+    const wrongIds = (item.options || []).filter(option => option.id !== item.answer).map(option => option.id);
+    if (wrongIds.some(id => !item.distractorRationales?.[id])) errors.push(`${set.id}/${item.id}: every distractor needs a rationale`);
   }
 }
 
@@ -179,10 +216,27 @@ try {
   await access(manifestPath, constants.R_OK);
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
   const listening = new Set((bank.sets || []).filter(set => set.skill === "listening").map(set => set.id));
-  const jobs = new Set((manifest.jobs || []).map(job => job.id));
+  const jobs = new Map((manifest.jobs || []).map(job => [job.id,job]));
   for (const id of listening) if (!jobs.has(id)) errors.push(`${id}: missing TTS manifest job`);
+  const state = JSON.parse(await readFile(resolve(root,"scripts","tts","audio-state.json"),"utf8"));
+  if (state.sourceContentVersion !== bank.contentVersion) errors.push(`Audio state content version ${state.sourceContentVersion} does not match ${bank.contentVersion}`);
+  const sha256 = value => createHash("sha256").update(value).digest("hex");
+  const jobDigest = job => sha256(JSON.stringify({
+    provider:job.provider, model:job.model, sourceAsset:job.sourceAsset, masterFile:job.masterFile, clips:job.clips, turns:job.turns,
+  }));
+  for (const id of listening) {
+    const job = jobs.get(id);
+    if (!job) continue;
+    const entry = state.jobs?.[id];
+    if (!entry) { errors.push(`${id}: audio has no accepted source state`); continue; }
+    if (entry.sourceDigest !== jobDigest(job)) errors.push(`${id}: audio is stale for the current transcript`);
+    try {
+      const mp3 = await readFile(resolve(root,"public",job.sourceAsset));
+      if (entry.mp3Sha256 !== sha256(mp3)) errors.push(`${id}: deployed MP3 hash does not match accepted audio state`);
+    } catch { errors.push(`${id}: deployed MP3 asset is missing`); }
+  }
 } catch {
-  errors.push("TTS manifest is missing or unreadable");
+  errors.push("TTS manifest/audio state is missing or unreadable");
 }
 
 const vocabularyPath = resolve(root,"content","vocabulary.json");

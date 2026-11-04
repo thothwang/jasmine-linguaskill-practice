@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2026-11-04.1",
-  "generatedAt": "2026-11-01T04:22:15.445Z",
-  "totalSets": 136,
+  "contentVersion": "2026-11-04.2",
+  "generatedAt": "2026-11-04T10:04:04.607Z",
+  "totalSets": 148,
   "totalScoredResponses": 631,
   "scoredResponsesByDomain": {
     "business-listening": 104,
@@ -11,13 +11,12 @@
     "general-reading": 208
   },
   "scoredResponsesByTaskFamily": {
-    "listening_picture_mc": 1,
-    "listening_one_question_mc": 5,
-    "listening_two_question_mc": 6,
-    "listening_five_question_mc": 130,
+    "listening_one_question_mc": 12,
+    "listening_two_question_mc": 20,
+    "listening_five_question_mc": 95,
     "listening_note_completion": 40,
-    "listening_one_task_matching": 10,
-    "listening_two_task_matching": 12,
+    "listening_one_task_matching": 15,
+    "listening_two_task_matching": 18,
     "reading_one_question_mc": 2,
     "reading_one_question_gap_mc": 1,
     "reading_five_question_gap_mc": 130,
@@ -26,6 +25,7 @@
     "reading_two_question_mc": 4,
     "reading_missing_sentence": 10,
     "reading_missing_paragraph": 5,
-    "reading_multiple_text_matching": 130
+    "reading_multiple_text_matching": 130,
+    "listening_picture_mc": 4
   }
 }

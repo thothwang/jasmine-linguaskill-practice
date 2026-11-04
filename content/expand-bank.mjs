@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { GENERAL_LISTENING_REBUILD } from "./general-listening-rebuild.mjs";
 
 const bankPath = new URL("./questions.json", import.meta.url);
 const readingPlusPath = new URL("./reading-plus-cases.json", import.meta.url);
@@ -327,7 +328,6 @@ function makeSet(data, skill, setIndex, forcedId) {
     : `• ${fact[1]}`).join("\n");
   return {
     id,
-    formatAligned: false,
     domain: id.startsWith("b") ? "business" : "general",
     skill,
     taskType: isCompletion
@@ -724,7 +724,7 @@ bank.sets = bank.sets.filter((set) => !/-expand-/.test(set.id));
 const additions = [];
 
 BL.forEach((data, index) => additions.push(makeSet(data, "listening", index)));
-GL.forEach((data, index) => additions.push(makeSet(data, "listening", index)));
+additions.push(...GENERAL_LISTENING_REBUILD);
 const allBusinessReading = [...BR_CASES, ...readingPlus.business];
 const allGeneralReading = [...GR_CASES, ...readingPlus.general];
 allBusinessReading.forEach((data, index) => additions.push(makeReadingCase(data, index)));
@@ -737,7 +737,7 @@ for (const set of additions) {
     existing.add(set.id);
   }
 }
-bank.contentVersion = "2026-11-01.1";
+bank.contentVersion = "2026-11-04.2";
 await writeFile(bankPath, `${JSON.stringify(bank, null, 2)}\n`, "utf8");
 
 const counts = {};

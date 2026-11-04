@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Route crossing the bridge then turning left">
+  <rect width="600" height="450" fill="#eef7f5"/>
+  
+  <path d="M40 322c95-72 170-43 250-90s150-25 270-120" fill="none" stroke="#c9b69b" stroke-width="34" stroke-linecap="round"/>
+  <ellipse cx="120" cy="175" rx="75" ry="48" fill="#9ed7e7" stroke="#37778b" stroke-width="5"/>
+  <g stroke="#7f5e3f" stroke-width="9"><path d="M246 258l94-42"/><path d="M250 275l94-42"/></g>
+  <g fill="#4d9460" stroke="#2f6842" stroke-width="3"><path d="M360 164l27-67 27 67z"/><path d="M400 171l27-74 27 74z"/><path d="M440 166l27-65 27 65z"/></g>
+  <rect x="486" y="62" width="72" height="60" rx="8" fill="#f2d697" stroke="#294b58" stroke-width="5"/><path d="M500 95h44" stroke="#294b58" stroke-width="5"/>
+  <path d="M95 390 C155 330 240 325 285 275 L310 225 C350 185 380 135 320 85" fill="none" stroke="#d65145" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="95" cy="390" r="15" fill="#176b66"/><path d="M492 106l20 0-10-15m10 15-10 15" fill="none" stroke="#d65145" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
