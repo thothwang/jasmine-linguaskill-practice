@@ -182,6 +182,7 @@ Build/deployment fails when:
 - Required explanations are missing.
 - A listening item lacks audio metadata or transcript.
 - A gap answer exceeds the task word limit.
+- A format-aligned General Listening family is missing, a picture item lacks three image options, or multi-question evidence is not in question order.
 - Difficulty/domain/skill/task type values are invalid.
 - Referenced audio files do not exist.
 - A mock set cannot meet its declared question/task distribution.

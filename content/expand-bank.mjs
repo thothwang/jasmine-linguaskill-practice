@@ -327,6 +327,7 @@ function makeSet(data, skill, setIndex, forcedId) {
     : `• ${fact[1]}`).join("\n");
   return {
     id,
+    formatAligned: false,
     domain: id.startsWith("b") ? "business" : "general",
     skill,
     taskType: isCompletion

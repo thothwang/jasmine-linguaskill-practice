@@ -9,6 +9,17 @@ await rm(dist,{recursive:true,force:true});
 await mkdir(dist,{recursive:true});
 await cp(resolve(root,"src"),dist,{recursive:true});
 await cp(resolve(root,"public"),dist,{recursive:true});
+
+const assetHash = createHash("sha256");
+assetHash.update(await readFile(resolve(dist,"js","app.js")));
+assetHash.update(await readFile(resolve(dist,"js","logic.js")));
+assetHash.update(await readFile(resolve(dist,"styles.css")));
+const assetVersion = assetHash.digest("hex").slice(0,12);
+const indexPath = resolve(dist,"index.html");
+const indexSource = (await readFile(indexPath,"utf8"))
+  .replace('href="./styles.css"',`href="./styles.css?v=${assetVersion}"`)
+  .replace('src="./js/app.js"',`src="./js/app.js?v=${assetVersion}"`);
+await writeFile(indexPath,indexSource,"utf8");
 const bank = resolve(root,"content","questions.json");
 try {
   await access(bank,constants.R_OK);

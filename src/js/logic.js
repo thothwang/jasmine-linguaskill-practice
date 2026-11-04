@@ -5,6 +5,23 @@ export const DOMAIN_LABELS = {
   "general-reading": ["實用閱讀", "General Reading", "理解訊息、文章、公告與跨文本資訊。", "▤"]
 };
 
+export const LISTENING_FAMILIES = {
+  picture: ["圖片題", "看三張圖片，聽短錄音後選出正確情境。", "▧"],
+  short: ["短篇對話選擇題", "短篇錄音搭配一至兩題；線索依題目順序出現。", "◉"],
+  long: ["長篇聽力理解題", "較長的訪談或獨白搭配多題；線索依題目順序出現。", "≋"],
+  completion: ["填空題", "聽單一講者完成五個空格，每格最多三個字。", "⌨"],
+  matching: ["配對題", "辨認不同講者的主旨、看法或經驗並完成配對。", "↔"]
+};
+
+export function listeningFamily(set) {
+  if (set.taskType === "listening_picture_mc") return "picture";
+  if (["listening_one_question_mc","listening_two_question_mc"].includes(set.taskType)) return "short";
+  if (set.taskType === "listening_five_question_mc") return "long";
+  if (set.taskType === "listening_note_completion") return "completion";
+  if (["listening_one_task_matching","listening_two_task_matching"].includes(set.taskType)) return "matching";
+  return null;
+}
+
 export function domainKey(set) { return `${set.domain}-${set.skill}`; }
 
 export function normaliseBank(raw) {
@@ -57,14 +74,15 @@ export function datePhase(now = new Date()) {
   return "balanced";
 }
 
-export function selectSets(sets, { domain, skill, progress, count = 5 }) {
-  const eligible = sets.filter(set => set.domain === domain && set.skill === skill);
+export function selectSets(sets, { domain, skill, progress, count = 5, family = null }) {
+  const eligible = sets.filter(set => set.domain === domain && set.skill === skill && (!family || listeningFamily(set) === family));
   const attempts = progress?.attempts || [];
   const seen = new Map();
   attempts.forEach(a => seen.set(a.taskSetId, (seen.get(a.taskSetId) || 0) + 1));
   return [...eligible].sort((a,b) => {
     const aSeen = seen.get(a.id) || 0, bSeen = seen.get(b.id) || 0;
     if (aSeen !== bSeen) return aSeen - bSeen;
+    if (Boolean(a.formatAligned) !== Boolean(b.formatAligned)) return a.formatAligned ? -1 : 1;
     const rank = { B2: 0, "B2+": 1, B2_PLUS: 1, C1: 2 };
     return (rank[a.level] ?? 0) - (rank[b.level] ?? 0) || a.id.localeCompare(b.id);
   }).slice(0,Math.min(count,eligible.length));

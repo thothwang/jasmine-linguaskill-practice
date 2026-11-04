@@ -1,4 +1,4 @@
-import { DOMAIN_LABELS, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem } from "./logic.js";
+import { DOMAIN_LABELS, LISTENING_FAMILIES, normaliseBank, domainKey, scoreSet, selectSets, progressSummary, datePhase, choicesForItem, listeningFamily } from "./logic.js";
 import { loadProgress, saveProgress, loadVocabularyProgress, saveVocabularyProgress, resetAllProgress, exportAllProgress, nextMessage } from "./store.js";
 import { normaliseVocabulary, vocabularySummary, selectVocabularyCards, shuffleVocabularyCards, applyVocabularyReview } from "./vocabulary.js";
 
@@ -80,10 +80,21 @@ function renderSection(key) {
   const questionCount = available.reduce((sum,set) => sum + set.items.length,0);
   const modeCopy = skill === "listening" ? "每個題組先準備 5 秒，錄音將播放兩次；作答後立即查看解析與逐字稿。" : "每個題組作答後立即查看中文解析、答案線索與閱讀內容。";
   const officialResource = officialSampleLinks(domain,skill);
+  const listeningTypes = key === "general-listening" ? renderListeningTypePicker(available) : "";
   app.innerHTML = `<header class="section-header"><div><span class="tag">${esc(d[1])}</span><h1>${esc(d[0])}</h1><p>${esc(d[2])}</p></div></header>
     <section class="grid stats"><div class="card stat"><strong>${available.length}</strong><span>題組數</span></div><div class="card stat"><strong>${questionCount}</strong><span>題目數</span></div><div class="card stat"><strong>${stats.attempts}</strong><span>已作答</span></div><div class="card stat"><strong>${stats.accuracy}%</strong><span>正確率</span></div></section>
-    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">開始練習</button><a class="button secondary" href="#/">回主選單</a></div></section>${officialResource}`;
+    <section class="card"><span class="tag">Practice</span><h2>開始一個題組</h2><p>${esc(modeCopy)}</p><div class="card-actions"><button class="button" id="startPractice">混合題型練習</button><a class="button secondary" href="#/">回主選單</a></div></section>${listeningTypes}${officialResource}`;
   app.querySelector("#startPractice").addEventListener("click", () => startSession(domain,skill));
+  app.querySelectorAll("[data-listening-family]").forEach(button => button.addEventListener("click", () => startSession(domain,skill,null,button.dataset.listeningFamily)));
+}
+
+function renderListeningTypePicker(sets) {
+  const cards = Object.entries(LISTENING_FAMILIES).map(([key,[title,description,icon]]) => {
+    const matchingSets = sets.filter(set => listeningFamily(set) === key);
+    const questionCount = matchingSets.reduce((total,set) => total + set.items.length,0);
+    return `<article class="card listening-type-card"><span class="listening-type-icon" aria-hidden="true">${icon}</span><div><h3>${esc(title)}</h3><p>${esc(description)}</p><small>${matchingSets.length} 題組 · ${questionCount} 題</small></div><button class="button secondary" type="button" data-listening-family="${key}" ${matchingSets.length ? "" : "disabled"}>練習這一類</button></article>`;
+  }).join("");
+  return `<section class="listening-types" aria-labelledby="listening-types-title"><div class="section-copy"><span class="tag">Question types</span><h2 id="listening-types-title">選擇聽力題型</h2><p>依照 Cambridge 官方示範題的作答結構分類；題目、錄音與圖片皆為本站原創。</p></div><div class="grid listening-type-grid">${cards}</div></section>`;
 }
 
 function officialSampleLinks(domain,skill) {
@@ -102,17 +113,18 @@ function officialSampleLinks(domain,skill) {
   return `<aside class="card official-resource"><span class="tag">Cambridge Official</span><h2>官方${isListening ? "聽力" : "閱讀"}示範題</h2><p>Cambridge 提供的免費示範測驗；會另開官方網站。示範測驗較正式考試短，而且不是自適應測驗。</p><div class="card-actions"><a class="button secondary" href="${sampleUrl}" target="_blank" rel="noopener noreferrer">開啟官方示範題</a><a class="button secondary" href="${answerUrl}" target="_blank" rel="noopener noreferrer">查看官方答案</a></div></aside>`;
 }
 
-function startSession(domain,skill,sourceSet = null) {
-  const sets = sourceSet ? [sourceSet] : selectSets(bank,{ domain,skill,progress,count: 1 });
+function startSession(domain,skill,sourceSet = null,family = null) {
+  const sets = sourceSet ? [sourceSet] : selectSets(bank,{ domain,skill,progress,count: 1,family });
   if (!sets.length) { announce("這個區域目前還沒有題目"); return; }
-  session = { domain, skill, sets, index: 0, completedSets: 0, responses: {}, results: [], startedAt: Date.now() };
+  session = { domain, skill, family, sets, index: 0, completedSets: 0, responses: {}, results: [], startedAt: Date.now() };
   location.hash = "#/quiz";
 }
 
 function renderQuiz() {
   if (!session?.sets?.length) { location.hash = "#/"; return; }
   const set = session.sets[0];
-  app.innerHTML = `<div class="quiz-head"><div class="quiz-meta"><span>練習模式</span><span>第 ${session.completedSets + 1} 題組</span></div></div>
+  const familyLabel = set.skill === "listening" ? LISTENING_FAMILIES[listeningFamily(set)]?.[0] : "閱讀練習";
+  app.innerHTML = `<div class="quiz-head"><div class="quiz-meta"><span>${esc(familyLabel || "練習題組")}</span><span>第 ${session.completedSets + 1} 題組</span></div></div>
     <article class="card task-card"><span class="tag">${esc(set.topic || "Practice")}</span><h1>${esc(set.title)}</h1><p class="directions">${esc(set.directions || set.instructions)}</p>${renderStimulus(set)}${set.skill === "listening" ? renderAudio() : ""}<form id="answerForm">${set.items.map((item,i) => renderItem(set,item,i)).join("")}<div class="actions"><button class="button" id="submitButton" type="submit" ${set.skill === "listening" ? "disabled" : ""}>檢查答案</button></div></form><div id="feedbackArea"></div></article>`;
   app.querySelector("#answerForm").addEventListener("submit", event => submitSet(event,set));
   if (set.skill === "listening") initAudio(set);
@@ -121,7 +133,8 @@ function renderStimulus(set) {
   if (!set.stimulus) return "";
   if (Array.isArray(set.stimulus.texts)) return `<section class="stimulus" aria-label="閱讀材料">${set.stimulus.texts.map(t => `<article class="stimulus-text"><strong>${esc(t.id)}${t.heading ? ` · ${esc(t.heading)}` : ""}</strong><p>${esc(t.text)}</p></article>`).join("")}</section>`;
   const extras = Array.isArray(set.stimulus.removed) ? `<ol>${set.stimulus.removed.map(x => `<li>${esc(x.text ?? x)}</li>`).join("")}</ol>` : "";
-  return `<section class="stimulus" aria-label="閱讀材料">${esc(set.stimulus.text || "")}${extras}</section>`;
+  const stimulusText = esc(set.stimulus.text || "").replace(/\{\{(\d+)\}\}/g,(_,number) => `<span class="gap-marker" aria-label="第 ${number} 空">${number}</span>`);
+  return `<section class="stimulus ${set.stimulus.format === "notes" ? "completion-notes" : ""}" aria-label="題目資料">${stimulusText}${extras}</section>`;
 }
 function renderAudio() { return `<section class="audio-box" aria-label="聽力播放器"><span class="audio-status" id="audioStatus">按下開始後，準備時間為 ${LISTENING_PREP_SECONDS} 秒。</span><button class="button" id="playButton" type="button">開始聽力題組</button><span id="playCount">錄音將播放兩次，中間會短暫停頓。</span><audio id="audioElement" preload="auto"></audio></section>`; }
 function renderItem(set,item,i) {
@@ -129,7 +142,7 @@ function renderItem(set,item,i) {
   const choices = choicesForItem(set,item);
   if (item.responseType === "short_text" || item.responseType === "gap_text") return `<div class="question"><label for="${name}"><strong>${i+1}. ${esc(item.question)}</strong></label><input class="text-answer" id="${name}" name="${name}" autocomplete="off" ${item.maxWords ? `aria-describedby="hint-${item.id}"` : ""}><small id="hint-${item.id}">${item.maxWords ? `最多 ${item.maxWords} 個英文字` : ""}</small></div>`;
   if (item.responseType === "matching") return `<div class="question"><label for="${name}"><strong>${i+1}. ${esc(item.question)}</strong></label><select class="matching-select" id="${name}" name="${name}" required><option value="">請選擇</option>${choices.map(o => `<option value="${esc(o.id)}">${esc(o.id)} · ${esc(o.text)}</option>`).join("")}</select></div>`;
-  return `<fieldset class="question"><legend>${i+1}. ${esc(item.question)}</legend>${choices.map(o => `<label class="option"><input type="radio" name="${name}" value="${esc(o.id)}" required><span><strong>${esc(o.id)}</strong> ${esc(o.text)}</span></label>`).join("")}</fieldset>`;
+  return `<fieldset class="question"><legend>${i+1}. ${esc(item.question)}</legend>${choices.map(o => `<label class="option ${o.image ? "image-option" : ""}"><input type="radio" name="${name}" value="${esc(o.id)}" required>${o.image ? `<span class="image-choice"><img src="${esc(o.image)}" alt="${esc(o.alt || o.text || `選項 ${o.id}`)}"><strong>${esc(o.id)}</strong>${o.text ? `<span>${esc(o.text)}</span>` : ""}</span>` : `<span><strong>${esc(o.id)}</strong> ${esc(o.text)}</span>`}</label>`).join("")}</fieldset>`;
 }
 
 function initAudio(set) {
@@ -201,7 +214,7 @@ function showFeedback(set,result) {
 function transcript(set) { const segments = set.audio?.segments || []; return `<details class="transcript"><summary>查看逐字稿（AI 生成語音）</summary>${segments.map(s => `<p><strong>${esc(s.speaker)}：</strong>${esc(s.text)}</p>`).join("")}</details>`; }
 function advanceSession() {
   session.completedSets += 1;
-  const next = selectSets(bank,{ domain:session.domain, skill:session.skill, progress, count:1 })[0];
+  const next = selectSets(bank,{ domain:session.domain, skill:session.skill, progress, count:1, family:session.family })[0];
   if (!next) { location.hash = "#/"; return; }
   session.sets = [next]; session.index = 0; session.responses = {}; session.results = [];
   renderQuiz(); window.scrollTo(0,0);

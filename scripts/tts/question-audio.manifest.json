@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "sourceContentVersion": "2026-10-31.3",
+  "sourceContentVersion": "2026-11-04.1",
   "defaults": {
     "provider": "gemini",
     "gemini": {

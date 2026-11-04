@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "contentVersion": "2026-11-01.1",
+  "contentVersion": "2026-11-04.1",
   "disclaimer": "Original, unofficial practice material. Not affiliated with or endorsed by Cambridge University Press & Assessment. Editorial levels are practice labels, not official score predictions.",
   "sets": [
     {
@@ -2080,11 +2080,12 @@
       "id": "gl-short-001",
       "domain": "general",
       "skill": "listening",
-      "taskType": "listening_one_question_mc",
+      "taskType": "listening_picture_mc",
+      "formatAligned": true,
       "level": "B2",
       "topic": "travel",
-      "title": "A change of route",
-      "directions": "Listen to the announcement and choose the correct answer.",
+      "title": "A different city-centre stop",
+      "directions": "Listen to the announcement and choose the correct picture.",
       "prepSeconds": 10,
       "maxPlays": 2,
       "audio": {
@@ -2108,27 +2109,33 @@
       "items": [
         {
           "id": "q1",
-          "question": "What has changed?",
+          "question": "Where should passengers for the city centre get off the coach?",
           "responseType": "single_choice",
           "options": [
             {
               "id": "A",
-              "text": "The airport arrival time"
+              "text": "",
+              "image": "assets/listening/city-museum.svg",
+              "alt": "A coach stop beside a museum with classical columns and a statue"
             },
             {
               "id": "B",
-              "text": "The city-centre drop-off point"
+              "text": "",
+              "image": "assets/listening/central-library.svg",
+              "alt": "A coach stop beside a public library with books visible through the windows"
             },
             {
               "id": "C",
-              "text": "The final destination of the coach"
+              "text": "",
+              "image": "assets/listening/city-airport.svg",
+              "alt": "A coach stop outside an airport terminal with an aeroplane overhead"
             }
           ],
           "answer": "B",
-          "explanationZh": "因淹水，市中心下車點由博物館附近改到中央圖書館旁；機場時間與最終目的地未變。",
+          "explanationZh": "因博物館附近淹水，市中心乘客要改在中央圖書館旁下車；繼續去機場的人留在車上。",
           "distractorRationales": {
-            "A": "仍預計 10:20 到機場。",
-            "C": "仍會繼續前往機場。"
+            "A": "博物館附近是不能使用的原下車點。",
+            "C": "機場乘客要留在車上，而不是在市中心下車。"
           },
           "evidence": "drop passengers beside Central Library instead"
         }
@@ -2149,6 +2156,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_one_question_mc",
+      "formatAligned": true,
       "level": "B2+",
       "topic": "education",
       "title": "Choosing a course",
@@ -2218,6 +2226,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_two_question_mc",
+      "formatAligned": true,
       "level": "B2",
       "topic": "community event",
       "title": "Planning a neighbourhood festival",
@@ -2328,6 +2337,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_five_question_mc",
+      "formatAligned": true,
       "level": "B2+",
       "topic": "public library services",
       "title": "A library's tool-lending project",
@@ -2507,6 +2517,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_note_completion",
+      "formatAligned": true,
       "level": "B2",
       "topic": "museum visit",
       "title": "Information for a museum visit",
@@ -2615,6 +2626,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_one_task_matching",
+      "formatAligned": true,
       "level": "B2+",
       "topic": "learning habits",
       "title": "Five students describe a useful study change",
@@ -2752,6 +2764,7 @@
       "domain": "general",
       "skill": "listening",
       "taskType": "listening_two_task_matching",
+      "formatAligned": true,
       "level": "C1",
       "topic": "volunteering",
       "title": "Three people reflect on volunteering",

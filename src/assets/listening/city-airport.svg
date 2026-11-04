@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Coach stop outside an airport</title>
+  <desc id="desc">A city coach is stopped outside a glass airport terminal while an aeroplane passes overhead.</desc>
+  <rect width="640" height="480" fill="#dff0fa"/>
+  <rect y="330" width="640" height="150" fill="#cfD3d5"/>
+  <rect x="44" y="156" width="410" height="180" rx="10" fill="#eef7fa" stroke="#315563" stroke-width="7"/>
+  <g fill="#b9e0ed" stroke="#315563" stroke-width="5">
+    <rect x="70" y="184" width="96" height="116"/><rect x="178" y="184" width="96" height="116"/><rect x="286" y="184" width="142" height="116"/>
+  </g>
+  <path d="M108 120h265l52 36H70z" fill="#176b66"/>
+  <g transform="translate(380 282)">
+    <rect x="0" y="18" width="190" height="90" rx="18" fill="#176b66" stroke="#173f4f" stroke-width="7"/>
+    <rect x="24" y="35" width="54" height="35" rx="5" fill="#cce9ee"/><rect x="90" y="35" width="54" height="35" rx="5" fill="#cce9ee"/>
+    <circle cx="47" cy="111" r="19" fill="#253c45"/><circle cx="151" cy="111" r="19" fill="#253c45"/>
+  </g>
+  <path d="M420 69c27 3 49 12 72 25l79-16 14 11-67 30 42 25-10 12-60-22-44 17-12-9 34-30-58-28z" fill="#355764"/>
+  <rect x="18" y="292" width="18" height="92" fill="#355764"/><circle cx="27" cy="279" r="22" fill="#f3a53f"/>
+</svg>

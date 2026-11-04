@@ -42,11 +42,61 @@ for (const set of bank.sets || []) {
     if (item.responseType === "single_choice") {
       const optionIds = new Set((item.options || []).map(option => option.id));
       if (!optionIds.size || answers.some(answer => !optionIds.has(answer))) errors.push(`${fullId}: answer does not match an option`);
+      for (const option of item.options || []) {
+        if (option.image) {
+          if (!option.alt) errors.push(`${fullId}/${option.id}: image option is missing alt text`);
+          try { await access(resolve(root,"src",option.image),constants.R_OK); }
+          catch { errors.push(`${fullId}/${option.id}: image asset is missing (${option.image})`); }
+        }
+      }
     }
     if (item.responseType === "matching" && answers.some(answer => !sharedIds.has(answer))) errors.push(`${fullId}: answer does not match a shared option`);
     if (["short_text", "gap_text"].includes(item.responseType)) {
       if (!Number.isInteger(item.maxWords) || item.maxWords < 1 || item.maxWords > 3) errors.push(`${fullId}: invalid maxWords`);
       if (answers.some(answer => answer.trim().split(/\s+/).length > item.maxWords)) errors.push(`${fullId}: accepted answer exceeds maxWords`);
+    }
+  }
+}
+
+const alignedGeneralListening = (bank.sets || []).filter(set => set.domain === "general" && set.skill === "listening" && set.formatAligned);
+const alignedTypes = new Set(alignedGeneralListening.map(set => set.taskType));
+for (const required of ["listening_picture_mc","listening_one_question_mc","listening_two_question_mc","listening_five_question_mc","listening_note_completion","listening_one_task_matching","listening_two_task_matching"]) {
+  if (!alignedTypes.has(required)) errors.push(`General Listening: missing format-aligned ${required}`);
+}
+
+for (const set of alignedGeneralListening) {
+  const transcript = set.audio.segments.map(segment => segment.text).join(" ");
+  const transcriptWords = transcript.trim().split(/\s+/).filter(Boolean).length;
+  if (set.taskType === "listening_picture_mc") {
+    if (set.items.length !== 1 || set.items[0].options?.length !== 3 || set.items[0].options.some(option => !option.image)) {
+      errors.push(`${set.id}: picture task must have one question and three image options`);
+    }
+  }
+  if (set.taskType === "listening_one_question_mc" && set.items.length !== 1) errors.push(`${set.id}: one-question task must have one item`);
+  if (set.taskType === "listening_two_question_mc" && set.items.length !== 2) errors.push(`${set.id}: two-question task must have two items`);
+  if (set.taskType === "listening_five_question_mc" && (set.items.length !== 5 || transcriptWords < 180)) {
+    errors.push(`${set.id}: extended Listening must have five items and at least 180 transcript words`);
+  }
+  if (set.taskType === "listening_note_completion" && (set.items.length !== 5 || set.items.some(item => item.maxWords > 3))) {
+    errors.push(`${set.id}: completion task must have five gaps of no more than three words`);
+  }
+  if (set.taskType === "listening_one_task_matching" && (set.items.length !== 5 || set.sharedOptions?.length !== 8)) {
+    errors.push(`${set.id}: one-task matching must have five speakers and eight options`);
+  }
+  if (set.taskType === "listening_two_task_matching") {
+    const families = new Map();
+    for (const option of set.sharedOptions || []) {
+      const family = String(option.id).match(/^[A-Z]+/)?.[0] || "";
+      families.set(family,(families.get(family) || 0) + 1);
+    }
+    if (set.items.length !== 6 || families.size !== 2 || [...families.values()].some(count => count !== 5)) {
+      errors.push(`${set.id}: two-task matching must have three speakers and two groups of five options`);
+    }
+  }
+  if (["listening_two_question_mc","listening_five_question_mc","listening_note_completion"].includes(set.taskType)) {
+    const positions = set.items.map(item => transcript.toLocaleLowerCase("en").indexOf(String(item.evidence).toLocaleLowerCase("en")));
+    if (positions.some((position,index) => position < 0 || (index > 0 && position <= positions[index - 1]))) {
+      errors.push(`${set.id}: answer evidence must appear in the same order as the questions`);
     }
   }
 }

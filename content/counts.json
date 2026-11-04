@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2026-11-01.1",
+  "contentVersion": "2026-11-04.1",
   "generatedAt": "2026-11-01T04:22:15.445Z",
   "totalSets": 136,
   "totalScoredResponses": 631,
@@ -11,7 +11,8 @@
     "general-reading": 208
   },
   "scoredResponsesByTaskFamily": {
-    "listening_one_question_mc": 6,
+    "listening_picture_mc": 1,
+    "listening_one_question_mc": 5,
     "listening_two_question_mc": 6,
     "listening_five_question_mc": 130,
     "listening_note_completion": 40,

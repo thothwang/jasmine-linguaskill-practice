@@ -157,11 +157,13 @@ The bank must include original items for the current task families documented by
 
 **Listening**
 
-- One-question multiple choice.
-- Two- and five-question multiple choice.
+- One-question multiple choice, including original picture-choice items.
+- Two- and five-question multiple choice; answer-bearing information follows question order.
 - Note/sentence completion with no more than three words.
 - One-task multiple matching.
 - Two-task multiple matching.
+
+General Listening exposes these as five learner-facing practice families: picture, short recording, extended listening, completion, and matching. Official Cambridge material remains an external reference; every in-site script, option, recording, and image is original.
 
 See [Cambridge: Exam formats and task types](https://www.cambridgeenglish.org/exams-and-tests/linguaskill/information-about-the-exam/exam-formats-and-task-types/) and [Cambridge: Practice materials](https://www.cambridgeenglish.org/exams-and-tests/linguaskill/information-about-the-exam/practice-materials/).
 

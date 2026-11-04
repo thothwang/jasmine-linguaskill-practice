@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { normaliseBank, isCorrect, scoreSet, datePhase, selectSets, progressSummary, choicesForItem } from "../../src/js/logic.js";
+import { normaliseBank, isCorrect, scoreSet, datePhase, selectSets, progressSummary, choicesForItem, listeningFamily } from "../../src/js/logic.js";
 
 const set = { id:"s1",domain:"business",skill:"reading",level:"B2",items:[
   {id:"q1",responseType:"single_choice",answer:"B",options:[]},
@@ -18,6 +18,14 @@ assert.equal(datePhase(new Date("2026-11-06T03:00:00Z")),"general");
 assert.equal(datePhase(new Date("2026-11-08T03:00:00Z")),"balanced");
 const selected = selectSets([set,{...set,id:"s2",level:"C1"}],{domain:"business",skill:"reading",progress:{attempts:[{taskSetId:"s1"}]},count:1});
 assert.equal(selected[0].id,"s2");
+const listeningSets = [
+  {id:"legacy",domain:"general",skill:"listening",taskType:"listening_five_question_mc",level:"B2",items:[]},
+  {id:"reviewed",domain:"general",skill:"listening",taskType:"listening_five_question_mc",formatAligned:true,level:"B2",items:[]},
+  {id:"picture",domain:"general",skill:"listening",taskType:"listening_picture_mc",formatAligned:true,level:"B2",items:[]},
+];
+assert.equal(listeningFamily(listeningSets[2]),"picture");
+assert.equal(selectSets(listeningSets,{domain:"general",skill:"listening",family:"long",progress:{attempts:[]},count:1})[0].id,"reviewed");
+assert.equal(selectSets(listeningSets,{domain:"general",skill:"listening",family:"picture",progress:{attempts:[]},count:1})[0].id,"picture");
 assert.deepEqual(progressSummary(Array.from({length:8},(_,i)=>({correct:i<6}))),{attempts:8,correct:6,accuracy:75});
 const dualMatching = { sharedOptions:[
   {id:"S1",text:"Situation one"},{id:"S2",text:"Situation two"},
