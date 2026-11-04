@@ -80,7 +80,7 @@ The bank was subsequently expanded without removing or rewriting any of the orig
 | General Reading | 208 |
 | **Total** | **631** |
 
-The expanded bank has 136 task sets. All 104 added sets contain five scored responses. New Listening sets use exactly two TTS identities (a narrator and one content speaker), include complete authoritative transcripts, and retain the two-play rule. New questions rotate the correct option position rather than systematically placing the key under one label.
+The current bank has 148 task sets. General Listening was subsequently rebuilt from 7 reviewed sets plus 27 new original sets while the 15 formulaic `gl-expand-*` sets were retired. The rebuilt domain still contains exactly 100 scored responses and retains the two-play rule.
 
 The 74 added Reading sets were independently authored and do not reuse a paired Listening topic, script, or answer fact. Their stimuli are natural articles, notices, or four-part texts of 160–280 words. They test paraphrase, purpose, implication, evidence evaluation, and cross-text location rather than copying a visible bullet. The added Reading mix is 26 extended multiple-choice sets, 24 five-gap cloze sets, and 24 multiple-text matching sets.
 
@@ -104,12 +104,13 @@ Exact scored-response counts by task family across the complete bank:
 
 | Task family | Responses |
 |---|---:|
-| listening_one_question_mc | 6 |
-| listening_two_question_mc | 6 |
-| listening_five_question_mc | 130 |
+| listening_picture_mc | 4 |
+| listening_one_question_mc | 12 |
+| listening_two_question_mc | 20 |
+| listening_five_question_mc | 95 |
 | listening_note_completion | 40 |
-| listening_one_task_matching | 10 |
-| listening_two_task_matching | 12 |
+| listening_one_task_matching | 15 |
+| listening_two_task_matching | 18 |
 | reading_one_question_mc | 2 |
 | reading_one_question_gap_mc | 1 |
 | reading_two_question_mc | 4 |
@@ -126,7 +127,7 @@ Across the complete bank, every schema-supported Listening and Reading family re
 
 Post-expansion automated checks confirmed:
 
-- 136 unique set IDs and 631 unique set/item pairs;
+- 148 unique set IDs and 631 unique set/item pairs;
 - at least 100 scored responses in every domain;
 - valid answer references and complete distractor diagnostics;
 - no completion answer above its declared one-to-three-word ceiling;
